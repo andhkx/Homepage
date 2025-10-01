@@ -4,6 +4,12 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Andhika - Software Engineer - Backend Developer</title>
+  <!-- For browsers that support media queries -->
+  <link rel="icon" href="{{ url_for('static', filename='favicon-light.png') }}" type="image/png" media="(prefers-color-scheme: light)">
+  <link rel="icon" href="{{ url_for('static', filename='favicon-dark.png') }}" type="image/png" media="(prefers-color-scheme: dark)">
+
+  <!-- Fallback for all browsers -->
+  <link rel="icon" href="{{ url_for('static', filename='favicon-light.png') }}" id="favicon">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -1191,7 +1197,7 @@
         <h1 class="hero-title-dhika fade-in-dhika">Hi, I'm <span>Andhika Andriana Putra</span></h1>
         <h2 class="hero-subtitle-dhika fade-in-dhika stagger-dhika">Software Engineer & Back-End Developer</h2>
         <p class="hero-description-dhika fade-in-dhika stagger-dhika">
-          Saya menciptakan pengalaman digital yang menarik dan fungsional dengan teknologi modern. Passionate tentang clean code, intuitive design, dan continuous learning.
+          Saya adalah Siswa Kelas XI RPL A di SMKN 2 Cimahi yang tertarik pada sisi teknis pengembangan perangkat lunak. Berpengalaman dalam merancang algoritma, problem solving, serta mengimplementasikannya dalam basis kode yang bersih, terstruktur, dan efisien.
         </p>
         <div class="hero-buttons-dhika fade-in-dhika stagger-dhika">
           <a href="#projects" class="btn-dhika btn-primary-dhika">
@@ -1236,15 +1242,15 @@
           <h3 class="fade-in-dhika">Software Engineer Berpengalaman</h3>
 
           <p class="fade-in-dhika stagger-dhika">
-            Saya adalah seorang Software Engineer dengan pengalaman lebih dari 1 tahun dalam mengembangkan aplikasi web yang responsif dan user-friendly. Saya memiliki passion yang besar terhadap teknologi web modern dan selalu berusaha untuk terus belajar dan berkembang.
+            Saya adalah seorang Software Engineer dengan spesialisasi di bidang pengembangan back-end, membangun fondasi yang kokoh untuk berbagai aplikasi web. Pengalaman lebih dari satu tahun telah membekali saya dalam merancang arsitektur server, dan memastikan keandalan sistem secara keseluruhan.
           </p>
 
           <p class="fade-in-dhika stagger-dhika">
-            Latar belakang saya dalam ilmu komputer memberikan fondasi yang kuat dalam pemecahan masalah dan logika pemrograman. Saya sangat menikmati proses mengubah ide-ide kreatif menjadi kode yang efisien dan aplikasi yang fungsional.
+            Berkat latar belakang pendidikan Ilmu Komputer, saya memiliki pendekatan yang terstruktur dalam menganalisis kebutuhan dan memecahkan masalah teknis yang kompleks. Saya memprioritaskan penulisan kode yang bersih, terukur, dan mudah dikelola sebagai dasar untuk menciptakan solusi digital yang tidak hanya berfungsi dengan baik, tetapi juga dapat berkembang seiring waktu.
           </p>
 
           <p class="fade-in-dhika stagger-dhika">
-            Saat ini, saya fokus pada pengembangan aplikasi menggunakan Python, Framework Flask, dan Jinja2. Saya juga memiliki minat dalam promblen solving yang membantu saya menciptakan proses kerja pengguna yang lebih baik.
+            Saat ini, saya secara aktif menggunakan Python dan Framework Flask sebagai stack teknologi utama dalam mengimplementasikan berbagai fitur dan logika bisnis. Saya terus berkomitmen untuk mengikuti perkembangan teknologi terbaru guna menghadirkan solusi back-end yang optimal, aman, dan berkinerja tinggi.
           </p>
 
           <div class="about-stats-dhika">
@@ -1273,7 +1279,7 @@
               </div>
             </div>
             <div class="stat-card-dhika fade-in-dhika stagger-dhika">
-              <div class="stat-number-dhika" data-count="3">
+              <div class="stat-number-dhika" data-count="4">
                 0
               </div>
               <div class="stat-label-dhika">
@@ -2254,6 +2260,18 @@
           themeIcon.classList.add('fa-sun');
         }
       }
+
+      function updateFavicon() {
+        const favicon = document.getElementById('favicon');
+        const isDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (isDark) {
+          favicon.href = "{{ url_for('static', filename='favicon-dark.png') }}";
+        }
+      }
+
+      updateFavicon();
+      window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', updateFavicon);
 
       // Load saved theme from localStorage
       function loadThemeDhika() {
