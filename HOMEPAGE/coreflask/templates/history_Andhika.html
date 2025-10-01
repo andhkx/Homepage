@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>History - Andhika Apps</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+  <style>
+    @keyframes fadeInUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+    .animate-fade-in-up { animation: fadeInUp 0.6s ease-out; }
+
+    .glass-card {
+      background: rgba(255, 255, 255, 0.05);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .nav-link {
+      position: relative;
+      padding: 8px 16px;
+      transition: all 0.3s ease;
+    }
+
+    .nav-link::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 50%;
+      width: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+      transition: all 0.3s ease;
+      transform: translateX(-50%);
+    }
+
+    .nav-link:hover::after,
+    .nav-link.active::after {
+      width: 80%;
+    }
+  </style>
+</head>
+<body class="bg-black text-white min-h-screen">
+  <!-- NAVBAR -->
+  <header class="fixed top-0 left-0 right-0 z-50 bg-black/30 backdrop-blur-md">
+    <div class="container mx-auto px-6 py-4 flex justify-between items-center">
+      <h2 class="text-2xl font-bold">
+        <span class="text-white">Andhika</span>
+      </h2>
+      <nav class="hidden sm:flex gap-2 text-gray-300">
+        <a href="{{ url_for('home') }}" class="nav-link hover:text-white transition-colors">Home</a>
+        <a href="{{ url_for('history_page') }}" class="nav-link hover:text-white transition-colors active">History</a>
+        <a href="https://wa.me/62895627174900" class="nav-link hover:text-green-400 transition-colors">Contact</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- HISTORY CONTENT -->
+  <div class="pt-24 pb-12 px-6">
+    <div class="container mx-auto max-w-4xl">
+      <div class="text-center mb-12">
+        <h1 class="text-4xl md:text-5xl font-bold mb-4 bg-gradient-to-r from-blue-400 via-purple-500 to-pink-500 bg-clip-text text-transparent">
+          Riwayat Pengerjaan
+        </h1>
+        <p class="text-gray-400 text-lg">Track progress dan hasil pengerjaan soal-soal</p>
+      </div>
+
+      <!-- Statistics -->
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 mb-8">
+        <div class="glass-card rounded-xl p-6 text-center">
+          <div class="text-3xl font-bold text-blue-400 mb-2" id="totalAttempts">0</div>
+          <div class="text-gray-400">Total Percobaan</div>
+        </div>
+        <div class="glass-card rounded-xl p-6 text-center">
+          <div class="text-3xl font-bold text-green-400 mb-2" id="averageScore">0</div>
+          <div class="text-gray-400">Rata-rata Score</div>
+        </div>
+        <div class="glass-card rounded-xl p-6 text-center">
+          <div class="text-3xl font-bold text-purple-400 mb-2" id="totalTypes">0</div>
+          <div class="text-gray-400">Jenis Soal</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex justify-between items-center mb-6">
+        <h2 class="text-2xl font-semibold">Riwayat Terbaru</h2>
+        <button onclick="clearAllHistory()" class="px-4 py-2 bg-red-500/20 text-red-400 rounded-lg hover:bg-red-500/30 transition-colors">
+          <i class="fas fa-trash mr-2"></i>Hapus Semua
+        </button>
+      </div>
+
+      <!-- History List -->
+      <div id="historyList" class="space-y-4">
+        <div class="glass-card rounded-xl p-8 text-center">
+          <i class="fas fa-history text-4xl text-gray-600 mb-4"></i>
+          <p class="text-gray-400">Belum ada riwayat pengerjaan</p>
+          <p class="text-gray-500 text-sm mt-2">Ayo mulai kerjakan soal-soal yang tersedia!</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Load history saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+      loadHistory();
+    });
+
+    async function loadHistory() {
+      try {
+        const response = await fetch('/get_history');
+        const history = await response.json();
+        
+        updateStatistics(history);
+        renderHistoryList(history);
+      } catch (error) {
+        console.error('Error loading history:', error);
+      }
+    }
+
+    function updateStatistics(history) {
+      const totalAttempts = history.length;
+      const averageScore = totalAttempts > 0 
+        ? Math.round(history.reduce((sum, entry) => sum + (entry.score || 0), 0) / totalAttempts)
+        : 0;
+      const totalTypes = new Set(history.map(entry => entry.soal_type)).size;
+
+      document.getElementById('totalAttempts').textContent = totalAttempts;
+      document.getElementById('averageScore').textContent = averageScore + '%';
+      document.getElementById('totalTypes').textContent = totalTypes;
+    }
+
+    function renderHistoryList(history) {
+      const container = document.getElementById('historyList');
+      
+      if (history.length === 0) {
+        container.innerHTML = `
+          <div class="glass-card rounded-xl p-8 text-center">
+            <i class="fas fa-history text-4xl text-gray-600 mb-4"></i>
+            <p class="text-gray-400">Belum ada riwayat pengerjaan</p>
+            <p class="text-gray-500 text-sm mt-2">Ayo mulai kerjakan soal-soal yang tersedia!</p>
+          </div>
+        `;
+        return;
+      }
+
+      // Urutkan dari yang terbaru
+      const sortedHistory = history.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      
+      container.innerHTML = sortedHistory.map((entry, index) => `
+        <div class="glass-card rounded-xl p-6 animate-fade-in-up" style="animation-delay: ${index * 0.1}s">
+          <div class="flex flex-col md:flex-row md:items-center justify-between mb-4">
+            <div class="flex-1">
+              <h3 class="text-xl font-semibold text-white mb-1">${entry.soal_name}</h3>
+              <div class="flex flex-wrap gap-2 text-sm text-gray-400">
+                <span class="bg-blue-500/20 text-blue-400 px-2 py-1 rounded">${entry.soal_type}</span>
+                <span><i class="far fa-clock mr-1"></i>${entry.timestamp}</span>
+              </div>
+            </div>
+            <div class="mt-2 md:mt-0">
+              <span class="px-3 py-1 rounded-full text-sm font-medium ${
+                entry.score >= 80 ? 'bg-green-500/20 text-green-400' : 
+                entry.score >= 60 ? 'bg-yellow-500/20 text-yellow-400' : 
+                'bg-red-500/20 text-red-400'
+              }">
+                Score: ${entry.score}%
+              </span>
+            </div>
+          </div>
+          
+          <div class="bg-black/30 rounded-lg p-4">
+            <h4 class="font-medium text-gray-300 mb-3 flex items-center">
+              <i class="fas fa-list mr-2"></i>Detail Jawaban
+            </h4>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-2 text-sm">
+              ${Object.entries(entry.user_answers || {}).map(([key, value]) => `
+                <div class="flex justify-between">
+                  <span class="text-gray-400">${key}:</span>
+                  <span class="text-white font-medium">${value}</span>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+          
+          <div class="flex justify-between items-center mt-4">
+            <span class="text-xs text-gray-500">ID: ${entry.id}</span>
+            <a href="${entry.soal_url}" class="text-blue-400 hover:text-blue-300 text-sm flex items-center">
+              <i class="fas fa-redo mr-1"></i> Coba Lagi
+            </a>
+          </div>
+        </div>
+      `).join('');
+    }
+
+    async function clearAllHistory() {
+      if (confirm('Apakah Anda yakin ingin menghapus semua riwayat?')) {
+        try {
+          const response = await fetch('/clear_history', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          });
+          
+          const result = await response.json();
+          if (result.status === 'success') {
+            loadHistory(); // Reload history
+          }
+        } catch (error) {
+          console.error('Error clearing history:', error);
+        }
+      }
+    }
+  </script>
+</body>
+</html>

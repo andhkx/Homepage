@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Andhika - Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <div class="navDhika">
+        <div class="logoDhika">
+            <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Gaji</span></h2>
+        </div>
+        <ul>
+            <li><a href="{{ url_for('input_gaji') }}">Form</a></li>
+          <li><a href="{{ url_for('home') }}">Home</a></li>
+        </ul>
+    </div>
+    <div class="mainDhika">
+        <div class="konversiDhika">
+            <center><h1>Penghitung Total Gaji</h1></center><br>
+            <div class="inputDhika">
+                <form action="" method="post">
+                    <input type="text" name="namaDhika" placeholder=" Masukan nama anda" required />
+                    <select name="statusDhika" required>
+                        <option value="Tetap">Tetap</option>
+                        <option value="Kontrak">Kontrak</option>
+                    </select>
+                    <input type="number" name="gajiDhika" placeholder=" Masukan gaji pokok anda" required />
+                    <select name="lemburDhika" required>
+                        <option value="Ya">Ya</option>
+                        <option value="Tidak">Tidak</option>
+                    </select>
+                    <input type="number" name="jamDhika" placeholder=" Masukan jam lembur kamu" required />
+                    <br /><input type="submit" value="Kirim" /><br />
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

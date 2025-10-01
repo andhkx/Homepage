@@ -1,0 +1,284 @@
+/* ================================
+   VARIABLES
+================================ */
+:root {
+  --primary-color: #000000;
+  --accent-yellow: #FFD700;
+  --text-light: #ffffff;
+  --electric-blue: #00BFFF;
+  --dark-card: #111111;
+}
+
+/* ================================
+   GLOBAL
+================================ */
+body {
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: var(--primary-color);
+  color: var(--text-light);
+}
+
+/* ================================
+   NAVBAR
+================================ */
+.navbarDhika {
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  z-index: 1000;
+  background: rgba(20,20,20,0.95);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(255,215,0,0.3);
+  padding: 15px 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.logoDhika h2 { margin: 0; }
+.whiteDhika { color: #fff; }
+.yellowDhika { color: var(--accent-yellow); }
+
+.navbarDhika .right {
+  font-size: 14px;
+}
+.navbarDhika .right span {
+  font-weight: bold;
+  color: var(--accent-yellow);
+}
+.navbarDhika .right a {
+  color: #ff4444;
+  text-decoration: none;
+  margin-left: 8px;
+}
+
+/* ================================
+   MAIN CONTENT
+================================ */
+.mainDhika {
+  margin-top: 90px;
+  max-width: 700px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 20px;
+}
+.welcome-text {
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 1.8rem;
+  color: var(--accent-yellow);
+}
+.sub-text {
+  text-align: center;
+  font-size: 0.95rem;
+  color: #aaa;
+  margin-bottom: 30px;
+}
+
+/* ================================
+   MENU SECTIONS
+================================ */
+.menu-section {
+  margin-bottom: 30px;
+  background: var(--dark-card);
+  border-radius: 12px;
+  padding: 20px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.6);
+  animation: fadeInUp 0.6s ease both;
+}
+.section-title {
+  font-weight: bold;
+  color: var(--accent-yellow);
+  margin-bottom: 15px;
+  font-size: 1.1rem;
+}
+
+/* ================================
+   BUTTONS
+================================ */
+.btn-group {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+.btn {
+  flex: 1;
+  padding: 12px;
+  border: none;
+  border-radius: 10px;
+  color: #fff;
+  cursor: pointer;
+  font-size: 14px;
+  text-align: center;
+  text-decoration: none;
+  background: linear-gradient(135deg, var(--accent-yellow), var(--electric-blue));
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+.btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 12px rgba(0,191,255,0.5);
+}
+.btn.full {
+  flex: 100%;
+}
+
+/* ================================
+   ANIMATIONS
+================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ================================
+   RESPONSIVE
+================================ */
+@media (max-width: 600px) {
+  .mainDhika { padding: 15px; }
+  .btn { flex: 100%; }
+}
+
+/* ABOUT SECTION */
+.about-section {
+  padding: 80px 20px;
+}
+.about-title {
+  text-align: center;
+  font-size: 2.5rem;
+  font-weight: bold;
+  margin-bottom: 60px;
+  background: linear-gradient(90deg, #00BFFF, #8B5CF6, #FF4D6D);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  position: relative;
+}
+.about-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 40px;
+}
+.about-left {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+}
+.profile-wrapper {
+  position: relative;
+  width: 250px;
+  height: 250px;
+  animation: float 4s ease-in-out infinite;
+}
+.profile-pic {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 4px solid transparent;
+  background: linear-gradient(135deg, #00BFFF, #8B5CF6, #FF4D6D) border-box;
+}
+.profile-pic img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.circle-glow {
+  position: absolute;
+  inset: 0;
+  border-radius: 50%;
+  border: 4px solid rgba(0, 191, 255, 0.5);
+  animation: pulse 3s infinite;
+}
+.sparkle {
+  position: absolute;
+  border-radius: 50%;
+  animation: pulse 2s infinite;
+}
+.sparkle-green {
+  top: -10px; right: -10px;
+  width: 20px; height: 20px;
+  background: #00ff88;
+}
+.sparkle-pink {
+  bottom: -10px; left: -10px;
+  width: 15px; height: 15px;
+  background: #ff4d6d;
+  animation-delay: 1s;
+}
+
+.about-right {
+  flex: 1.5;
+  max-width: 600px;
+}
+.about-right h3 {
+  font-size: 1.8rem;
+  margin-bottom: 15px;
+}
+.about-right .gradient-text {
+  background: linear-gradient(90deg, #FFD700, #00BFFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+.about-right p {
+  color: #bbb;
+  margin-bottom: 15px;
+  line-height: 1.6;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 15px;
+  margin: 25px 0;
+}
+.info-card {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: linear-gradient(135deg, rgba(0,191,255,0.1), rgba(139,92,246,0.1));
+  border: 1px solid rgba(0,191,255,0.2);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 0.9rem;
+}
+.info-card i {
+  color: #00BFFF;
+  font-size: 1.1rem;
+}
+
+.btn-download {
+  display: inline-block;
+  padding: 12px 28px;
+  border-radius: 30px;
+  background: linear-gradient(135deg, #00BFFF, #8B5CF6);
+  color: #fff;
+  text-decoration: none;
+  transition: all 0.3s ease;
+}
+.btn-download:hover {
+  transform: scale(1.05);
+  box-shadow: 0 0 20px rgba(0,191,255,0.6);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-12px); }
+}
+@keyframes pulse {
+  0% { transform: scale(1); opacity: 0.7; }
+  50% { transform: scale(1.1); opacity: 1; }
+  100% { transform: scale(1); opacity: 0.7; }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .about-container { flex-direction: column; text-align: center; }
+  .about-right { text-align: center; }
+  .info-grid { grid-template-columns: 1fr; }
+}
