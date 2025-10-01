@@ -1,2369 +1,2489 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Andhika - Software Engineer - Backend Developer</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-
-
-        :root {
-            /* Light Mode Colors */
-            --bg-light: #FAFBFC;
-            --surface-light: #FFFFFF;
-            --text-primary-light: #1F2937;
-            --text-secondary-light: #6B7280;
-            --border-light: #E5E7EB;
-            --accent-blue: #3B82F6;
-            --accent-light-blue: #60A5FA;
-            --accent-dark-blue: #2563EB;
-            --accent-cyan: #06B6D4;
-            --accent-electric: #0EA5E9;
-            --success: #10B981;
-            --error: #EF4444;
-            --warning: #F59E0B;
-            
-            /* Dark Mode Colors */
-            --bg-dark: #0F172A;
-            --surface-dark: #1E293B;
-            --text-primary-dark: #F9FAFB;
-            --text-secondary-dark: #D1D5DB;
-            --border-dark: #374151;
-            
-            /* Default to Light Mode */
-            --bg: var(--bg-light);
-            --surface: var(--surface-light);
-            --text-primary: var(--text-primary-light);
-            --text-secondary: var(--text-secondary-light);
-            --border: var(--border-light);
-            
-            /* Typography */
-            --font-family: 'Inter', sans-serif;
-            --font-size-xs: 0.75rem;
-            --font-size-sm: 0.875rem;
-            --font-size-base: 1rem;
-            --font-size-lg: 1.125rem;
-            --font-size-xl: 1.25rem;
-            --font-size-2xl: 1.5rem;
-            --font-size-3xl: 1.875rem;
-            --font-size-4xl: 2.25rem;
-            --font-size-5xl: 3rem;
-            --font-size-6xl: 3.75rem;
-            
-            /* Spacing */
-            --spacing-xs: 0.5rem;
-            --spacing-sm: 1rem;
-            --spacing-md: 1.5rem;
-            --spacing-lg: 2rem;
-            --spacing-xl: 3rem;
-            --spacing-2xl: 4rem;
-            
-            /* Border Radius */
-            --radius-sm: 0.375rem;
-            --radius-md: 0.5rem;
-            --radius-lg: 0.75rem;
-            --radius-xl: 1rem;
-            
-            /* Shadows */
-            --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
-            --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
-            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
-            --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
-            
-            /* Transitions */
-            --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .dark-mode {
-            --bg: var(--bg-dark);
-            --surface: var(--surface-dark);
-            --text-primary: var(--text-primary-dark);
-            --text-secondary: var(--text-secondary-dark);
-            --border: var(--border-dark);
-        }
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: var(--font-family);
-            font-size: var(--font-size-base);
-            line-height: 1.6;
-            color: var(--text-primary);
-            background-color: var(--bg);
-            transition: var(--transition-base);
-        }
-
-        .container-dhika {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 var(--spacing-md);
-        }
-
-        .section-dhika {
-            padding: var(--spacing-2xl) 0;
-        }
-
-        .section-title-dhika {
-            font-size: var(--font-size-4xl);
-            font-weight: 700;
-            margin-bottom: var(--spacing-lg);
-            text-align: center;
-            position: relative;
-        }
-
-        .section-title-dhika::after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
-            border-radius: 2px;
-        }
-
-        .section-subtitle-dhika {
-            font-size: var(--font-size-lg);
-            color: var(--text-secondary);
-            text-align: center;
-            max-width: 600px;
-            margin: 0 auto var(--spacing-xl);
-        }
-
-        /* Header & Navigation */
-        .header-dhika {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            background-color: var(--surface);
-            box-shadow: var(--shadow-sm);
-            z-index: 1000;
-            transition: var(--transition-base);
-        }
-
-        .nav-dhika {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: var(--spacing-sm) 0;
-        }
-
-        .logo-dhika {
-            font-size: var(--font-size-xl);
-            font-weight: 700;
-            color: var(--text-primary);
-            text-decoration: none;
-        }
-
-        .logo-dhika span {
-            color: var(--accent-blue);
-        }
-
-        .nav-menu-dhika {
-            display: flex;
-            list-style: none;
-            gap: var(--spacing-lg);
-        }
-
-        .nav-link-dhika {
-            font-weight: 500;
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: var(--transition-base);
-            position: relative;
-        }
-
-        .nav-link-dhika:hover {
-            color: var(--accent-blue);
-        }
-
-        .nav-link-dhika::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background-color: var(--accent-blue);
-            transition: var(--transition-base);
-        }
-
-        .nav-link-dhika:hover::after {
-            width: 100%;
-        }
-
-        .theme-toggle-dhika {
-            background: none;
-            border: none;
-            cursor: pointer;
-            width: 48px;
-            height: 48px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition-base);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .theme-toggle-dhika:hover {
-            background-color: rgba(0, 0, 0, 0.05);
-        }
-
-        .dark-mode .theme-toggle-dhika:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-
-        .theme-icon-dhika {
-            font-size: var(--font-size-lg);
-            transition: var(--transition-smooth);
-        }
-
-        .theme-toggle-dhika .fa-sun {
-            color: #F59E0B;
-        }
-
-        .theme-toggle-dhika .fa-moon {
-            color: #000000;
-        }
-
-        .hamburger-dhika {
-            display: none;
-            flex-direction: column;
-            justify-content: space-between;
-            width: 24px;
-            height: 18px;
-            background: transparent;
-            border: none;
-            cursor: pointer;
-        }
-
-        .hamburger-dhika span {
-            display: block;
-            height: 2px;
-            width: 100%;
-            background-color: var(--text-primary);
-            transition: var(--transition-base);
-        }
-
-        /* Hero Section */
-        .hero-dhika {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            padding-top: 80px;
-            background: linear-gradient(135deg, var(--bg) 0%, rgba(59, 130, 246, 0.05) 100%);
-        }
-
-        .hero-content-dhika {
-            display: flex;
-            flex-direction: column;
-            align-items: flex-start;
-            max-width: 600px;
-        }
-
-        .hero-title-dhika {
-            font-size: var(--font-size-6xl);
-            font-weight: 700;
-            line-height: 1.1;
-            margin-bottom: var(--spacing-md);
-        }
-
-        .hero-title-dhika span {
-            color: var(--accent-blue);
-        }
-
-        .hero-subtitle-dhika {
-            font-size: var(--font-size-2xl);
-            font-weight: 600;
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .hero-description-dhika {
-            font-size: var(--font-size-lg);
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .hero-buttons-dhika {
-            display: flex;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .btn-dhika {
-            display: inline-flex;
-            align-items: center;
-            gap: var(--spacing-xs);
-            padding: 12px 24px;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            text-decoration: none;
-            transition: var(--transition-base);
-            cursor: pointer;
-            border: none;
-            font-size: var(--font-size-base);
-        }
-
-        .btn-primary-dhika {
-            background-color: var(--accent-blue);
-            color: white;
-            box-shadow: var(--shadow-md);
-        }
-
-        .btn-primary-dhika:hover {
-            background-color: var(--accent-dark-blue);
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .btn-secondary-dhika {
-            background-color: transparent;
-            color: var(--accent-blue);
-            border: 2px solid var(--accent-blue);
-        }
-
-        .btn-secondary-dhika:hover {
-            background-color: var(--accent-blue);
-            color: white;
-            transform: translateY(-2px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .social-links-dhika {
-            display: flex;
-            gap: var(--spacing-md);
-        }
-
-        .social-link-dhika {
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: var(--surface);
-            color: var(--text-primary);
-            text-decoration: none;
-            transition: var(--transition-base);
-            box-shadow: var(--shadow-sm);
-        }
-
-        .social-link-dhika:hover {
-            transform: translateY(-3px) scale(1.1);
-            box-shadow: var(--shadow-lg);
-            color: var(--accent-blue);
-        }
-
-        /* About Section */
-        .about-dhika {
-            background-color: var(--surface);
-        }
-
-        .about-content-dhika {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-            align-items: center;
-        }
-
-        .about-image-dhika {
-            width: 100%;
-            border-radius: var(--radius-xl);
-            overflow: hidden;
-            box-shadow: var(--shadow-lg);
-        }
-
-        .about-image-dhika img {
-            width: 100%;
-            height: auto;
-            display: block;
-            transition: var(--transition-smooth);
-        }
-
-        .about-image-dhika:hover img {
-            transform: scale(1.05);
-        }
-
-        .about-text-dhika h3 {
-            font-size: var(--font-size-2xl);
-            margin-bottom: var(--spacing-md);
-        }
-
-        .about-text-dhika p {
-            margin-bottom: var(--spacing-md);
-            color: var(--text-secondary);
-        }
-
-        .about-stats-dhika {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: var(--spacing-md);
-            margin: var(--spacing-lg) 0;
-        }
-
-        .stat-card-dhika {
-            background-color: var(--bg);
-            padding: var(--spacing-md);
-            border-radius: var(--radius-lg);
-            text-align: center;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-base);
-        }
-
-        .stat-card-dhika:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-md);
-        }
-
-        .stat-number-dhika {
-            font-size: var(--font-size-3xl);
-            font-weight: 700;
-            color: var(--accent-blue);
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .stat-label-dhika {
-            font-size: var(--font-size-sm);
-            color: var(--text-secondary);
-        }
-
-        .about-info-dhika {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-lg);
-        }
-
-        .info-item-dhika {
-            display: flex;
-            align-items: center;
-            gap: var(--spacing-sm);
-        }
-
-        .info-item-dhika i {
-            color: var(--accent-blue);
-            width: 20px;
-        }
-
-        /* Skills Section */
-        .skills-grid-dhika {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: var(--spacing-lg);
-        }
-
-.skill-card-dhika {
-    background-color: var(--surface);
-    padding: var(--spacing-lg);
-    border-radius: var(--radius-lg);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-base);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    position: relative;
-}
-
-.skill-card-dhika:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-lg);
-}
-
-.skill-content-dhika {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-bottom: var(--spacing-md);
-    width: 100%;
-}
-
-.skill-icon-dhika {
-    font-size: 3rem;
-    margin-bottom: var(--spacing-md);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: var(--transition-base);
-}
-
-.skill-card-dhika:hover .skill-icon-dhika {
-    transform: scale(1.1);
-    box-shadow: var(--shadow-md);
-}
-
-.skill-name-dhika {
-    font-size: var(--font-size-lg);
-    font-weight: 600;
-    margin-bottom: var(--spacing-xs);
-    color: var(--text-primary);
-}
-
-.skill-category-dhika {
-    font-size: var(--font-size-sm);
-    color: var(--text-secondary);
-    padding: 4px 12px;
-    background-color: var(--bg);
-    border-radius: 20px;
-    display: inline-block;
-    font-weight: 500;
-}
-
-        .skill-progress-dhika {
-            width: 100%;
-            height: 8px;
-            background-color: var(--border);
-            border-radius: 4px;
-            overflow: hidden;
-            margin-bottom: var(--spacing-xs);
-        }
-
-        .skill-progress-bar-dhika {
-            height: 100%;
-            background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
-            border-radius: 4px;
-            width: 0;
-            transition: width 1.5s ease-in-out;
-        }
-
-        .skill-percentage-dhika {
-            align-self: flex-end;
-            font-size: var(--font-size-sm);
-            font-weight: 600;
-            color: var(--accent-blue);
-        }
-
-        /* Projects Section */
-        .projects-dhika {
-            background-color: var(--surface);
-        }
-
-        .project-filters-dhika {
-            display: flex;
-            justify-content: center;
-            flex-wrap: wrap;
-            gap: var(--spacing-sm);
-            margin-bottom: var(--spacing-xl);
-        }
-
-        .filter-btn-dhika {
-            padding: 8px 20px;
-            border-radius: 20px;
-            border: 1px solid var(--border);
-            background-color: transparent;
-            color: var(--text-secondary);
-            font-weight: 500;
-            cursor: pointer;
-            transition: var(--transition-base);
-        }
-
-        .filter-btn-dhika:hover, .filter-btn-dhika.active-dhika {
-            background-color: var(--accent-blue);
-            color: white;
-            border-color: var(--accent-blue);
-        }
-
-        .projects-grid-dhika {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-        }
-
-/* Updated Projects Section Styles */
-.project-card-dhika {
-    background-color: var(--surface);
-    border-radius: var(--radius-lg);
-    padding: var(--spacing-lg);
-    box-shadow: var(--shadow-sm);
-    transition: var(--transition-base);
-    display: flex;
-    flex-direction: column;
-    height: 100%;
-    position: relative;
-    border: 1px solid var(--border);
-}
-
-.project-card-dhika:hover {
-    transform: translateY(-8px);
-    box-shadow: var(--shadow-xl);
-    border-color: var(--accent-blue);
-}
-
-.project-header-dhika {
-    display: flex;
-    justify-content: space-between;
-    align-items: flex-start;
-    margin-bottom: var(--spacing-md);
-}
-
-.project-icon-dhika {
-    font-size: 2.5rem;
-    color: var(--accent-blue);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 60px;
-    height: 60px;
-    background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
-    border-radius: var(--radius-lg);
-    color: white;
-}
-
-.project-badge-dhika {
-    padding: 6px 16px;
-    border-radius: 20px;
-    font-size: var(--font-size-xs);
-    font-weight: 600;
-    color: white;
-}
-
-.badge-runtutan-dhika {
-    background-color: var(--accent-blue);
-}
-
-.badge-ifelse-dhika {
-    background-color: var(--success);
-}
-
-.badge-nestedif-dhika {
-    background-color: #8B5CF6;
-}
-
-.badge-forloop-dhika {
-    background-color: var(--warning);
-}
-
-.badge-whileloop-dhika {
-    background-color: var(--error);
-}
-
-.project-content-dhika {
-    flex: 1;
-    margin-bottom: var(--spacing-lg);
-}
-
-.project-title-dhika {
-    font-size: var(--font-size-xl);
-    font-weight: 600;
-    margin-bottom: var(--spacing-sm);
-    color: var(--text-primary);
-}
-
-.project-description-dhika {
-    font-size: var(--font-size-base);
-    color: var(--text-secondary);
-    margin-bottom: var(--spacing-md);
-    line-height: 1.6;
-}
-
-.project-tech-dhika {
-    display: flex;
-    flex-wrap: wrap;
-    gap: var(--spacing-xs);
-}
-
-.tech-tag-dhika {
-    padding: 6px 12px;
-    background-color: var(--bg);
-    border-radius: var(--radius-sm);
-    font-size: var(--font-size-xs);
-    color: var(--text-secondary);
-    border: 1px solid var(--border);
-    font-weight: 500;
-}
-
-.project-actions-dhika {
-    display: flex;
-    gap: var(--spacing-sm);
-    margin-top: auto;
-}
-
-.project-btn-dhika {
-    flex: 1;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: var(--spacing-xs);
-    padding: 10px 16px;
-    border-radius: var(--radius-md);
-    font-size: var(--font-size-sm);
-    font-weight: 500;
-    text-decoration: none;
-    transition: var(--transition-base);
-}
-
-.project-btn-demo-dhika {
-    background-color: var(--accent-blue);
-    color: white;
-}
-
-.project-btn-demo-dhika:hover {
-    background-color: var(--accent-dark-blue);
-    transform: translateY(-2px);
-}
-
-.project-btn-github-dhika {
-    background-color: transparent;
-    color: var(--text-primary);
-    border: 1px solid var(--border);
-}
-
-.project-btn-github-dhika:hover {
-    background-color: var(--bg);
-    border-color: var(--accent-blue);
-    transform: translateY(-2px);
-}
-
-/* Responsive adjustments */
-@media (max-width: 768px) {
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Andhika - Software Engineer - Backend Developer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+
+
+:root {
+    /* Light Mode Colors */
+    --bg-light: #FAFBFC;
+    --surface-light: #FFFFFF;
+    --text-primary-light: #1F2937;
+    --text-secondary-light: #6B7280;
+    --border-light: #E5E7EB;
+    --accent-blue: #3B82F6;
+    --accent-light-blue: #60A5FA;
+    --accent-dark-blue: #2563EB;
+    --accent-cyan: #06B6D4;
+    --accent-electric: #0EA5E9;
+    --success: #10B981;
+    --error: #EF4444;
+    --warning: #F59E0B;
+
+    /* Dark Mode Colors */
+    --bg-dark: #0F172A;
+    --surface-dark: #1E293B;
+    --text-primary-dark: #F9FAFB;
+    --text-secondary-dark: #D1D5DB;
+    --border-dark: #374151;
+
+    /* Default to Light Mode */
+    --bg: var(--bg-light);
+    --surface: var(--surface-light);
+    --text-primary: var(--text-primary-light);
+    --text-secondary: var(--text-secondary-light);
+    --border: var(--border-light);
+
+    /* Typography */
+    --font-family: 'Inter', sans-serif;
+    --font-size-xs: 0.75rem;
+    --font-size-sm: 0.875rem;
+    --font-size-base: 1rem;
+    --font-size-lg: 1.125rem;
+    --font-size-xl: 1.25rem;
+    --font-size-2xl: 1.5rem;
+    --font-size-3xl: 1.875rem;
+    --font-size-4xl: 2.25rem;
+    --font-size-5xl: 3rem;
+    --font-size-6xl: 3.75rem;
+
+    /* Spacing */
+    --spacing-xs: 0.5rem;
+    --spacing-sm: 1rem;
+    --spacing-md: 1.5rem;
+    --spacing-lg: 2rem;
+    --spacing-xl: 3rem;
+    --spacing-2xl: 4rem;
+
+    /* Border Radius */
+    --radius-sm: 0.375rem;
+    --radius-md: 0.5rem;
+    --radius-lg: 0.75rem;
+    --radius-xl: 1rem;
+
+    /* Shadows */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+    /* Transitions */
+    --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+    .dark-mode {
+      --bg: var(--bg-dark);
+      --surface: var(--surface-dark);
+      --text-primary: var(--text-primary-dark);
+      --text-secondary: var(--text-secondary-dark);
+      --border: var(--border-dark);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg);
+      transition: var(--transition-base);
+    }
+
+    .container-dhika {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .section-dhika {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .section-title-dhika {
+      font-size: var(--font-size-4xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-lg);
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title-dhika::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+      border-radius: 2px;
+    }
+
+    .section-subtitle-dhika {
+      font-size: var(--font-size-lg);
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--spacing-xl);
+    }
+
+    /* Header & Navigation */
+    .header-dhika {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--surface);
+      box-shadow: var(--shadow-sm);
+      z-index: 1000;
+      transition: var(--transition-base);
+    }
+
+    .nav-dhika {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-sm) 0;
+    }
+
+    .logo-dhika {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .logo-dhika span {
+      color: var(--accent-blue);
+    }
+
+    .nav-menu-dhika {
+      display: flex;
+      list-style: none;
+      gap: var(--spacing-lg);
+    }
+
+    .nav-link-dhika {
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: var(--transition-base);
+      position: relative;
+    }
+
+    .nav-link-dhika:hover {
+      color: var(--accent-blue);
+    }
+
+    .nav-link-dhika::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-blue);
+      transition: var(--transition-base);
+    }
+
+    .nav-link-dhika:hover::after {
+      width: 100%;
+    }
+
+    .theme-toggle-dhika {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-toggle-dhika:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .dark-mode .theme-toggle-dhika:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .theme-icon-dhika {
+      font-size: var(--font-size-lg);
+      transition: var(--transition-smooth);
+    }
+
+    .theme-toggle-dhika .fa-sun {
+      color: #F59E0B;
+    }
+
+    .theme-toggle-dhika .fa-moon {
+      color: #000000;
+    }
+
+    .hamburger-dhika {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hamburger-dhika span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: var(--text-primary);
+      transition: var(--transition-base);
+    }
+
+    /* Hero Section */
+    .hero-dhika {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      padding-top: 80px;
+      background: linear-gradient(135deg, var(--bg) 0%, rgba(59, 130, 246, 0.05) 100%);
+    }
+
+    .hero-content-dhika {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      max-width: 600px;
+    }
+
+    .hero-title-dhika {
+      font-size: var(--font-size-6xl);
+      font-weight: 700;
+      line-height: 1.1;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .hero-title-dhika span {
+      color: var(--accent-blue);
+    }
+
+    .hero-subtitle-dhika {
+      font-size: var(--font-size-2xl);
+      font-weight: 600;
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .hero-description-dhika {
+      font-size: var(--font-size-lg);
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .hero-buttons-dhika {
+      display: flex;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .btn-dhika {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: 12px 24px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-base);
+      cursor: pointer;
+      border: none;
+      font-size: var(--font-size-base);
+    }
+
+    .btn-primary-dhika {
+      background-color: var(--accent-blue);
+      color: white;
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-primary-dhika:hover {
+      background-color: var(--accent-dark-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .btn-secondary-dhika {
+      background-color: transparent;
+      color: var(--accent-blue);
+      border: 2px solid var(--accent-blue);
+    }
+
+    .btn-secondary-dhika:hover {
+      background-color: var(--accent-blue);
+      color: white;
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .social-links-dhika {
+      display: flex;
+      gap: var(--spacing-md);
+    }
+
+    .social-link-dhika {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--surface);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: var(--transition-base);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-link-dhika:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: var(--shadow-lg);
+      color: var(--accent-blue);
+    }
+
+    /* About Section */
+    .about-dhika {
+      background-color: var(--surface);
+    }
+
+    .about-content-dhika {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+      align-items: center;
+    }
+
+    .about-image-dhika {
+      width: 100%;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow-lg);
+    }
+
+    .about-image-dhika img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: var(--transition-smooth);
+    }
+
+    .about-image-dhika:hover img {
+      transform: scale(1.05);
+    }
+
+    .about-text-dhika h3 {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .about-text-dhika p {
+      margin-bottom: var(--spacing-md);
+      color: var(--text-secondary);
+    }
+
+    .about-stats-dhika {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--spacing-md);
+      margin: var(--spacing-lg) 0;
+    }
+
+    .stat-card-dhika {
+      background-color: var(--bg);
+      padding: var(--spacing-md);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+    }
+
+    .stat-card-dhika:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-number-dhika {
+      font-size: var(--font-size-3xl);
+      font-weight: 700;
+      color: var(--accent-blue);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .stat-label-dhika {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+    }
+
+    .about-info-dhika {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .info-item-dhika {
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-sm);
+    }
+
+    .info-item-dhika i {
+      color: var(--accent-blue);
+      width: 20px;
+    }
+
+    /* Skills Section */
+    .skills-grid-dhika {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    .skill-card-dhika {
+      background-color: var(--surface);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      position: relative;
+    }
+
+    .skill-card-dhika:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-lg);
+    }
+
+    .skill-content-dhika {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-bottom: var(--spacing-md);
+      width: 100%;
+    }
+
+    .skill-icon-dhika {
+      font-size: 3rem;
+      margin-bottom: var(--spacing-md);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-base);
+    }
+
+    .skill-card-dhika:hover .skill-icon-dhika {
+      transform: scale(1.1);
+      box-shadow: var(--shadow-md);
+    }
+
+    .skill-name-dhika {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+      color: var(--text-primary);
+    }
+
+    .skill-category-dhika {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      padding: 4px 12px;
+      background-color: var(--bg);
+      border-radius: 20px;
+      display: inline-block;
+      font-weight: 500;
+    }
+
+    .skill-progress-dhika {
+      width: 100%;
+      height: 8px;
+      background-color: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .skill-progress-bar-dhika {
+      height: 100%;
+      background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+      border-radius: 4px;
+      width: 0;
+      transition: width 1.5s ease-in-out;
+    }
+
+    .skill-percentage-dhika {
+      align-self: flex-end;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+      color: var(--accent-blue);
+    }
+
+    /* Projects Section */
+    .projects-dhika {
+      background-color: var(--surface);
+    }
+
+    .project-filters-dhika {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .filter-btn-dhika {
+      padding: 8px 20px;
+      border-radius: 20px;
+      border: 1px solid var(--border);
+      background-color: transparent;
+      color: var(--text-secondary);
+      font-weight: 500;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
+
+    .filter-btn-dhika:hover, .filter-btn-dhika.active-dhika {
+      background-color: var(--accent-blue);
+      color: white;
+      border-color: var(--accent-blue);
+    }
+
+    .projects-grid-dhika {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
+
+    /* Updated Projects Section Styles */
+    .project-card-dhika {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      position: relative;
+      border: 1px solid var(--border);
+    }
+
+    .project-card-dhika:hover {
+      transform: translateY(-8px);
+      box-shadow: var(--shadow-xl);
+      border-color: var(--accent-blue);
+    }
+
     .project-header-dhika {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .project-icon-dhika {
+      font-size: 2.5rem;
+      color: var(--accent-blue);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: linear-gradient(135deg, var(--accent-blue), var(--accent-cyan));
+      border-radius: var(--radius-lg);
+      color: white;
+    }
+
+    .project-badge-dhika {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+      color: white;
+    }
+
+    .badge-runtutan-dhika {
+      background-color: var(--accent-blue);
+    }
+
+    .badge-ifelse-dhika {
+      background-color: var(--success);
+    }
+
+    .badge-nestedif-dhika {
+      background-color: #8B5CF6;
+    }
+
+    .badge-forloop-dhika {
+      background-color: var(--warning);
+    }
+
+    .badge-whileloop-dhika {
+      background-color: var(--error);
+    }
+
+    .project-content-dhika {
+      flex: 1;
+      margin-bottom: var(--spacing-lg);
+    }
+
+    .project-title-dhika {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
+    }
+
+    .project-description-dhika {
+      font-size: var(--font-size-base);
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-md);
+      line-height: 1.6;
+    }
+
+    .project-tech-dhika {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-xs);
+    }
+
+    .tech-tag-dhika {
+      padding: 6px 12px;
+      background-color: var(--bg);
+      border-radius: var(--radius-sm);
+      font-size: var(--font-size-xs);
+      color: var(--text-secondary);
+      border: 1px solid var(--border);
+      font-weight: 500;
+    }
+
+    .project-actions-dhika {
+      display: flex;
+      gap: var(--spacing-sm);
+      margin-top: auto;
+    }
+
+    .project-btn-dhika {
+      flex: 1;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-xs);
+      padding: 10px 16px;
+      border-radius: var(--radius-md);
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+
+    .project-btn-demo-dhika {
+      background-color: var(--accent-blue);
+      color: white;
+    }
+
+    .project-btn-demo-dhika:hover {
+      background-color: var(--accent-dark-blue);
+      transform: translateY(-2px);
+    }
+
+    .project-btn-github-dhika {
+      background-color: transparent;
+      color: var(--text-primary);
+      border: 1px solid var(--border);
+    }
+
+    .project-btn-github-dhika:hover {
+      background-color: var(--bg);
+      border-color: var(--accent-blue);
+      transform: translateY(-2px);
+    }
+
+    /* Responsive adjustments */
+    @media (max-width: 768px) {
+      .project-header-dhika {
         flex-direction: column;
         gap: var(--spacing-sm);
-    }
-    
-    .project-icon-dhika {
+      }
+
+      .project-icon-dhika {
         align-self: flex-end;
-    }
-    
-    .project-actions-dhika {
+      }
+
+      .project-actions-dhika {
         flex-direction: column;
+      }
     }
-}
 
-        /* Certificates Section */
-        .certificates-grid-dhika {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: var(--spacing-lg);
-        }
+    /* Certificates Section */
+    .certificates-grid-dhika {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+    }
 
-        .certificate-card-dhika {
-            background-color: var(--surface);
-            border-radius: var(--radius-lg);
-            overflow: hidden;
-            box-shadow: var(--shadow-sm);
-            transition: var(--transition-base);
-            position: relative;
-        }
+    .certificate-card-dhika {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      overflow: hidden;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+      position: relative;
+    }
 
-        .certificate-card-dhika:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow-lg);
-        }
+    .certificate-card-dhika:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-lg);
+    }
 
-        .certificate-image-dhika {
-            width: 100%;
-            height: 200px;
-            overflow: hidden;
-        }
+    .certificate-image-dhika {
+      width: 100%;
+      height: 200px;
+      overflow: hidden;
+    }
 
-        .certificate-image-dhika img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
+    .certificate-image-dhika img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
 
-        .certificate-overlay-dhika {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.8);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: var(--spacing-sm);
-            opacity: 0;
-            transition: var(--transition-base);
-        }
+    .certificate-overlay-dhika {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: var(--spacing-sm);
+      opacity: 0;
+      transition: var(--transition-base);
+    }
 
-        .certificate-card-dhika:hover .certificate-overlay-dhika {
-            opacity: 1;
-        }
+    .certificate-card-dhika:hover .certificate-overlay-dhika {
+      opacity: 1;
+    }
 
-        .certificate-btn-dhika {
-            padding: 8px 16px;
-            border-radius: var(--radius-sm);
-            background-color: var(--accent-blue);
-            color: white;
-            text-decoration: none;
-            font-size: var(--font-size-sm);
-            font-weight: 500;
-            transition: var(--transition-base);
-        }
+    .certificate-btn-dhika {
+      padding: 8px 16px;
+      border-radius: var(--radius-sm);
+      background-color: var(--accent-blue);
+      color: white;
+      text-decoration: none;
+      font-size: var(--font-size-sm);
+      font-weight: 500;
+      transition: var(--transition-base);
+    }
 
-        .certificate-btn-dhika:hover {
-            background-color: var(--accent-dark-blue);
-            transform: scale(1.05);
-        }
+    .certificate-btn-dhika:hover {
+      background-color: var(--accent-dark-blue);
+      transform: scale(1.05);
+    }
 
-        .certificate-content-dhika {
-            padding: var(--spacing-md);
-        }
+    .certificate-content-dhika {
+      padding: var(--spacing-md);
+    }
 
-        .certificate-title-dhika {
-            font-size: var(--font-size-lg);
-            font-weight: 600;
-            margin-bottom: var(--spacing-xs);
-        }
+    .certificate-title-dhika {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+    }
 
-        .certificate-issuer-dhika {
-            font-size: var(--font-size-sm);
-            color: var(--text-secondary);
-            margin-bottom: var(--spacing-xs);
-        }
+    .certificate-issuer-dhika {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-xs);
+    }
 
-        .certificate-date-dhika {
-            font-size: var(--font-size-xs);
-            color: var(--text-secondary);
-        }
+    .certificate-date-dhika {
+      font-size: var(--font-size-xs);
+      color: var(--text-secondary);
+    }
 
-        /* Contact Section */
-        .contact-dhika {
-            background-color: var(--surface);
-        }
+    /* Contact Section */
+    .contact-dhika {
+      background-color: var(--surface);
+    }
 
-        .contact-content-dhika {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: var(--spacing-xl);
-        }
+    .contact-content-dhika {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: var(--spacing-xl);
+    }
 
-        .contact-info-dhika h3 {
-            font-size: var(--font-size-2xl);
-            margin-bottom: var(--spacing-lg);
-        }
+    .contact-info-dhika h3 {
+      font-size: var(--font-size-2xl);
+      margin-bottom: var(--spacing-lg);
+    }
 
-        .contact-list-dhika {
-            display: flex;
-            flex-direction: column;
-            gap: var(--spacing-md);
-            margin-bottom: var(--spacing-xl);
-        }
+    .contact-list-dhika {
+      display: flex;
+      flex-direction: column;
+      gap: var(--spacing-md);
+      margin-bottom: var(--spacing-xl);
+    }
 
-        .contact-item-dhika {
-            display: flex;
-            align-items: flex-start;
-            gap: var(--spacing-md);
-        }
+    .contact-item-dhika {
+      display: flex;
+      align-items: flex-start;
+      gap: var(--spacing-md);
+    }
 
-        .contact-icon-dhika {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: var(--bg);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--accent-blue);
-            flex-shrink: 0;
-        }
+    .contact-icon-dhika {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--bg);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--accent-blue);
+      flex-shrink: 0;
+    }
 
-        .contact-details-dhika h4 {
-            font-size: var(--font-size-lg);
-            margin-bottom: 4px;
-        }
+    .contact-details-dhika h4 {
+      font-size: var(--font-size-lg);
+      margin-bottom: 4px;
+    }
 
-        .contact-details-dhika p {
-            color: var(--text-secondary);
-        }
+    .contact-details-dhika p {
+      color: var(--text-secondary);
+    }
 
-        .contact-social-dhika {
-            display: flex;
-            gap: var(--spacing-sm);
-        }
+    .contact-social-dhika {
+      display: flex;
+      gap: var(--spacing-sm);
+    }
 
-        .contact-form-dhika {
-            background-color: var(--bg);
-            padding: var(--spacing-xl);
-            border-radius: var(--radius-xl);
-            box-shadow: var(--shadow-md);
-        }
+    .contact-form-dhika {
+      background-color: var(--bg);
+      padding: var(--spacing-xl);
+      border-radius: var(--radius-xl);
+      box-shadow: var(--shadow-md);
+    }
 
-        .form-group-dhika {
-            margin-bottom: var(--spacing-lg);
-        }
+    .form-group-dhika {
+      margin-bottom: var(--spacing-lg);
+    }
 
-        .form-label-dhika {
-            display: block;
-            margin-bottom: var(--spacing-xs);
-            font-weight: 500;
-        }
+    .form-label-dhika {
+      display: block;
+      margin-bottom: var(--spacing-xs);
+      font-weight: 500;
+    }
 
-        .form-input-dhika, .form-textarea-dhika {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid var(--border);
-            border-radius: var(--radius-md);
-            background-color: var(--surface);
-            color: var(--text-primary);
-            font-family: var(--font-family);
-            transition: var(--transition-base);
-        }
+    .form-input-dhika, .form-textarea-dhika {
+      width: 100%;
+      padding: 12px 16px;
+      border: 1px solid var(--border);
+      border-radius: var(--radius-md);
+      background-color: var(--surface);
+      color: var(--text-primary);
+      font-family: var(--font-family);
+      transition: var(--transition-base);
+    }
 
-        .form-input-dhika:focus, .form-textarea-dhika:focus {
-            outline: none;
-            border-color: var(--accent-blue);
-            box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
-        }
+    .form-input-dhika:focus, .form-textarea-dhika:focus {
+      outline: none;
+      border-color: var(--accent-blue);
+      box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    }
 
-        .form-textarea-dhika {
-            min-height: 120px;
-            resize: vertical;
-        }
+    .form-textarea-dhika {
+      min-height: 120px;
+      resize: vertical;
+    }
 
-        .form-submit-dhika {
-            width: 100%;
-            padding: 12px 24px;
-            background-color: var(--accent-blue);
-            color: white;
-            border: none;
-            border-radius: var(--radius-md);
-            font-weight: 600;
-            cursor: pointer;
-            transition: var(--transition-base);
-        }
+    .form-submit-dhika {
+      width: 100%;
+      padding: 12px 24px;
+      background-color: var(--accent-blue);
+      color: white;
+      border: none;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      cursor: pointer;
+      transition: var(--transition-base);
+    }
 
-        .form-submit-dhika:hover {
-            background-color: var(--accent-dark-blue);
-        }
+    .form-submit-dhika:hover {
+      background-color: var(--accent-dark-blue);
+    }
 
-        /* Footer */
-        .footer-dhika {
-            background-color: var(--surface);
-            padding: var(--spacing-xl) 0;
-            border-top: 1px solid var(--border);
-        }
+    /* Footer */
+    .footer-dhika {
+      background-color: var(--surface);
+      padding: var(--spacing-xl) 0;
+      border-top: 1px solid var(--border);
+    }
 
-        .footer-content-dhika {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    .footer-content-dhika {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
 
-        .footer-text-dhika {
-            color: var(--text-secondary);
-        }
+    .footer-text-dhika {
+      color: var(--text-secondary);
+    }
 
-        .footer-social-dhika {
-            display: flex;
-            gap: var(--spacing-md);
-        }
+    .footer-social-dhika {
+      display: flex;
+      gap: var(--spacing-md);
+    }
 
-        .back-to-top-dhika {
-            width: 44px;
-            height: 44px;
-            border-radius: 50%;
-            background-color: var(--accent-blue);
-            color: white;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-decoration: none;
-            transition: var(--transition-base);
-        }
+    .back-to-top-dhika {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--accent-blue);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
 
-        .back-to-top-dhika:hover {
-            background-color: var(--accent-dark-blue);
-            transform: translateY(-3px);
-        }
+    .back-to-top-dhika:hover {
+      background-color: var(--accent-dark-blue);
+      transform: translateY(-3px);
+    }
 
-        /* Modal */
-        .modal-dhika {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            z-index: 2000;
-            opacity: 0;
-            visibility: hidden;
-            transition: var(--transition-base);
-        }
+    /* Modal */
+    .modal-dhika {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.9);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      opacity: 0;
+      visibility: hidden;
+      transition: var(--transition-base);
+    }
 
-        .modal-dhika.active-dhika {
-            opacity: 1;
-            visibility: visible;
-        }
+    .modal-dhika.active-dhika {
+      opacity: 1;
+      visibility: visible;
+    }
 
-        .modal-content-dhika {
-            max-width: 90vw;
-            max-height: 90vh;
-            position: relative;
-        }
+    .modal-content-dhika {
+      max-width: 90vw;
+      max-height: 90vh;
+      position: relative;
+    }
 
-        .modal-image-dhika {
-            max-width: 100%;
-            max-height: 90vh;
-            border-radius: var(--radius-md);
-        }
+    .modal-image-dhika {
+      max-width: 100%;
+      max-height: 90vh;
+      border-radius: var(--radius-md);
+    }
 
-        .modal-close-dhika {
-            position: absolute;
-            top: -40px;
-            right: 0;
-            background: none;
-            border: none;
-            color: white;
-            font-size: var(--font-size-2xl);
-            cursor: pointer;
-        }
+    .modal-close-dhika {
+      position: absolute;
+      top: -40px;
+      right: 0;
+      background: none;
+      border: none;
+      color: white;
+      font-size: var(--font-size-2xl);
+      cursor: pointer;
+    }
 
-        /* Responsive Styles */
-        @media (max-width: 1024px) {
-            .skills-grid-dhika {
-                grid-template-columns: repeat(3, 1fr);
-            }
-            
-            .projects-grid-dhika {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .certificates-grid-dhika {
-                grid-template-columns: repeat(2, 1fr);
-            }
-        }
+    /* Responsive Styles */
+    @media (max-width: 1024px) {
+      .skills-grid-dhika {
+        grid-template-columns: repeat(3, 1fr);
+      }
 
-        @media (max-width: 768px) {
-            .hamburger-dhika {
-                display: flex;
-            }
-            
-            .nav-menu-dhika {
-                position: fixed;
-                top: 70px;
-                right: -100%;
-                width: 80%;
-                height: calc(100vh - 70px);
-                background-color: var(--surface);
-                flex-direction: column;
-                align-items: center;
-                justify-content: flex-start;
-                padding-top: var(--spacing-xl);
-                transition: var(--transition-base);
-                box-shadow: var(--shadow-lg);
-            }
-            
-            .nav-menu-dhika.active-dhika {
-                right: 0;
-            }
-            
-            .hero-title-dhika {
-                font-size: var(--font-size-5xl);
-            }
-            
-            .about-content-dhika {
-                grid-template-columns: 1fr;
-            }
-            
-            .skills-grid-dhika {
-                grid-template-columns: repeat(2, 1fr);
-            }
-            
-            .projects-grid-dhika {
-                grid-template-columns: 1fr;
-            }
-            
-            .certificates-grid-dhika {
-                grid-template-columns: 1fr;
-            }
-            
-            .contact-content-dhika {
-                grid-template-columns: 1fr;
-            }
-            
-            .footer-content-dhika {
-                flex-direction: column;
-                gap: var(--spacing-md);
-                text-align: center;
-            }
-        }
+      .projects-grid-dhika {
+        grid-template-columns: repeat(2, 1fr);
+      }
 
-        @media (max-width: 480px) {
-            .hero-buttons-dhika {
-                flex-direction: column;
-                width: 100%;
-            }
-            
-            .btn-dhika {
-                width: 100%;
-                justify-content: center;
-            }
-            
-            .skills-grid-dhika {
-                grid-template-columns: 1fr;
-            }
-            
-            .about-stats-dhika {
-                grid-template-columns: 1fr;
-            }
-        }
+      .certificates-grid-dhika {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
 
-        /* Animation Classes */
-        .fade-in-dhika {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: opacity 0.6s ease, transform 0.6s ease;
-        }
+    @media (max-width: 768px) {
+      .hamburger-dhika {
+        display: flex;
+      }
 
-        .fade-in-dhika.visible-dhika {
-            opacity: 1;
-            transform: translateY(0);
-        }
+      .nav-menu-dhika {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: var(--surface);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: var(--spacing-xl);
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-lg);
+      }
 
-        .stagger-dhika:nth-child(1) { transition-delay: 0.1s; }
-        .stagger-dhika:nth-child(2) { transition-delay: 0.2s; }
-        .stagger-dhika:nth-child(3) { transition-delay: 0.3s; }
-        .stagger-dhika:nth-child(4) { transition-delay: 0.4s; }
-        .stagger-dhika:nth-child(5) { transition-delay: 0.5s; }
-        .stagger-dhika:nth-child(6) { transition-delay: 0.6s; }
-    </style>
+      .nav-menu-dhika.active-dhika {
+        right: 0;
+      }
+
+      .hero-title-dhika {
+        font-size: var(--font-size-5xl);
+      }
+
+      .about-content-dhika {
+        grid-template-columns: 1fr;
+      }
+
+      .skills-grid-dhika {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .projects-grid-dhika {
+        grid-template-columns: 1fr;
+      }
+
+      .certificates-grid-dhika {
+        grid-template-columns: 1fr;
+      }
+
+      .contact-content-dhika {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content-dhika {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero-buttons-dhika {
+        flex-direction: column;
+        width: 100%;
+      }
+
+      .btn-dhika {
+        width: 100%;
+        justify-content: center;
+      }
+
+      .skills-grid-dhika {
+        grid-template-columns: 1fr;
+      }
+
+      .about-stats-dhika {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    /* Animation Classes */
+    .fade-in-dhika {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in-dhika.visible-dhika {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .stagger-dhika:nth-child(1) {
+      transition-delay: 0.1s;
+    }
+    .stagger-dhika:nth-child(2) {
+      transition-delay: 0.2s;
+    }
+    .stagger-dhika:nth-child(3) {
+      transition-delay: 0.3s;
+    }
+    .stagger-dhika:nth-child(4) {
+      transition-delay: 0.4s;
+    }
+    .stagger-dhika:nth-child(5) {
+      transition-delay: 0.5s;
+    }
+    .stagger-dhika:nth-child(6) {
+      transition-delay: 0.6s;
+    }
+  </style>
 </head>
 <body>
-    <!-- Header & Navigation -->
-    <header class="header-dhika">
-        <div class="container-dhika">
-            <nav class="nav-dhika">
-                <a href="#" class="logo-dhika">Andhika <span>App</span></a>
-                
-                <ul class="nav-menu-dhika">
-                    <li><a href="#home" class="nav-link-dhika">Home</a></li>
-                    <li><a href="#about" class="nav-link-dhika">About</a></li>
-                    <li><a href="#skills" class="nav-link-dhika">Skills</a></li>
-                    <li><a href="#projects" class="nav-link-dhika">Projects</a></li>
-                    <li><a href="#certificates" class="nav-link-dhika">Certificates</a></li>
-                    <li><a href="#contact" class="nav-link-dhika">Contact</a></li>
-                </ul>
-                
-                <button class="theme-toggle-dhika" id="themeToggleDhika">
-                    <i class="fas fa-sun theme-icon-dhika"></i>
-                </button>
-                
-                <button class="hamburger-dhika" id="hamburgerDhika">
-                    <span></span>
-                    <span></span>
-                    <span></span>
-                </button>
-            </nav>
-        </div>
-    </header>
-
-    <!-- Hero Section -->
-    <section class="hero-dhika section-dhika" id="home">
-        <div class="container-dhika">
-            <div class="hero-content-dhika">
-                <h1 class="hero-title-dhika fade-in-dhika">Hi, I'm <span>Andhika Andriana Putra</span></h1>
-                <h2 class="hero-subtitle-dhika fade-in-dhika stagger-dhika">Software Engineer & Back-End Developer</h2>
-                <p class="hero-description-dhika fade-in-dhika stagger-dhika">
-                    Saya menciptakan pengalaman digital yang menarik dan fungsional dengan teknologi modern. Passionate tentang clean code, intuitive design, dan continuous learning.
-                </p>
-                <div class="hero-buttons-dhika fade-in-dhika stagger-dhika">
-                    <a href="#projects" class="btn-dhika btn-primary-dhika">
-                        <i class="fas fa-eye"></i> Lihat Proyek
-                    </a>
-                    <a href="#about" class="btn-dhika btn-secondary-dhika">
-                        <i class="fa-solid fa-user"></i> Tentang Saya
-                    </a>
-                </div>
-                <div class="social-links-dhika fade-in-dhika stagger-dhika">
-                    <a href="https://github.com/andhkx" class="social-link-dhika">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/andhika-putra-1aa031388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link-dhika">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://www.instagram.com/andhkx_?igsh=MWIxMTE2ZnNlaWwzZA==" class="social-link-dhika">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/qr/PXV6OI6A2J4LG1" class="social-link-dhika">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- About Section -->
-    <section class="about-dhika section-dhika" id="about">
-        <div class="container-dhika">
-            <h2 class="section-title-dhika">Tentang Saya</h2>
-            <p class="section-subtitle-dhika">Mari berkenalan lebih dekat dengan saya dan apa yang saya lakukan</p>
-            
-            <div class="about-content-dhika">
-                <div class="about-image-dhika fade-in-dhika">
-                    <img src="{{ url_for('static', filename='pp.png') }}" alt="Andhika Andriana Putra">
-                </div>
-                
-                <div class="about-text-dhika">
-                    <h3 class="fade-in-dhika">Software Engineer Berpengalaman</h3>
-                    
-                    <p class="fade-in-dhika stagger-dhika">
-                        Saya adalah seorang Software Engineer dengan pengalaman lebih dari 1 tahun dalam mengembangkan aplikasi web yang responsif dan user-friendly. Saya memiliki passion yang besar terhadap teknologi web modern dan selalu berusaha untuk terus belajar dan berkembang.
-                    </p>
-                    
-                    <p class="fade-in-dhika stagger-dhika">
-                        Latar belakang saya dalam ilmu komputer memberikan fondasi yang kuat dalam pemecahan masalah dan logika pemrograman. Saya sangat menikmati proses mengubah ide-ide kreatif menjadi kode yang efisien dan aplikasi yang fungsional.
-                    </p>
-                    
-                    <p class="fade-in-dhika stagger-dhika">
-                        Saat ini, saya fokus pada pengembangan aplikasi menggunakan Python, Framework Flask, dan Jinja2. Saya juga memiliki minat dalam promblen solving yang membantu saya menciptakan proses kerja pengguna yang lebih baik.
-                    </p>
-                    
-                    <div class="about-stats-dhika">
-                        <div class="stat-card-dhika fade-in-dhika stagger-dhika">
-                            <div class="stat-number-dhika" data-count="1">0</div>
-                            <div class="stat-label-dhika">Tahun Pengalaman</div>
-                        </div>
-                        <div class="stat-card-dhika fade-in-dhika stagger-dhika">
-                            <div class="stat-number-dhika" data-count="25">0</div>
-                            <div class="stat-label-dhika">Proyek Selesai</div>
-                        </div>
-                        <div class="stat-card-dhika fade-in-dhika stagger-dhika">
-                            <div class="stat-number-dhika" data-count="6">0</div>
-                            <div class="stat-label-dhika">Teknologi Dikuasai</div>
-                        </div>
-                        <div class="stat-card-dhika fade-in-dhika stagger-dhika">
-                            <div class="stat-number-dhika" data-count="3">0</div>
-                            <div class="stat-label-dhika">Sertifikat</div>
-                        </div>
-                    </div>
-                    
-                    <div class="about-info-dhika">
-                        <div class="info-item-dhika fade-in-dhika stagger-dhika">
-                            <i class="fas fa-map-marker-alt"></i>
-                            <span>Cimahi, Indonesia</span>
-                        </div>
-                        <div class="info-item-dhika fade-in-dhika stagger-dhika">
-                            <i class="fas fa-envelope"></i>
-                            <span>andhikaputrach273@gmail.com</span>
-                        </div>
-                        <div class="info-item-dhika fade-in-dhika stagger-dhika">
-                            <i class="fas fa-user-check"></i>
-                            <span>Available for Freelance</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Skills Section -->
-<section class="skills-dhika section-dhika" id="skills">
+  <!-- Header & Navigation -->
+  <header class="header-dhika">
     <div class="container-dhika">
-        <h2 class="section-title-dhika">Keahlian Saya</h2>
-        <p class="section-subtitle-dhika">Teknologi dan tools yang saya kuasai untuk menciptakan solusi digital yang berkualitas</p>
-        
-        <div class="skills-grid-dhika">
-            <!-- Skill 1 - Python -->
-            <div class="skill-card-dhika fade-in-dhika stagger-dhika">
-                <div class="skill-content-dhika">
-                    <div class="skill-icon-dhika" style="color: var(--accent-blue);">
-                        <i class="fab fa-python"></i>
-                    </div>
-                    <h3 class="skill-name-dhika">Python</h3>
-                    <span class="skill-category-dhika">Backend</span>
-                </div>
-                <div class="skill-progress-dhika">
-                    <div class="skill-progress-bar-dhika" data-percentage="95"></div>
-                </div>
-                <span class="skill-percentage-dhika">95%</span>
-            </div>
-            
-            <!-- Skill 2 - Flask -->
-            <div class="skill-card-dhika fade-in-dhika stagger-dhika">
-                <div class="skill-content-dhika">
-                    <div class="skill-icon-dhika" style="color: var(--accent-blue);">
-                        <i class="fa-brands fa-affiliatetheme"></i>
-                    </div>
-                    <h3 class="skill-name-dhika">Flask</h3>
-                    <span class="skill-category-dhika">Backend</span>
-                </div>
-                <div class="skill-progress-dhika">
-                    <div class="skill-progress-bar-dhika" data-percentage="90"></div>
-                </div>
-                <span class="skill-percentage-dhika">90%</span>
-            </div>
-            
-            <!-- Skill 3 - Jinja2 -->
-            <div class="skill-card-dhika fade-in-dhika stagger-dhika">
-                <div class="skill-content-dhika">
-                    <div class="skill-icon-dhika" style="color: var(--accent-blue);">
-                        <i class="fa-brands fa-zhihu"></i>
-                    </div>
-                    <h3 class="skill-name-dhika">Jinja2</h3>
-                    <span class="skill-category-dhika">Templating</span>
-                </div>
-                <div class="skill-progress-dhika">
-                    <div class="skill-progress-bar-dhika" data-percentage="85"></div>
-                </div>
-                <span class="skill-percentage-dhika">85%</span>
-            </div>
-            
-            <!-- Skill 4 - HTML -->
-            <div class="skill-card-dhika fade-in-dhika stagger-dhika">
-                <div class="skill-content-dhika">
-                    <div class="skill-icon-dhika" style="color: var(--accent-blue);">
-                        <i class="fab fa-html5"></i>
-                    </div>
-                    <h3 class="skill-name-dhika">HTML</h3>
-                    <span class="skill-category-dhika">Frontend</span>
-                </div>
-                <div class="skill-progress-dhika">
-                    <div class="skill-progress-bar-dhika" data-percentage="93"></div>
-                </div>
-                <span class="skill-percentage-dhika">93%</span>
-            </div>
-            
-            <!-- Skill 5 - CSS -->
-            <div class="skill-card-dhika fade-in-dhika stagger-dhika">
-                <div class="skill-content-dhika">
-                    <div class="skill-icon-dhika" style="color: var(--accent-blue);">
-                        <i class="fab fa-css3-alt"></i>
-                    </div>
-                    <h3 class="skill-name-dhika">CSS</h3>
-                    <span class="skill-category-dhika">Frontend</span>
-                </div>
-                <div class="skill-progress-dhika">
-                    <div class="skill-progress-bar-dhika" data-percentage="90"></div>
-                </div>
-                <span class="skill-percentage-dhika">90%</span>
-            </div>
-            
-            <!-- Skill 6 - Tailwind CSS -->
-            <div class="skill-card-dhika fade-in-dhika stagger-dhika">
-                <div class="skill-content-dhika">
-                    <div class="skill-icon-dhika" style="color: var(--accent-blue);">
-                        <i class="fa-solid fa-wind"></i>
-                    </div>
-                    <h3 class="skill-name-dhika">Tailwind CSS</h3>
-                    <span class="skill-category-dhika">Frontend</span>
-                </div>
-                <div class="skill-progress-dhika">
-                    <div class="skill-progress-bar-dhika" data-percentage="80"></div>
-                </div>
-                <span class="skill-percentage-dhika">80%</span>
-            </div>
-            
-            <!-- Skill 7 - Figma -->
-            <div class="skill-card-dhika fade-in-dhika stagger-dhika">
-                <div class="skill-content-dhika">
-                    <div class="skill-icon-dhika" style="color: var(--accent-blue);">
-                        <i class="fab fa-figma"></i>
-                    </div>
-                    <h3 class="skill-name-dhika">Figma</h3>
-                    <span class="skill-category-dhika">Design</span>
-                </div>
-                <div class="skill-progress-dhika">
-                    <div class="skill-progress-bar-dhika" data-percentage="95"></div>
-                </div>
-                <span class="skill-percentage-dhika">95%</span>
-            </div>
-            
-            <!-- Skill 8 - GitHub -->
-            <div class="skill-card-dhika fade-in-dhika stagger-dhika">
-                <div class="skill-content-dhika">
-                    <div class="skill-icon-dhika" style="color: var(--accent-blue);">
-                        <i class="fab fa-github"></i>
-                    </div>
-                    <h3 class="skill-name-dhika">GitHub</h3>
-                    <span class="skill-category-dhika">Tools</span>
-                </div>
-                <div class="skill-progress-dhika">
-                    <div class="skill-progress-bar-dhika" data-percentage="80"></div>
-                </div>
-                <span class="skill-percentage-dhika">80%</span>
-            </div>
+      <nav class="nav-dhika">
+        <a href="#" class="logo-dhika">Andhika <span>App</span></a>
+
+        <ul class="nav-menu-dhika">
+          <li><a href="#home" class="nav-link-dhika">Home</a></li>
+          <li><a href="#about" class="nav-link-dhika">About</a></li>
+          <li><a href="#skills" class="nav-link-dhika">Skills</a></li>
+          <li><a href="#projects" class="nav-link-dhika">Projects</a></li>
+          <li><a href="#certificates" class="nav-link-dhika">Certificates</a></li>
+          <li><a href="#contact" class="nav-link-dhika">Contact</a></li>
+        </ul>
+
+        <button class="theme-toggle-dhika" id="themeToggleDhika">
+          <i class="fas fa-sun theme-icon-dhika"></i>
+        </button>
+
+        <button class="hamburger-dhika" id="hamburgerDhika">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-dhika section-dhika" id="home">
+    <div class="container-dhika">
+      <div class="hero-content-dhika">
+        <h1 class="hero-title-dhika fade-in-dhika">Hi, I'm <span>Andhika Andriana Putra</span></h1>
+        <h2 class="hero-subtitle-dhika fade-in-dhika stagger-dhika">Software Engineer & Back-End Developer</h2>
+        <p class="hero-description-dhika fade-in-dhika stagger-dhika">
+          Saya menciptakan pengalaman digital yang menarik dan fungsional dengan teknologi modern. Passionate tentang clean code, intuitive design, dan continuous learning.
+        </p>
+        <div class="hero-buttons-dhika fade-in-dhika stagger-dhika">
+          <a href="#projects" class="btn-dhika btn-primary-dhika">
+            <i class="fas fa-eye"></i> Lihat Proyek
+          </a>
+          <a href="#about" class="btn-dhika btn-secondary-dhika">
+            <i class="fa-solid fa-user"></i> Tentang Saya
+          </a>
         </div>
-    </div><br/><br />
+        <div class="social-links-dhika fade-in-dhika stagger-dhika">
+          <a href="https://github.com/andhkx" class="social-link-dhika">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/andhika-putra-1aa031388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link-dhika">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/andhkx_?igsh=MWIxMTE2ZnNlaWwzZA==" class="social-link-dhika">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/qr/PXV6OI6A2J4LG1" class="social-link-dhika">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section class="about-dhika section-dhika" id="about">
+    <div class="container-dhika">
+      <h2 class="section-title-dhika">Tentang Saya</h2>
+      <p class="section-subtitle-dhika">
+        Mari berkenalan lebih dekat dengan saya dan apa yang saya lakukan
+      </p>
+
+      <div class="about-content-dhika">
+        <div class="about-image-dhika fade-in-dhika">
+          <img src="{{ url_for('static', filename='pp.png') }}" alt="Andhika Andriana Putra">
+        </div>
+
+        <div class="about-text-dhika">
+          <h3 class="fade-in-dhika">Software Engineer Berpengalaman</h3>
+
+          <p class="fade-in-dhika stagger-dhika">
+            Saya adalah seorang Software Engineer dengan pengalaman lebih dari 1 tahun dalam mengembangkan aplikasi web yang responsif dan user-friendly. Saya memiliki passion yang besar terhadap teknologi web modern dan selalu berusaha untuk terus belajar dan berkembang.
+          </p>
+
+          <p class="fade-in-dhika stagger-dhika">
+            Latar belakang saya dalam ilmu komputer memberikan fondasi yang kuat dalam pemecahan masalah dan logika pemrograman. Saya sangat menikmati proses mengubah ide-ide kreatif menjadi kode yang efisien dan aplikasi yang fungsional.
+          </p>
+
+          <p class="fade-in-dhika stagger-dhika">
+            Saat ini, saya fokus pada pengembangan aplikasi menggunakan Python, Framework Flask, dan Jinja2. Saya juga memiliki minat dalam promblen solving yang membantu saya menciptakan proses kerja pengguna yang lebih baik.
+          </p>
+
+          <div class="about-stats-dhika">
+            <div class="stat-card-dhika fade-in-dhika stagger-dhika">
+              <div class="stat-number-dhika" data-count="1">
+                0
+              </div>
+              <div class="stat-label-dhika">
+                Tahun Pengalaman
+              </div>
+            </div>
+            <div class="stat-card-dhika fade-in-dhika stagger-dhika">
+              <div class="stat-number-dhika" data-count="25">
+                0
+              </div>
+              <div class="stat-label-dhika">
+                Proyek Selesai
+              </div>
+            </div>
+            <div class="stat-card-dhika fade-in-dhika stagger-dhika">
+              <div class="stat-number-dhika" data-count="6">
+                0
+              </div>
+              <div class="stat-label-dhika">
+                Teknologi Dikuasai
+              </div>
+            </div>
+            <div class="stat-card-dhika fade-in-dhika stagger-dhika">
+              <div class="stat-number-dhika" data-count="3">
+                0
+              </div>
+              <div class="stat-label-dhika">
+                Sertifikat
+              </div>
+            </div>
+          </div>
+
+          <div class="about-info-dhika">
+            <div class="info-item-dhika fade-in-dhika stagger-dhika">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Cimahi, Indonesia</span>
+            </div>
+            <div class="info-item-dhika fade-in-dhika stagger-dhika">
+              <i class="fas fa-envelope"></i>
+              <span>andhikaputrach273@gmail.com</span>
+            </div>
+            <div class="info-item-dhika fade-in-dhika stagger-dhika">
+              <i class="fas fa-user-check"></i>
+              <span>Available for Freelance</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Skills Section -->
+  <section class="skills-dhika section-dhika" id="skills">
+    <div class="container-dhika">
+      <h2 class="section-title-dhika">Keahlian Saya</h2>
+      <p class="section-subtitle-dhika">
+        Teknologi dan tools yang saya kuasai untuk menciptakan solusi digital yang berkualitas
+      </p>
+
+      <div class="skills-grid-dhika">
+        <!-- Skill 1 - Python -->
+        <div class="skill-card-dhika fade-in-dhika stagger-dhika">
+          <div class="skill-content-dhika">
+            <div class="skill-icon-dhika" style="color: var(--accent-blue);">
+              <i class="fab fa-python"></i>
+            </div>
+            <h3 class="skill-name-dhika">Python</h3>
+            <span class="skill-category-dhika">Backend</span>
+          </div>
+          <div class="skill-progress-dhika">
+            <div class="skill-progress-bar-dhika" data-percentage="95"></div>
+          </div>
+          <span class="skill-percentage-dhika">95%</span>
+        </div>
+
+        <!-- Skill 2 - Flask -->
+        <div class="skill-card-dhika fade-in-dhika stagger-dhika">
+          <div class="skill-content-dhika">
+            <div class="skill-icon-dhika" style="color: var(--accent-blue);">
+              <i class="fa-brands fa-affiliatetheme"></i>
+            </div>
+            <h3 class="skill-name-dhika">Flask</h3>
+            <span class="skill-category-dhika">Backend</span>
+          </div>
+          <div class="skill-progress-dhika">
+            <div class="skill-progress-bar-dhika" data-percentage="90"></div>
+          </div>
+          <span class="skill-percentage-dhika">90%</span>
+        </div>
+
+        <!-- Skill 3 - Jinja2 -->
+        <div class="skill-card-dhika fade-in-dhika stagger-dhika">
+          <div class="skill-content-dhika">
+            <div class="skill-icon-dhika" style="color: var(--accent-blue);">
+              <i class="fa-brands fa-zhihu"></i>
+            </div>
+            <h3 class="skill-name-dhika">Jinja2</h3>
+            <span class="skill-category-dhika">Templating</span>
+          </div>
+          <div class="skill-progress-dhika">
+            <div class="skill-progress-bar-dhika" data-percentage="85"></div>
+          </div>
+          <span class="skill-percentage-dhika">85%</span>
+        </div>
+
+        <!-- Skill 4 - HTML -->
+        <div class="skill-card-dhika fade-in-dhika stagger-dhika">
+          <div class="skill-content-dhika">
+            <div class="skill-icon-dhika" style="color: var(--accent-blue);">
+              <i class="fab fa-html5"></i>
+            </div>
+            <h3 class="skill-name-dhika">HTML</h3>
+            <span class="skill-category-dhika">Frontend</span>
+          </div>
+          <div class="skill-progress-dhika">
+            <div class="skill-progress-bar-dhika" data-percentage="93"></div>
+          </div>
+          <span class="skill-percentage-dhika">93%</span>
+        </div>
+
+        <!-- Skill 5 - CSS -->
+        <div class="skill-card-dhika fade-in-dhika stagger-dhika">
+          <div class="skill-content-dhika">
+            <div class="skill-icon-dhika" style="color: var(--accent-blue);">
+              <i class="fab fa-css3-alt"></i>
+            </div>
+            <h3 class="skill-name-dhika">CSS</h3>
+            <span class="skill-category-dhika">Frontend</span>
+          </div>
+          <div class="skill-progress-dhika">
+            <div class="skill-progress-bar-dhika" data-percentage="90"></div>
+          </div>
+          <span class="skill-percentage-dhika">90%</span>
+        </div>
+
+        <!-- Skill 6 - Tailwind CSS -->
+        <div class="skill-card-dhika fade-in-dhika stagger-dhika">
+          <div class="skill-content-dhika">
+            <div class="skill-icon-dhika" style="color: var(--accent-blue);">
+              <i class="fa-solid fa-wind"></i>
+            </div>
+            <h3 class="skill-name-dhika">Tailwind CSS</h3>
+            <span class="skill-category-dhika">Frontend</span>
+          </div>
+          <div class="skill-progress-dhika">
+            <div class="skill-progress-bar-dhika" data-percentage="80"></div>
+          </div>
+          <span class="skill-percentage-dhika">80%</span>
+        </div>
+
+        <!-- Skill 7 - Figma -->
+        <div class="skill-card-dhika fade-in-dhika stagger-dhika">
+          <div class="skill-content-dhika">
+            <div class="skill-icon-dhika" style="color: var(--accent-blue);">
+              <i class="fab fa-figma"></i>
+            </div>
+            <h3 class="skill-name-dhika">Figma</h3>
+            <span class="skill-category-dhika">Design</span>
+          </div>
+          <div class="skill-progress-dhika">
+            <div class="skill-progress-bar-dhika" data-percentage="95"></div>
+          </div>
+          <span class="skill-percentage-dhika">95%</span>
+        </div>
+
+        <!-- Skill 8 - GitHub -->
+        <div class="skill-card-dhika fade-in-dhika stagger-dhika">
+          <div class="skill-content-dhika">
+            <div class="skill-icon-dhika" style="color: var(--accent-blue);">
+              <i class="fab fa-github"></i>
+            </div>
+            <h3 class="skill-name-dhika">GitHub</h3>
+            <span class="skill-category-dhika">Tools</span>
+          </div>
+          <div class="skill-progress-dhika">
+            <div class="skill-progress-bar-dhika" data-percentage="80"></div>
+          </div>
+          <span class="skill-percentage-dhika">80%</span>
+        </div>
+      </div>
+    </div>
+    <br /><br />
 <!-- Projects Section -->
 <section class="projects-dhika section-dhika" id="projects">
-    <div class="container-dhika">
-        <h2 class="section-title-dhika">Proyek Aplikasi</h2>
-        <p class="section-subtitle-dhika">Koleksi proyek yang telah saya selesaikan dengan berbagai teknologi dan pendekatan</p>
-        
-        <div class="project-filters-dhika">
-            <button class="filter-btn-dhika active-dhika" data-filter="all">All</button>
-            <button class="filter-btn-dhika" data-filter="runtutan">Runtutan</button>
-            <button class="filter-btn-dhika" data-filter="ifelse">If Else</button>
-            <button class="filter-btn-dhika" data-filter="nestedif">Nested If</button>
-            <button class="filter-btn-dhika" data-filter="forloop">For Loop</button>
-            <button class="filter-btn-dhika" data-filter="whileloop">While Loop</button>
-        </div>
-        
-        <div class="projects-grid-dhika">
-            <!-- Project 1 -->
-          <!-- RUNTUTAN PROJECTS -->
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
-        <div class="project-icon-dhika">
+  <div class="container-dhika">
+    <h2 class="section-title-dhika">Proyek Aplikasi</h2>
+    <p class="section-subtitle-dhika">
+      Koleksi proyek yang telah saya selesaikan dengan berbagai teknologi dan pendekatan
+    </p>
+
+    <div class="project-filters-dhika">
+      <button class="filter-btn-dhika active-dhika" data-filter="all">All</button>
+      <button class="filter-btn-dhika" data-filter="runtutan">Runtutan</button>
+      <button class="filter-btn-dhika" data-filter="ifelse">If Else</button>
+      <button class="filter-btn-dhika" data-filter="nestedif">Nested If</button>
+      <button class="filter-btn-dhika" data-filter="forloop">For Loop</button>
+      <button class="filter-btn-dhika" data-filter="whileloop">While Loop</button>
+    </div>
+
+    <div class="projects-grid-dhika">
+      <!-- Project 1 -->
+      <!-- RUNTUTAN PROJECTS -->
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-shapes"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Perhitungan Bangun Datar</h3>
-        <p class="project-description-dhika">Menghitung luas dan keliling berbagai bangun datar</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Perhitungan Bangun Datar</h3>
+          <p class="project-description-dhika">
+            Menghitung luas dan keliling berbagai bangun datar
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_bangun') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_bangun') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-calculator"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Kalkulator Sederhana</h3>
-        <p class="project-description-dhika">Operasi aritmatika dasar menggunakan Python</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Kalkulator Sederhana</h3>
+          <p class="project-description-dhika">
+            Operasi aritmatika dasar menggunakan Python
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_kalkulator') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_kalkulator') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-thermometer-half"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Konversi Suhu Celcius ke Fahrenheit</h3>
-        <p class="project-description-dhika">Mengkonversi suhu dari Celcius ke Fahrenheit</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Konversi Suhu Celcius ke Fahrenheit</h3>
+          <p class="project-description-dhika">
+            Mengkonversi suhu dari Celcius ke Fahrenheit
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_konversi') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_konversi') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-money-bill-wave"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Hitung Gaji dan Tunjangan</h3>
-        <p class="project-description-dhika">Menghitung total gaji karyawan dengan tunjangan</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Hitung Gaji dan Tunjangan</h3>
+          <p class="project-description-dhika">
+            Menghitung total gaji karyawan dengan tunjangan
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_upah') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_upah') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="runtutan">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-runtutan-dhika">Runtutan</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-user-edit"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Input Form Biodata</h3>
-        <p class="project-description-dhika">Form input data pribadi dan informasi biodata</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Input Form Biodata</h3>
+          <p class="project-description-dhika">
+            Form input data pribadi dan informasi biodata
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_biodata') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_biodata') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<!-- IF ELSE PROJECTS -->
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
-        <div class="project-icon-dhika">
+      <!-- IF ELSE PROJECTS -->
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-chart-bar"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Hitung Kategori Berdasarkan Nilai</h3>
-        <p class="project-description-dhika">Menentukan grade berdasarkan nilai yang diinput</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Hitung Kategori Berdasarkan Nilai</h3>
+          <p class="project-description-dhika">
+            Menentukan grade berdasarkan nilai yang diinput
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_nilai') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_nilai') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-percentage"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Menghitung Diskon Barang</h3>
-        <p class="project-description-dhika">Sistem diskon otomatis berdasarkan kriteria tertentu</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Menghitung Diskon Barang</h3>
+          <p class="project-description-dhika">
+            Sistem diskon otomatis berdasarkan kriteria tertentu
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_diskon') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_diskon') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-receipt"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Struk Status dan Metode Bayar</h3>
-        <p class="project-description-dhika">Sistem pembayaran dengan berbagai metode</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Struk Status dan Metode Bayar</h3>
+          <p class="project-description-dhika">
+            Sistem pembayaran dengan berbagai metode
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_struk') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_struk') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-graduation-cap"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Seleksi Calon Beasiswa</h3>
-        <p class="project-description-dhika">Sistem seleksi otomatis calon penerima beasiswa</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Seleksi Calon Beasiswa</h3>
+          <p class="project-description-dhika">
+            Sistem seleksi otomatis calon penerima beasiswa
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_beasiswa') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_beasiswa') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="ifelse">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-ifelse-dhika">If Else</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-shopping-cart"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Form Pemesanan dengan Opsi</h3>
-        <p class="project-description-dhika">Sistem pemesanan dengan pilihan dan opsi tambahan</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Form Pemesanan dengan Opsi</h3>
+          <p class="project-description-dhika">
+            Sistem pemesanan dengan pilihan dan opsi tambahan
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_pesanan') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_pesanan') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<!-- NESTED IF PROJECTS -->
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="nestedif">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-nestedif-dhika">Nested If</span>
-        <div class="project-icon-dhika">
+      <!-- NESTED IF PROJECTS -->
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="nestedif">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-nestedif-dhika">Nested If</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-cloud-sun"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Saran Berdasarkan Cuaca</h3>
-        <p class="project-description-dhika">Sistem rekomendasi aktivitas berdasarkan kondisi cuaca</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Saran Berdasarkan Cuaca</h3>
+          <p class="project-description-dhika">
+            Sistem rekomendasi aktivitas berdasarkan kondisi cuaca
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_cuaca') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_cuaca') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="nestedif">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-nestedif-dhika">Nested If</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="nestedif">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-nestedif-dhika">Nested If</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-file-invoice-dollar"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Menghitung Slip Gaji Karyawan</h3>
-        <p class="project-description-dhika">Perhitungan gaji kompleks dengan berbagai komponen</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Menghitung Slip Gaji Karyawan</h3>
+          <p class="project-description-dhika">
+            Perhitungan gaji kompleks dengan berbagai komponen
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_gaji') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_gaji') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="nestedif">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-nestedif-dhika">Nested If</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="nestedif">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-nestedif-dhika">Nested If</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-clipboard-check"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Penilaian Ujian Lengkap</h3>
-        <p class="project-description-dhika">Sistem penilaian ujian dengan kategori yang detail</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Penilaian Ujian Lengkap</h3>
+          <p class="project-description-dhika">
+            Sistem penilaian ujian dengan kategori yang detail
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_ujian') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_ujian') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<!-- FOR LOOP PROJECTS -->
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
-        <div class="project-icon-dhika">
+      <!-- FOR LOOP PROJECTS -->
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-list-ol"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Looping 4 Soal</h3>
-        <p class="project-description-dhika">Kumpulan 4 soal dasar menggunakan for loop</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Looping 4 Soal</h3>
+          <p class="project-description-dhika">
+            Kumpulan 4 soal dasar menggunakan for loop
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_loop1') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_loop1') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-sort-numeric-up"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Menentukan Ganjil atau Genap</h3>
-        <p class="project-description-dhika">Mengecek bilangan ganjil atau genap dalam rentang</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Menentukan Ganjil atau Genap</h3>
+          <p class="project-description-dhika">
+            Mengecek bilangan ganjil atau genap dalam rentang
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_loop2') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_loop2') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-divide"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Pengecekan Kelipatan 3</h3>
-        <p class="project-description-dhika">Mencari dan menampilkan kelipatan 3 dalam range</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Pengecekan Kelipatan 3</h3>
+          <p class="project-description-dhika">
+            Mencari dan menampilkan kelipatan 3 dalam range
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_loop3') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_loop3') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-equals"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Pengecekan Kelipatan 2 dan 3</h3>
-        <p class="project-description-dhika">Mengecek kelipatan 2 dan 3 sekaligus</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Pengecekan Kelipatan 2 dan 3</h3>
+          <p class="project-description-dhika">
+            Mengecek kelipatan 2 dan 3 sekaligus
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_loop4') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_loop4') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="forloop">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-forloop-dhika">For Loop</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-shopping-bag"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Struk Pembelian Barang (Input lebih dari 1)</h3>
-        <p class="project-description-dhika">Sistem kasir dengan multiple item menggunakan loop</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Struk Pembelian Barang (Input lebih dari 1)</h3>
+          <p class="project-description-dhika">
+            Sistem kasir dengan multiple item menggunakan loop
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input2_loop5') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input2_loop5') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<!-- WHILE LOOP PROJECTS -->
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="whileloop">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-whileloop-dhika">While Loop</span>
-        <div class="project-icon-dhika">
+      <!-- WHILE LOOP PROJECTS -->
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="whileloop">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-whileloop-dhika">While Loop</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-step-forward"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Pengecekan Kelipatan 4</h3>
-        <p class="project-description-dhika">Mencari kelipatan 4 menggunakan while loop</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Pengecekan Kelipatan 4</h3>
+          <p class="project-description-dhika">
+            Mencari kelipatan 4 menggunakan while loop
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_while1') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_while1') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
+          </a>
+        </div>
+      </div>
 
-<div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="whileloop">
-    <div class="project-header-dhika">
-        <span class="project-badge-dhika badge-whileloop-dhika">While Loop</span>
-        <div class="project-icon-dhika">
+      <div class="project-card-dhika fade-in-dhika stagger-dhika" data-category="whileloop">
+        <div class="project-header-dhika">
+          <span class="project-badge-dhika badge-whileloop-dhika">While Loop</span>
+          <div class="project-icon-dhika">
             <i class="fas fa-dice"></i>
+          </div>
         </div>
-    </div>
-    <div class="project-content-dhika">
-        <h3 class="project-title-dhika">Game Tebak Angka 1 - 100</h3>
-        <p class="project-description-dhika">Game interaktif tebak angka dengan while loop</p>
-        <div class="project-tech-dhika">
+        <div class="project-content-dhika">
+          <h3 class="project-title-dhika">Game Tebak Angka 1 - 100</h3>
+          <p class="project-description-dhika">
+            Game interaktif tebak angka dengan while loop
+          </p>
+          <div class="project-tech-dhika">
             <span class="tech-tag-dhika">Python</span>
             <span class="tech-tag-dhika">Flask</span>
             <span class="tech-tag-dhika">HTML</span>
             <span class="tech-tag-dhika">CSS</span>
+          </div>
         </div>
-    </div>
-    <div class="project-actions-dhika">
-        <a href="{{ url_for('input_while2') }}" class="project-btn-dhika project-btn-demo-dhika">
+        <div class="project-actions-dhika">
+          <a href="{{ url_for('input_while2') }}" class="project-btn-dhika project-btn-demo-dhika">
             <i class="fas fa-external-link-alt"></i> Demo
-        </a>
-    </div>
-</div>
-</section>
+          </a>
+        </div>
+      </div>
+    </section>
 
     <!-- Certificates Section -->
     <section class="certificates-dhika section-dhika" id="certificates">
-        <div class="container-dhika">
-            <h2 class="section-title-dhika">Sertifikat & Pencapaian</h2>
-            <p class="section-subtitle-dhika">Pengakuan atas kemampuan dan dedikasi saya dalam pengembangan web dan teknologi</p>
-            
-            <div class="certificates-grid-dhika">
-                <!-- Certificate 1 -->
-                <div class="certificate-card-dhika fade-in-dhika stagger-dhika">
-                    <div class="certificate-image-dhika">
-                        <img src="{{ url_for('static', filename='belajarC.png') }}" alt="Sertifikat Belajar Bahasa C">
-                        <div class="certificate-overlay-dhika">
-                            <a href="#" class="certificate-btn-dhika view-certificate-dhika" data-certificate="{{ url_for('static', filename='belajarC.png') }}">
-                                <i class="fas fa-eye"></i> Lihat Detail
-                            </a>
-                            <a href="#" class="certificate-btn-dhika">
-                                <i class="fas fa-download"></i> Unduh
-                            </a>
-                        </div>
-                    </div>
-                    <div class="certificate-content-dhika">
-                        <h3 class="certificate-title-dhika">Memulai Pemrograman Dengan C</h3>
-                        <p class="certificate-issuer-dhika">Dicoding</p>
-                        <p class="certificate-date-dhika">September 2025</p>
-                    </div>
-                </div>
-                
-                <!-- Certificate 2 -->
-                <div class="certificate-card-dhika fade-in-dhika stagger-dhika">
-                    <div class="certificate-image-dhika">
-                        <img src="{{ url_for('static', filename='belajarJava.png') }}" alt="Learn Java">
-                        <div class="certificate-overlay-dhika">
-                            <a href="#" class="certificate-btn-dhika view-certificate-dhika" data-certificate="{{ url_for('static', filename='belajarJava.png') }}">
-                                <i class="fas fa-eye"></i> Lihat Detail
-                            </a>
-                            <a href="#" class="certificate-btn-dhika">
-                                <i class="fas fa-download"></i> Unduh
-                            </a>
-                        </div>
-                    </div>
-                    <div class="certificate-content-dhika">
-                        <h3 class="certificate-title-dhika">Memulai Pemrograman Dengan Java</h3>
-                        <p class="certificate-issuer-dhika">Dicoding</p>
-                        <p class="certificate-date-dhika">September 2025</p>
-                    </div>
-                </div>
-                
-                <!-- Certificate 3 -->
-                <div class="certificate-card-dhika fade-in-dhika stagger-dhika">
-                    <div class="certificate-image-dhika">
-                        <img src="{{ url_for('static', filename='proyek.png') }}" alt="Manajemen Proyek">
-                        <div class="certificate-overlay-dhika">
-                            <a href="#" class="certificate-btn-dhika view-certificate-dhika" data-certificate="{{ url_for('static', filename='proyek.png') }}">
-                                <i class="fas fa-eye"></i> Lihat Detail
-                            </a>
-                            <a href="#" class="certificate-btn-dhika">
-                                <i class="fas fa-download"></i> Unduh
-                            </a>
-                        </div>
-                    </div>
-                    <div class="certificate-content-dhika">
-                        <h3 class="certificate-title-dhika">Belajar Dasar Manajemen Proyek</h3>
-                        <p class="certificate-issuer-dhika">Dicoding</p>
-                        <p class="certificate-date-dhika">September 2025</p>
-                    </div>
-                </div>
-                
-                <div class="certificate-card-dhika fade-in-dhika stagger-dhika">
-                    <div class="certificate-image-dhika">
-                        <img src="{{ url_for('static', filename='belajarAI.png') }}" alt="Learn Java">
-                        <div class="certificate-overlay-dhika">
-                            <a href="#" class="certificate-btn-dhika view-certificate-dhika" data-certificate="{{ url_for('static', filename='belajarAI.png') }}">
-                                <i class="fas fa-eye"></i> Lihat Detail
-                            </a>
-                            <a href="#" class="certificate-btn-dhika">
-                                <i class="fas fa-download"></i> Unduh
-                            </a>
-                        </div>
-                    </div>
-                    <div class="certificate-content-dhika">
-                        <h3 class="certificate-title-dhika">Belajar Dasar AI</h3>
-                        <p class="certificate-issuer-dhika">Dicoding</p>
-                        <p class="certificate-date-dhika">Oktober 2025</p>
-                    </div>
-                </div>
+      <div class="container-dhika">
+        <h2 class="section-title-dhika">Sertifikat & Pencapaian</h2>
+        <p class="section-subtitle-dhika">
+          Pengakuan atas kemampuan dan dedikasi saya dalam pengembangan web dan teknologi
+        </p>
+
+        <div class="certificates-grid-dhika">
+          <!-- Certificate 1 -->
+          <div class="certificate-card-dhika fade-in-dhika stagger-dhika">
+            <div class="certificate-image-dhika">
+              <img src="{{ url_for('static', filename='belajarC.png') }}" alt="Sertifikat Belajar Bahasa C">
+              <div class="certificate-overlay-dhika">
+                <a href="#" class="certificate-btn-dhika view-certificate-dhika" data-certificate="{{ url_for('static', filename='belajarC.png') }}">
+                  <i class="fas fa-eye"></i> Lihat Detail
+                </a>
+                <a href="https://github.com/andhkx/Homepage/releases/download/sertifikat/sertifikat_belajarC.pdf" class="certificate-btn-dhika">
+                  <i class="fas fa-download"></i> Unduh
+                </a>
+              </div>
             </div>
+            <div class="certificate-content-dhika">
+              <h3 class="certificate-title-dhika">Memulai Pemrograman Dengan C</h3>
+              <p class="certificate-issuer-dhika">
+                Dicoding
+              </p>
+              <p class="certificate-date-dhika">
+                September 2025
+              </p>
+            </div>
+          </div>
+
+          <!-- Certificate 2 -->
+          <div class="certificate-card-dhika fade-in-dhika stagger-dhika">
+            <div class="certificate-image-dhika">
+              <img src="{{ url_for('static', filename='belajarJava.png') }}" alt="Learn Java">
+              <div class="certificate-overlay-dhika">
+                <a href="#" class="certificate-btn-dhika view-certificate-dhika" data-certificate="{{ url_for('static', filename='belajarJava.png') }}">
+                  <i class="fas fa-eye"></i> Lihat Detail
+                </a>
+                <a href="https://github.com/andhkx/Homepage/releases/download/sertifikat/sertifikat_belajarJava.pdf" class="certificate-btn-dhika">
+                  <i class="fas fa-download"></i> Unduh
+                </a>
+              </div>
+            </div>
+            <div class="certificate-content-dhika">
+              <h3 class="certificate-title-dhika">Memulai Pemrograman Dengan Java</h3>
+              <p class="certificate-issuer-dhika">
+                Dicoding
+              </p>
+              <p class="certificate-date-dhika">
+                September 2025
+              </p>
+            </div>
+          </div>
+
+          <!-- Certificate 3 -->
+          <div class="certificate-card-dhika fade-in-dhika stagger-dhika">
+            <div class="certificate-image-dhika">
+              <img src="{{ url_for('static', filename='proyek.png') }}" alt="Manajemen Proyek">
+              <div class="certificate-overlay-dhika">
+                <a href="#" class="certificate-btn-dhika view-certificate-dhika" data-certificate="{{ url_for('static', filename='proyek.png') }}">
+                  <i class="fas fa-eye"></i> Lihat Detail
+                </a>
+                <a href="https://github.com/andhkx/Homepage/releases/download/sertifikat/sertifikat_manajemenProyek.pdf" class="certificate-btn-dhika">
+                  <i class="fas fa-download"></i> Unduh
+                </a>
+              </div>
+            </div>
+            <div class="certificate-content-dhika">
+              <h3 class="certificate-title-dhika">Belajar Dasar Manajemen Proyek</h3>
+              <p class="certificate-issuer-dhika">
+                Dicoding
+              </p>
+              <p class="certificate-date-dhika">
+                September 2025
+              </p>
+            </div>
+          </div>
+
+          <div class="certificate-card-dhika fade-in-dhika stagger-dhika">
+            <div class="certificate-image-dhika">
+              <img src="{{ url_for('static', filename='belajarAI.png') }}" alt="Learn Java">
+              <div class="certificate-overlay-dhika">
+                <a href="#" class="certificate-btn-dhika view-certificate-dhika" data-certificate="{{ url_for('static', filename='belajarAI.png') }}">
+                  <i class="fas fa-eye"></i> Lihat Detail
+                </a>
+                <a href="https://github.com/andhkx/Homepage/releases/download/sertifikat/sertifikat_belajarAI.pdf" class="certificate-btn-dhika">
+                  <i class="fas fa-download"></i> Unduh
+                </a>
+              </div>
+            </div>
+            <div class="certificate-content-dhika">
+              <h3 class="certificate-title-dhika">Belajar Dasar AI</h3>
+              <p class="certificate-issuer-dhika">
+                Dicoding
+              </p>
+              <p class="certificate-date-dhika">
+                Oktober 2025
+              </p>
+            </div>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Contact Section -->
     <section class="contact-dhika section-dhika" id="contact">
-        <div class="container-dhika">
-            <h2 class="section-title-dhika">Hubungi Saya</h2>
-            <p class="section-subtitle-dhika">Mari berkolaborasi untuk mewujudkan ide Anda menjadi solusi digital yang luar biasa</p>
-            
-            <div class="contact-content-dhika">
-                <div class="contact-info-dhika">
-                    <h3 class="fade-in-dhika">Mari Bekerja Sama</h3>
-                    
-                    <div class="contact-list-dhika">
-                        <div class="contact-item-dhika fade-in-dhika stagger-dhika">
-                            <div class="contact-icon-dhika">
-                                <i class="fas fa-map-marker-alt"></i>
-                            </div>
-                            <div class="contact-details-dhika">
-                                <h4>Lokasi</h4>
-                                <p>Cimahi, Indonesia</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item-dhika fade-in-dhika stagger-dhika">
-                            <div class="contact-icon-dhika">
-                                <i class="fas fa-envelope"></i>
-                            </div>
-                            <div class="contact-details-dhika">
-                                <h4>Email</h4>
-                                <p>andhikaputrach273@gmail.com</p>
-                            </div>
-                        </div>
-                        
-                        <div class="contact-item-dhika fade-in-dhika stagger-dhika">
-                            <div class="contact-icon-dhika">
-                                <i class="fas fa-phone"></i>
-                            </div>
-                            <div class="contact-details-dhika">
-                                <h4>Telepon</h4>
-                                <p>+62 895 6271 74900</p>
-                            </div>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-social-dhika fade-in-dhika stagger-dhika">
-                        <a href="https://github.com/andhkx" class="social-link-dhika">
-                            <i class="fab fa-github"></i>
-                        </a>
-                        <a href="https://www.linkedin.com/in/andhika-putra-1aa031388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link-dhika">
-                            <i class="fab fa-linkedin"></i>
-                        </a>
-                        <a href="https://www.instagram.com/andhkx_?igsh=MWIxMTE2ZnNlaWwzZA==" class="social-link-dhika">
-                            <i class="fab fa-instagram"></i>
-                        </a>
-                        <a href="https://wa.me/qr/PXV6OI6A2J4LG1" class="social-link-dhika">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                    </div>
+      <div class="container-dhika">
+        <h2 class="section-title-dhika">Hubungi Saya</h2>
+        <p class="section-subtitle-dhika">
+          Mari berkolaborasi untuk mewujudkan ide Anda menjadi solusi digital yang luar biasa
+        </p>
+
+        <div class="contact-content-dhika">
+          <div class="contact-info-dhika">
+            <h3 class="fade-in-dhika">Mari Bekerja Sama</h3>
+
+            <div class="contact-list-dhika">
+              <div class="contact-item-dhika fade-in-dhika stagger-dhika">
+                <div class="contact-icon-dhika">
+                  <i class="fas fa-map-marker-alt"></i>
                 </div>
-                
-                <div class="contact-form-dhika fade-in-dhika">
-                    <form id="contactFormDhika">
-                        <div class="form-group-dhika">
-                            <label for="name" class="form-label-dhika">Nama Lengkap</label>
-                            <input type="text" id="name" class="form-input-dhika" required>
-                        </div>
-                        
-                        <div class="form-group-dhika">
-                            <label for="email" class="form-label-dhika">Alamat Email</label>
-                            <input type="email" id="email" class="form-input-dhika" required>
-                        </div>
-                        
-                        <div class="form-group-dhika">
-                            <label for="subject" class="form-label-dhika">Subjek</label>
-                            <input type="text" id="subject" class="form-input-dhika">
-                        </div>
-                        
-                        <div class="form-group-dhika">
-                            <label for="message" class="form-label-dhika">Pesan</label>
-                            <textarea id="message" class="form-textarea-dhika" required></textarea>
-                        </div>
-                        
-                        <button type="submit" class="form-submit-dhika btn-dhika btn-primary-dhika">
-                            <i class="fas fa-paper-plane"></i> Kirim Pesan
-                        </button>
-                    </form>
+                <div class="contact-details-dhika">
+                  <h4>Lokasi</h4>
+                  <p>
+                    Cimahi, Indonesia
+                  </p>
                 </div>
+              </div>
+
+              <div class="contact-item-dhika fade-in-dhika stagger-dhika">
+                <div class="contact-icon-dhika">
+                  <i class="fas fa-envelope"></i>
+                </div>
+                <div class="contact-details-dhika">
+                  <h4>Email</h4>
+                  <p>
+                    andhikaputrach273@gmail.com
+                  </p>
+                </div>
+              </div>
+
+              <div class="contact-item-dhika fade-in-dhika stagger-dhika">
+                <div class="contact-icon-dhika">
+                  <i class="fas fa-phone"></i>
+                </div>
+                <div class="contact-details-dhika">
+                  <h4>Telepon</h4>
+                  <p>
+                    +62 895 6271 74900
+                  </p>
+                </div>
+              </div>
             </div>
+
+            <div class="contact-social-dhika fade-in-dhika stagger-dhika">
+              <a href="https://github.com/andhkx" class="social-link-dhika">
+                <i class="fab fa-github"></i>
+              </a>
+              <a href="https://www.linkedin.com/in/andhika-putra-1aa031388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link-dhika">
+                <i class="fab fa-linkedin"></i>
+              </a>
+              <a href="https://www.instagram.com/andhkx_?igsh=MWIxMTE2ZnNlaWwzZA==" class="social-link-dhika">
+                <i class="fab fa-instagram"></i>
+              </a>
+              <a href="https://wa.me/qr/PXV6OI6A2J4LG1" class="social-link-dhika">
+                <i class="fa-brands fa-whatsapp"></i>
+              </a>
+            </div>
+          </div>
+
+          <div class="contact-form-dhika fade-in-dhika">
+            <form id="contactFormDhika">
+              <div class="form-group-dhika">
+                <label for="name" class="form-label-dhika">Nama Lengkap</label>
+                <input type="text" id="name" class="form-input-dhika" required>
+              </div>
+
+              <div class="form-group-dhika">
+                <label for="email" class="form-label-dhika">Alamat Email</label>
+                <input type="email" id="email" class="form-input-dhika" required>
+              </div>
+
+              <div class="form-group-dhika">
+                <label for="subject" class="form-label-dhika">Subjek</label>
+                <input type="text" id="subject" class="form-input-dhika">
+              </div>
+
+              <div class="form-group-dhika">
+                <label for="message" class="form-label-dhika">Pesan</label>
+                <textarea id="message" class="form-textarea-dhika" required></textarea>
+              </div>
+
+              <button type="submit" class="form-submit-dhika btn-dhika btn-primary-dhika">
+                <i class="fas fa-paper-plane"></i> Kirim Pesan
+              </button>
+            </form>
+          </div>
         </div>
+      </div>
     </section>
 
     <!-- Footer -->
     <footer class="footer-dhika">
-        <div class="container-dhika">
-            <div class="footer-content-dhika">
-                <p class="footer-text-dhika">&copy; 2025 Andhika Andriana Putra. All rights reserved.</p>
-                
-                <div class="footer-social-dhika">
-                    <a href="https://github.com/andhkx" class="social-link-dhika">
-                        <i class="fab fa-github"></i>
-                    </a>
-                    <a href="https://www.linkedin.com/in/andhika-putra-1aa031388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link-dhika">
-                        <i class="fab fa-linkedin"></i>
-                    </a>
-                    <a href="https://www.instagram.com/andhkx_?igsh=MWIxMTE2ZnNlaWwzZA==" class="social-link-dhika">
-                        <i class="fab fa-instagram"></i>
-                    </a>
-                    <a href="https://wa.me/qr/PXV6OI6A2J4LG1" class="social-link-dhika">
-                        <i class="fa-brands fa-whatsapp"></i>
-                    </a>
-                </div>
-                
-                <a href="#home" class="back-to-top-dhika">
-                    <i class="fas fa-arrow-up"></i>
-                </a>
-            </div>
+      <div class="container-dhika">
+        <div class="footer-content-dhika">
+          <p class="footer-text-dhika">
+            &copy; 2025 Andhika Andriana Putra. All rights reserved.
+          </p>
+
+          <div class="footer-social-dhika">
+            <a href="https://github.com/andhkx" class="social-link-dhika">
+              <i class="fab fa-github"></i>
+            </a>
+            <a href="https://www.linkedin.com/in/andhika-putra-1aa031388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link-dhika">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a href="https://www.instagram.com/andhkx_?igsh=MWIxMTE2ZnNlaWwzZA==" class="social-link-dhika">
+              <i class="fab fa-instagram"></i>
+            </a>
+            <a href="https://wa.me/qr/PXV6OI6A2J4LG1" class="social-link-dhika">
+              <i class="fa-brands fa-whatsapp"></i>
+            </a>
+          </div>
+
+          <a href="#home" class="back-to-top-dhika">
+            <i class="fas fa-arrow-up"></i>
+          </a>
         </div>
+      </div>
     </footer>
 
     <!-- Certificate Modal -->
     <div class="modal-dhika" id="certificateModalDhika">
-        <div class="modal-content-dhika">
-            <img src="" alt="Certificate" class="modal-image-dhika" id="modalImageDhika">
-            <button class="modal-close-dhika" id="modalCloseDhika">
-                <i class="fas fa-times"></i>
-            </button>
-        </div>
+      <div class="modal-content-dhika">
+        <img src="" alt="Certificate" class="modal-image-dhika" id="modalImageDhika">
+        <button class="modal-close-dhika" id="modalCloseDhika">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
     </div>
 
     <script>
-        // DOM Elements
-        const themeToggleDhika = document.getElementById('themeToggleDhika');
-        const hamburgerDhika = document.getElementById('hamburgerDhika');
-        const navMenuDhika = document.querySelector('.nav-menu-dhika');
-        const contactFormDhika = document.getElementById('contactFormDhika');
-        const filterBtnsDhika = document.querySelectorAll('.filter-btn-dhika');
-        const projectCardsDhika = document.querySelectorAll('.project-card-dhika');
-        const viewCertificateBtnsDhika = document.querySelectorAll('.view-certificate-dhika');
-        const certificateModalDhika = document.getElementById('certificateModalDhika');
-        const modalImageDhika = document.getElementById('modalImageDhika');
-        const modalCloseDhika = document.getElementById('modalCloseDhika');
-        const backToTopDhika = document.querySelector('.back-to-top-dhika');
-        const fadeElementsDhika = document.querySelectorAll('.fade-in-dhika');
-        const skillProgressBarsDhika = document.querySelectorAll('.skill-progress-bar-dhika');
-        const statNumbersDhika = document.querySelectorAll('.stat-number-dhika');
+      // DOM Elements
+      const themeToggleDhika = document.getElementById('themeToggleDhika');
+      const hamburgerDhika = document.getElementById('hamburgerDhika');
+      const navMenuDhika = document.querySelector('.nav-menu-dhika');
+      const contactFormDhika = document.getElementById('contactFormDhika');
+      const filterBtnsDhika = document.querySelectorAll('.filter-btn-dhika');
+      const projectCardsDhika = document.querySelectorAll('.project-card-dhika');
+      const viewCertificateBtnsDhika = document.querySelectorAll('.view-certificate-dhika');
+      const certificateModalDhika = document.getElementById('certificateModalDhika');
+      const modalImageDhika = document.getElementById('modalImageDhika');
+      const modalCloseDhika = document.getElementById('modalCloseDhika');
+      const backToTopDhika = document.querySelector('.back-to-top-dhika');
+      const fadeElementsDhika = document.querySelectorAll('.fade-in-dhika');
+      const skillProgressBarsDhika = document.querySelectorAll('.skill-progress-bar-dhika');
+      const statNumbersDhika = document.querySelectorAll('.stat-number-dhika');
 
-        // Theme Toggle Function
-        function toggleThemeDhika() {
-            document.body.classList.toggle('dark-mode');
-            const isDarkMode = document.body.classList.contains('dark-mode');
-            localStorage.setItem('themeDhika', isDarkMode ? 'dark' : 'light');
-            
-            // Update theme icon
-            const themeIcon = themeToggleDhika.querySelector('.theme-icon-dhika');
-            if (isDarkMode) {
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            } else {
-                themeIcon.classList.remove('fa-moon');
-                themeIcon.classList.add('fa-sun');
-            }
+      // Theme Toggle Function
+      function toggleThemeDhika() {
+        document.body.classList.toggle('dark-mode');
+        const isDarkMode = document.body.classList.contains('dark-mode');
+        localStorage.setItem('themeDhika', isDarkMode ? 'dark': 'light');
+
+        // Update theme icon
+        const themeIcon = themeToggleDhika.querySelector('.theme-icon-dhika');
+        if (isDarkMode) {
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
+        } else {
+          themeIcon.classList.remove('fa-moon');
+          themeIcon.classList.add('fa-sun');
         }
+      }
 
-        // Load saved theme from localStorage
-        function loadThemeDhika() {
-            const savedTheme = localStorage.getItem('themeDhika');
-            if (savedTheme === 'dark') {
-                document.body.classList.add('dark-mode');
-                const themeIcon = themeToggleDhika.querySelector('.theme-icon-dhika');
-                themeIcon.classList.remove('fa-sun');
-                themeIcon.classList.add('fa-moon');
-            }
+      // Load saved theme from localStorage
+      function loadThemeDhika() {
+        const savedTheme = localStorage.getItem('themeDhika');
+        if (savedTheme === 'dark') {
+          document.body.classList.add('dark-mode');
+          const themeIcon = themeToggleDhika.querySelector('.theme-icon-dhika');
+          themeIcon.classList.remove('fa-sun');
+          themeIcon.classList.add('fa-moon');
         }
+      }
 
-        // Mobile Menu Toggle
-        function toggleMenuDhika() {
-            hamburgerDhika.classList.toggle('active-dhika');
-            navMenuDhika.classList.toggle('active-dhika');
-        }
+      // Mobile Menu Toggle
+      function toggleMenuDhika() {
+        hamburgerDhika.classList.toggle('active-dhika');
+        navMenuDhika.classList.toggle('active-dhika');
+      }
 
-        // Close mobile menu when clicking on a link
-        function closeMenuDhika() {
-            hamburgerDhika.classList.remove('active-dhika');
-            navMenuDhika.classList.remove('active-dhika');
-        }
+      // Close mobile menu when clicking on a link
+      function closeMenuDhika() {
+        hamburgerDhika.classList.remove('active-dhika');
+        navMenuDhika.classList.remove('active-dhika');
+      }
 
-        // Filter Projects
-        function filterProjectsDhika(category) {
-            projectCardsDhika.forEach(card => {
-                if (category === 'all' || card.dataset.category === category) {
-                    card.style.display = 'block';
-                } else {
-                    card.style.display = 'none';
-                }
-            });
-        }
-
-        // Open Certificate Modal
-        function openModalDhika(certificate) {
-            // In a real implementation, you would set the correct image source based on the certificate
-            modalImageDhika.src = 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80';
-            certificateModalDhika.classList.add('active-dhika');
-        }
-
-        // Close Certificate Modal
-        function closeModalDhika() {
-            certificateModalDhika.classList.remove('active-dhika');
-        }
-
-        // Handle Contact Form Submission
-        function submitFormDhika(e) {
-            e.preventDefault();
-            // In a real implementation, you would send the form data to a server
-            alert('Pesan Anda telah berhasil dikirim! Saya akan menghubungi Anda segera.');
-            contactFormDhika.reset();
-        }
-
-        // Animate Progress Bars
-        function animateProgressDhika() {
-            skillProgressBarsDhika.forEach(bar => {
-                const percentage = bar.dataset.percentage;
-                bar.style.width = `${percentage}%`;
-            });
-        }
-
-        // Animate Stats Counter
-        function animateStatsDhika() {
-            statNumbersDhika.forEach(stat => {
-                const target = parseInt(stat.dataset.count);
-                const duration = 2000; // 2 seconds
-                const step = target / (duration / 16); // 60fps
-                let current = 0;
-                
-                const timer = setInterval(() => {
-                    current += step;
-                    if (current >= target) {
-                        current = target;
-                        clearInterval(timer);
-                    }
-                    stat.textContent = Math.floor(current);
-                }, 16);
-            });
-        }
-
-        // Scroll Animation
-        function handleScrollDhika() {
-            // Back to top button visibility
-            if (window.scrollY > 500) {
-                backToTopDhika.style.opacity = '1';
-                backToTopDhika.style.visibility = 'visible';
-            } else {
-                backToTopDhika.style.opacity = '0';
-                backToTopDhika.style.visibility = 'hidden';
-            }
-            
-            // Fade in elements on scroll
-            fadeElementsDhika.forEach(element => {
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < window.innerHeight - elementVisible) {
-                    element.classList.add('visible-dhika');
-                }
-            });
-            
-            // Animate progress bars when skills section is in view
-            const skillsSection = document.getElementById('skills');
-            if (skillsSection) {
-                const skillsTop = skillsSection.getBoundingClientRect().top;
-                if (skillsTop < window.innerHeight - 100) {
-                    animateProgressDhika();
-                }
-            }
-            
-            // Animate stats when about section is in view
-            const aboutSection = document.getElementById('about');
-            if (aboutSection) {
-                const aboutTop = aboutSection.getBoundingClientRect().top;
-                if (aboutTop < window.innerHeight - 100) {
-                    animateStatsDhika();
-                }
-            }
-        }
-
-        // Smooth Scroll
-        function smoothScrollDhika(target) {
-            const element = document.querySelector(target);
-            if (element) {
-                window.scrollTo({
-                    top: element.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-        }
-
-        // Event Listeners
-        themeToggleDhika.addEventListener('click', toggleThemeDhika);
-        hamburgerDhika.addEventListener('click', toggleMenuDhika);
-
-        // Close mobile menu when clicking on a link
-        document.querySelectorAll('.nav-link-dhika').forEach(link => {
-            link.addEventListener('click', () => {
-                closeMenuDhika();
-                smoothScrollDhika(link.getAttribute('href'));
-            });
+      // Filter Projects
+      function filterProjectsDhika(category) {
+        projectCardsDhika.forEach(card => {
+          if (category === 'all' || card.dataset.category === category) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
         });
+      }
 
-        // Filter buttons
-        filterBtnsDhika.forEach(btn => {
-            btn.addEventListener('click', () => {
-                // Remove active class from all buttons
-                filterBtnsDhika.forEach(b => b.classList.remove('active-dhika'));
-                // Add active class to clicked button
-                btn.classList.add('active-dhika');
-                // Filter projects
-                filterProjectsDhika(btn.dataset.filter);
-            });
+      // Open Certificate Modal
+      function openModalDhika(certificate) {
+        // In a real implementation, you would set the correct image source based on the certificate
+        modalImageDhika.src = 'https://images.unsplash.com/photo-1587440871875-191322ee64b0?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1171&q=80';
+        certificateModalDhika.classList.add('active-dhika');
+      }
+
+      // Close Certificate Modal
+      function closeModalDhika() {
+        certificateModalDhika.classList.remove('active-dhika');
+      }
+
+      // Handle Contact Form Submission
+      function submitFormDhika(e) {
+        e.preventDefault(); // supaya halaman tidak reload
+
+        let name = document.getElementById("name").value;
+        let email = document.getElementById("email").value;
+        let subject = document.getElementById("subject").value;
+        let message = document.getElementById("message").value;
+
+        let whatsappNumber = "62895627174900"; // ganti dengan nomor WhatsApp kamu
+        let text = `Hi Andhika 👋🏻, ${subject}
+        *Nama* : ${name}
+        *Email* : ${email}
+        *Pesan* : ${message}`;
+
+        let url = `https://wa.me/${whatsappNumber}?text=${encodeURIComponent(text)}`;
+        window.open(url,
+          "_blank"); // buka WhatsApp
+
+        contactFormDhika.reset(); // reset form
+      }
+
+      // Animate Progress Bars
+      function animateProgressDhika() {
+        skillProgressBarsDhika.forEach(bar => {
+          const percentage = bar.dataset.percentage;
+          bar.style.width = `${percentage}%`;
         });
+      }
 
-        // Certificate modal
-        viewCertificateBtnsDhika.forEach(btn => {
-          btn.addEventListener('click', (e) => {
-            e.preventDefault();
-            const certificateUrl = btn.dataset.certificate;
-            modalImageDhika.src = certificateUrl;
-            modalImageDhika.alt = btn.closest('.certificate-card-dhika').querySelector('img').alt;
-            certificateModalDhika.classList.add('active-dhika');
-          });
+      // Animate Stats Counter
+      function animateStatsDhika() {
+        statNumbersDhika.forEach(stat => {
+          const target = parseInt(stat.dataset.count);
+          const duration = 2000; // 2 seconds
+          const step = target / (duration / 16); // 60fps
+          let current = 0;
+
+          const timer = setInterval(() => {
+            current += step;
+            if (current >= target) {
+              current = target;
+              clearInterval(timer);
+            }
+            stat.textContent = Math.floor(current);
+          },
+            16);
         });
+      }
 
-        modalCloseDhika.addEventListener('click', closeModalDhika);
-        certificateModalDhika.addEventListener('click', (e) => {
-          if (e.target === certificateModal) {
-            closeModalDhika();
+      // Scroll Animation
+      function handleScrollDhika() {
+        // Back to top button visibility
+        if (window.scrollY > 500) {
+          backToTopDhika.style.opacity = '1';
+          backToTopDhika.style.visibility = 'visible';
+        } else {
+          backToTopDhika.style.opacity = '0';
+          backToTopDhika.style.visibility = 'hidden';
+        }
+
+        // Fade in elements on scroll
+        fadeElementsDhika.forEach(element => {
+          const elementTop = element.getBoundingClientRect().top;
+          const elementVisible = 150;
+
+          if (elementTop < window.innerHeight - elementVisible) {
+            element.classList.add('visible-dhika');
           }
         });
 
-        function closeModalDhika() {
-          certificateModalDhika.classList.remove('active-dhika');
-    // Optional: Clear src to stop loading
-          setTimeout(() => {
-            modalImage.src = '';
-          }, 300);
-        };
+        // Animate progress bars when skills section is in view
+        const skillsSection = document.getElementById('skills');
+        if (skillsSection) {
+          const skillsTop = skillsSection.getBoundingClientRect().top;
+          if (skillsTop < window.innerHeight - 100) {
+            animateProgressDhika();
+          }
+        }
 
-        // Contact form
-        contactFormDhika.addEventListener('submit', submitFormDhika);
+        // Animate stats when about section is in view
+        const aboutSection = document.getElementById('about');
+        if (aboutSection) {
+          const aboutTop = aboutSection.getBoundingClientRect().top;
+          if (aboutTop < window.innerHeight - 100) {
+            animateStatsDhika();
+          }
+        }
+      }
 
-        // Back to top
-        backToTopDhika.addEventListener('click', (e) => {
+      // Smooth Scroll
+      function smoothScrollDhika(target) {
+        const element = document.querySelector(target);
+        if (element) {
+          window.scrollTo({
+            top: element.offsetTop - 80,
+            behavior: 'smooth'
+          });
+        }
+      }
+
+      // Event Listeners
+      themeToggleDhika.addEventListener('click', toggleThemeDhika);
+      hamburgerDhika.addEventListener('click', toggleMenuDhika);
+
+      // Close mobile menu when clicking on a link
+      document.querySelectorAll('.nav-link-dhika').forEach(link => {
+        link.addEventListener('click', () => {
+          closeMenuDhika();
+          smoothScrollDhika(link.getAttribute('href'));
+        });
+      });
+
+      // Filter buttons
+      filterBtnsDhika.forEach(btn => {
+        btn.addEventListener('click', () => {
+          // Remove active class from all buttons
+          filterBtnsDhika.forEach(b => b.classList.remove('active-dhika'));
+          // Add active class to clicked button
+          btn.classList.add('active-dhika');
+          // Filter projects
+          filterProjectsDhika(btn.dataset.filter);
+        });
+      });
+
+      // Certificate modal
+      viewCertificateBtnsDhika.forEach(btn => {
+        btn.addEventListener('click', (e) => {
+          e.preventDefault();
+          const certificateUrl = btn.dataset.certificate;
+          modalImageDhika.src = certificateUrl;
+          modalImageDhika.alt = btn.closest('.certificate-card-dhika').querySelector('img').alt;
+          certificateModalDhika.classList.add('active-dhika');
+        });
+      });
+
+      modalCloseDhika.addEventListener('click', closeModalDhika);
+      certificateModalDhika.addEventListener('click', (e) => {
+        if (e.target === certificateModal) {
+          closeModalDhika();
+        }
+      });
+
+      function closeModalDhika() {
+        certificateModalDhika.classList.remove('active-dhika');
+        // Optional: Clear src to stop loading
+        setTimeout(() => {
+          modalImage.src = '';
+        },
+          300);
+      };
+
+      // Contact form
+      contactFormDhika.addEventListener('submit', submitFormDhika);
+
+      // Back to top
+      backToTopDhika.addEventListener('click', (e) => {
+        e.preventDefault();
+        window.scrollTo({
+          top: 0,
+          behavior: 'smooth'
+        });
+      });
+
+      // Scroll events
+      window.addEventListener('scroll', handleScrollDhika);
+
+      // Initialize
+      document.addEventListener('DOMContentLoaded', () => {
+        loadThemeDhika();
+        handleScrollDhika(); // Check initial scroll position
+
+        // Add smooth scroll to all internal links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+          anchor.addEventListener('click', function(e) {
             e.preventDefault();
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
+            const target = this.getAttribute('href');
+            if (target !== '#') {
+              smoothScrollDhika(target);
+            }
+          });
         });
-
-        // Scroll events
-        window.addEventListener('scroll', handleScrollDhika);
-
-        // Initialize
-        document.addEventListener('DOMContentLoaded', () => {
-            loadThemeDhika();
-            handleScrollDhika(); // Check initial scroll position
-            
-            // Add smooth scroll to all internal links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    const target = this.getAttribute('href');
-                    if (target !== '#') {
-                        smoothScrollDhika(target);
-                    }
-                });
-            });
-        });
+      });
     </script>
-</body>
-</html>=
+  </body>
+</html>
+  =
