@@ -1,4 +1,4 @@
-/* style_Andhika.css - Modern Design sesuai Homepage Portfolio */
+/* style_Andhika.css - Modern Design sesuai Homepage Portfolio - FULL VERSION */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
@@ -6,51 +6,37 @@
    CSS VARIABLES & ROOT CONFIGURATION
 ============================================ */
 :root {
-    /* Light Mode Colors */
     --bg-primary-dhika: #FFFFFF;
     --bg-secondary-dhika: #F8F9FA;
     --surface-dhika: #FFFFFF;
     --text-primary-dhika: #1F2937;
     --text-secondary-dhika: #6B7280;
     --border-dhika: #E5E7EB;
-    
-    /* Blue Color Palette */
     --blue-primary-dhika: #3B82F6;
     --blue-light-dhika: #60A5FA;
     --blue-dark-dhika: #2563EB;
     --blue-cyan-dhika: #06B6D4;
     --blue-sky-dhika: #0EA5E9;
-    
-    /* Status Colors */
     --success-dhika: #10B981;
     --error-dhika: #EF4444;
     --warning-dhika: #F59E0B;
-    
-    /* Shadows */
     --shadow-sm-dhika: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md-dhika: 0 4px 6px rgba(0, 0, 0, 0.07);
     --shadow-lg-dhika: 0 10px 15px rgba(0, 0, 0, 0.1);
     --shadow-xl-dhika: 0 20px 25px rgba(0, 0, 0, 0.15);
-    
-    /* Spacing */
     --spacing-xs-dhika: 0.5rem;
     --spacing-sm-dhika: 1rem;
     --spacing-md-dhika: 1.5rem;
     --spacing-lg-dhika: 2rem;
     --spacing-xl-dhika: 3rem;
-    
-    /* Border Radius */
     --radius-sm-dhika: 0.5rem;
     --radius-md-dhika: 0.75rem;
     --radius-lg-dhika: 1rem;
-    
-    /* Transitions */
     --transition-fast-dhika: 0.15s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-base-dhika: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
     --transition-slow-dhika: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Dark Mode Variables */
 .dark-mode-dhika {
     --bg-primary-dhika: #0F172A;
     --bg-secondary-dhika: #1E293B;
@@ -58,7 +44,6 @@
     --text-primary-dhika: #F9FAFB;
     --text-secondary-dhika: #D1D5DB;
     --border-dhika: #374151;
-    
     --shadow-sm-dhika: 0 1px 2px rgba(0, 0, 0, 0.3);
     --shadow-md-dhika: 0 4px 6px rgba(0, 0, 0, 0.4);
     --shadow-lg-dhika: 0 10px 15px rgba(0, 0, 0, 0.5);
@@ -90,7 +75,7 @@ body {
 }
 
 /* ============================================
-   NAVIGATION
+   NAVIGATION - ENHANCED
 ============================================ */
 .navDhika {
     position: sticky;
@@ -100,9 +85,20 @@ body {
     border-bottom: 1px solid var(--border-dhika);
     box-shadow: var(--shadow-sm-dhika);
     transition: all var(--transition-base-dhika);
+    backdrop-filter: blur(10px);
+    background: rgba(255, 255, 255, 0.95);
 }
 
-.navDhika .container {
+.dark-mode-dhika .navDhika {
+    background: rgba(15, 23, 42, 0.95);
+}
+
+.navDhika.scrolled-dhika {
+    box-shadow: var(--shadow-lg-dhika);
+    padding: 0.5rem 0;
+}
+
+.nav-container-dhika, .navDhika .container {
     max-width: 1200px;
     margin: 0 auto;
     padding: 1rem 2rem;
@@ -112,8 +108,18 @@ body {
     flex-wrap: nowrap;
 }
 
+.logo-link-dhika {
+    text-decoration: none;
+    transition: transform var(--transition-base-dhika);
+}
+
+.logo-link-dhika:hover {
+    transform: scale(1.05);
+}
+
 .logoDhika {
     flex-shrink: 0;
+    position: relative;
 }
 
 .logoDhika h2 {
@@ -124,10 +130,28 @@ body {
     gap: 0.5rem;
     white-space: nowrap;
     margin: 0;
+    position: relative;
+}
+
+.logoDhika::after {
+    content: '';
+    position: absolute;
+    bottom: -5px;
+    left: 0;
+    width: 0;
+    height: 3px;
+    background: linear-gradient(90deg, var(--blue-primary-dhika), var(--blue-cyan-dhika));
+    transition: width var(--transition-base-dhika);
+    border-radius: 2px;
+}
+
+.logo-link-dhika:hover .logoDhika::after {
+    width: 100%;
 }
 
 .whiteDhika {
     color: var(--text-primary-dhika);
+    transition: color var(--transition-base-dhika);
 }
 
 .yellowDhika,
@@ -136,67 +160,121 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    position: relative;
+    animation: gradientShiftDhika 3s ease infinite;
 }
 
-.navDhika ul {
+@keyframes gradientShiftDhika {
+    0%, 100% { filter: hue-rotate(0deg); }
+    50% { filter: hue-rotate(10deg); }
+}
+
+.nav-menu-dhika, .navDhika ul {
     list-style: none;
     display: flex;
-    gap: 1rem;
+    gap: 0.5rem;
     align-items: center;
     margin: 0;
     padding: 0;
     flex-shrink: 0;
 }
 
-.navDhika li {
+.nav-menu-dhika li, .navDhika li {
     display: inline-flex;
     margin: 0;
 }
 
-.navDhika a {
+.nav-link-dhika, .navDhika a {
     color: var(--text-secondary-dhika);
     text-decoration: none;
     font-weight: 500;
     font-size: 0.95rem;
-    transition: all var(--transition-fast-dhika);
+    transition: all var(--transition-base-dhika);
     position: relative;
-    padding: 0.5rem 1rem;
-    border-radius: var(--radius-sm-dhika);
+    padding: 0.75rem 1.25rem;
+    border-radius: var(--radius-md-dhika);
     display: inline-flex;
     align-items: center;
     gap: 0.5rem;
     white-space: nowrap;
+    overflow: hidden;
 }
 
-.navDhika a::after {
+.nav-link-dhika::before, .navDhika a::before {
     content: '';
     position: absolute;
-    bottom: 2px;
-    left: 50%;
-    transform: translateX(-50%);
-    width: 0;
-    height: 2px;
-    background: var(--blue-primary-dhika);
-    transition: width var(--transition-base-dhika);
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
 }
 
-.navDhika a:hover {
+.nav-link-dhika:hover::before, .navDhika a:hover::before {
+    left: 100%;
+}
+
+.nav-link-dhika::after, .navDhika a::after {
+    content: '';
+    position: absolute;
+    bottom: 8px;
+    left: 50%;
+    transform: translateX(-50%) scaleX(0);
+    width: 70%;
+    height: 2px;
+    background: linear-gradient(90deg, var(--blue-primary-dhika), var(--blue-cyan-dhika));
+    transition: transform var(--transition-base-dhika);
+    border-radius: 2px;
+}
+
+.nav-link-dhika:hover, .navDhika a:hover {
     color: var(--blue-primary-dhika);
     background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-2px);
 }
 
-.navDhika a:hover::after {
-    width: 70%;
+.nav-link-dhika:hover::after, .navDhika a:hover::after {
+    transform: translateX(-50%) scaleX(1);
 }
 
-/* Jika ada btn class di dalam nav */
-.navDhika .btn {
-    padding: 0.5rem 1rem;
-    font-size: 0.9rem;
+.nav-link-dhika:active, .navDhika a:active {
+    transform: translateY(0);
+}
+
+.nav-link-dhika i, .navDhika a i {
+    transition: all var(--transition-base-dhika);
+}
+
+.nav-link-dhika:hover i, .navDhika a:hover i {
+    transform: scale(1.2) rotate(5deg);
+    color: var(--blue-primary-dhika);
+}
+
+.btn-reset-dhika {
+    background: linear-gradient(135deg, rgba(239, 68, 68, 0.1), rgba(220, 38, 38, 0.1));
+    color: var(--error-dhika);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+}
+
+.btn-reset-dhika:hover {
+    background: linear-gradient(135deg, var(--error-dhika), #DC2626);
+    color: white;
+    border-color: transparent;
+    box-shadow: var(--shadow-md-dhika);
+}
+
+.btn-reset-dhika:hover i {
+    animation: rotateDhika 0.6s ease;
+}
+
+@keyframes rotateDhika {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
 
 /* ============================================
-   MAIN CONTENT
+   MAIN CONTENT - ENHANCED
 ============================================ */
 .mainDhika {
     flex: 1;
@@ -205,6 +283,44 @@ body {
     align-items: center;
     padding: 3rem 1rem;
     background: linear-gradient(135deg, var(--bg-primary-dhika) 0%, var(--bg-secondary-dhika) 100%);
+    position: relative;
+    overflow: hidden;
+}
+
+.mainDhika::before,
+.mainDhika::after {
+    content: '';
+    position: absolute;
+    border-radius: 50%;
+    background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
+    animation: floatDhika 20s ease-in-out infinite;
+    pointer-events: none;
+}
+
+.mainDhika::before {
+    width: 400px;
+    height: 400px;
+    top: -200px;
+    right: -200px;
+    animation-delay: -10s;
+}
+
+.mainDhika::after {
+    width: 300px;
+    height: 300px;
+    bottom: -150px;
+    left: -150px;
+}
+
+@keyframes floatDhika {
+    0%, 100% {
+        transform: translate(0, 0) scale(1);
+        opacity: 0.3;
+    }
+    50% {
+        transform: translate(50px, 50px) scale(1.1);
+        opacity: 0.6;
+    }
 }
 
 .loginDhika,
@@ -218,6 +334,29 @@ body {
     box-shadow: var(--shadow-xl-dhika);
     border: 1px solid var(--border-dhika);
     animation: fadeInUpDhika 0.6s ease-out;
+    position: relative;
+    overflow: hidden;
+    z-index: 1;
+    transition: all var(--transition-base-dhika);
+}
+
+.loginDhika:hover,
+.konversiDhika:hover,
+.hasilDhika:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-xl-dhika), 0 0 0 1px rgba(59, 130, 246, 0.1);
+}
+
+
+@keyframes gradientMoveDhika {
+    0%, 100% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+}
+
+.loginDhika:hover::before,
+.konversiDhika:hover::before,
+.hasilDhika:hover::before {
+    opacity: 1;
 }
 
 .hasilDhika {
@@ -226,26 +365,26 @@ body {
     overflow-y: auto;
 }
 
-/* Custom Scrollbar */
 .hasilDhika::-webkit-scrollbar {
-    width: 8px;
+    width: 10px;
 }
 
 .hasilDhika::-webkit-scrollbar-track {
     background: var(--bg-secondary-dhika);
     border-radius: 10px;
+    margin: 10px;
 }
 
 .hasilDhika::-webkit-scrollbar-thumb {
-    background: var(--blue-primary-dhika);
+    background: linear-gradient(180deg, var(--blue-primary-dhika), var(--blue-cyan-dhika));
     border-radius: 10px;
+    transition: background var(--transition-base-dhika);
 }
 
 .hasilDhika::-webkit-scrollbar-thumb:hover {
-    background: var(--blue-dark-dhika);
+    background: linear-gradient(180deg, var(--blue-dark-dhika), var(--blue-primary-dhika));
 }
 
-/* Headings */
 .loginDhika h1,
 .konversiDhika h1,
 .hasilDhika h1 {
@@ -257,6 +396,20 @@ body {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    position: relative;
+    animation: fadeInDownDhika 0.6s ease-out;
+    background-size: 200% auto;
+}
+
+@keyframes fadeInDownDhika {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 .loginDhika p,
@@ -265,10 +418,11 @@ body {
     color: var(--text-secondary-dhika);
     margin-bottom: 2rem;
     font-size: 1rem;
+    animation: fadeInDhika 0.8s ease-out;
 }
 
 /* ============================================
-   FORM ELEMENTS
+   FORM ELEMENTS - ENHANCED
 ============================================ */
 .inputDhika {
     width: 100%;
@@ -276,7 +430,13 @@ body {
 
 .form-group {
     margin-bottom: 1.5rem;
+    animation: fadeInRightDhika 0.6s ease-out backwards;
 }
+
+.form-group:nth-child(1) { animation-delay: 0.1s; }
+.form-group:nth-child(2) { animation-delay: 0.2s; }
+.form-group:nth-child(3) { animation-delay: 0.3s; }
+.form-group:nth-child(4) { animation-delay: 0.4s; }
 
 .form-group label {
     display: block;
@@ -287,11 +447,17 @@ body {
     display: flex;
     align-items: center;
     gap: 0.5rem;
+    transition: all var(--transition-base-dhika);
 }
 
 .form-group label i {
     color: var(--blue-primary-dhika);
     font-size: 1.1rem;
+    transition: all var(--transition-base-dhika);
+}
+
+.form-group:hover label i {
+    transform: scale(1.2) rotate(10deg);
 }
 
 .inputDhika input,
@@ -307,6 +473,7 @@ body {
     font-size: 1rem;
     transition: all var(--transition-base-dhika);
     appearance: none;
+    position: relative;
 }
 
 .inputDhika input:focus,
@@ -314,30 +481,41 @@ body {
 .form-control:focus {
     outline: none;
     border-color: var(--blue-primary-dhika);
-    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1), 0 0 20px rgba(59, 130, 246, 0.2);
+    transform: translateY(-2px);
 }
 
 .inputDhika input:hover,
 .inputDhika select:hover,
 .form-control:hover {
     border-color: var(--blue-light-dhika);
+    transform: translateY(-1px);
 }
 
 .inputDhika input::placeholder,
 .form-control::placeholder {
     color: var(--text-secondary-dhika);
     opacity: 0.6;
+    transition: opacity var(--transition-base-dhika);
 }
 
-/* Select Arrow */
+.inputDhika input:focus::placeholder,
+.form-control:focus::placeholder {
+    opacity: 0.8;
+}
+
 .inputDhika select {
     background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%233B82F6' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
     background-repeat: no-repeat;
     background-position: right 1rem center;
     padding-right: 2.5rem;
+    cursor: pointer;
 }
 
-/* Password Toggle */
+.inputDhika select:hover {
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%2360A5FA' d='M6 9L1 4h10z'/%3E%3C/svg%3E");
+}
+
 .pwDhika {
     position: relative;
     width: 100%;
@@ -356,15 +534,23 @@ body {
     cursor: pointer;
     font-size: 1.2rem;
     color: var(--text-secondary-dhika);
-    transition: color var(--transition-fast-dhika);
+    transition: all var(--transition-base-dhika);
+    width: 30px;
+    height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
 }
 
 .toggle-Dhika:hover {
     color: var(--blue-primary-dhika);
+    background: rgba(59, 130, 246, 0.1);
+    transform: translateY(-50%) scale(1.1);
 }
 
 /* ============================================
-   RADIO BUTTONS
+   RADIO BUTTONS - ENHANCED
 ============================================ */
 .radioDhika {
     display: grid;
@@ -392,22 +578,70 @@ body {
     text-align: center;
     font-size: 0.95rem;
     font-weight: 500;
+    position: relative;
+    overflow: hidden;
+}
+
+.radioDhika label::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0;
+    height: 0;
+    border-radius: 50%;
+    background: rgba(59, 130, 246, 0.3);
+    transform: translate(-50%, -50%);
+    transition: width 0.6s, height 0.6s;
+}
+
+.radioDhika label:active::before {
+    width: 300px;
+    height: 300px;
 }
 
 .radioDhika label:hover {
     border-color: var(--blue-primary-dhika);
     background: rgba(59, 130, 246, 0.05);
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-md-dhika);
 }
 
 .radioDhika input[type="radio"]:checked + label {
     background: linear-gradient(135deg, var(--blue-primary-dhika), var(--blue-cyan-dhika));
     color: white;
     border-color: transparent;
+    box-shadow: var(--shadow-lg-dhika);
+    transform: scale(1.05);
+}
+
+.radioDhika input[type="radio"]:checked + label::after {
+    content: '✓';
+    position: absolute;
+    top: -5px;
+    right: -5px;
+    width: 20px;
+    height: 20px;
+    background: white;
+    color: var(--blue-primary-dhika);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 0.7rem;
+    font-weight: bold;
     box-shadow: var(--shadow-md-dhika);
+    animation: popInDhika 0.3s ease-out;
+}
+
+@keyframes popInDhika {
+    0% { transform: scale(0); }
+    50% { transform: scale(1.2); }
+    100% { transform: scale(1); }
 }
 
 /* ============================================
-   CHECKBOX STYLING
+   CHECKBOX STYLING - ENHANCED
 ============================================ */
 .checkboxDhika {
     display: flex;
@@ -429,18 +663,21 @@ body {
     background-color: var(--bg-primary-dhika);
     font-size: 0.95rem;
     font-weight: 500;
+    position: relative;
 }
 
 .checkboxDhika label:hover {
     border-color: var(--blue-primary-dhika);
     background: rgba(59, 130, 246, 0.05);
+    transform: translateX(5px);
+    box-shadow: var(--shadow-sm-dhika);
 }
 
 .checkboxDhika input[type="checkbox"] {
     appearance: none;
-    width: 20px;
-    height: 20px;
-    min-width: 20px;
+    width: 22px;
+    height: 22px;
+    min-width: 22px;
     border: 2px solid var(--blue-primary-dhika);
     border-radius: 6px;
     position: relative;
@@ -449,9 +686,20 @@ body {
     background-color: var(--bg-primary-dhika);
 }
 
+.checkboxDhika input[type="checkbox"]:hover {
+    border-color: var(--blue-light-dhika);
+    box-shadow: 0 0 0 3px rgba(59, 130, 246, 0.1);
+}
+
 .checkboxDhika input[type="checkbox"]:checked {
     background: linear-gradient(135deg, var(--blue-primary-dhika), var(--blue-cyan-dhika));
     border-color: transparent;
+    animation: checkBounceDhika 0.3s ease-out;
+}
+
+@keyframes checkBounceDhika {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.2); }
 }
 
 .checkboxDhika input[type="checkbox"]:checked::after {
@@ -463,10 +711,22 @@ body {
     color: white;
     font-size: 14px;
     font-weight: bold;
+    animation: checkmarkFadeDhika 0.3s ease-out;
+}
+
+@keyframes checkmarkFadeDhika {
+    0% {
+        opacity: 0;
+        transform: translate(-50%, -50%) scale(0);
+    }
+    100% {
+        opacity: 1;
+        transform: translate(-50%, -50%) scale(1);
+    }
 }
 
 /* ============================================
-   BUTTONS
+   BUTTONS - ENHANCED
 ============================================ */
 .btn {
     display: inline-flex;
@@ -482,6 +742,23 @@ body {
     transition: all var(--transition-base-dhika);
     gap: 0.5rem;
     font-family: 'Inter', sans-serif;
+    position: relative;
+    overflow: hidden;
+}
+
+.btn::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+    transition: left 0.5s ease;
+}
+
+.btn:hover::before {
+    left: 100%;
 }
 
 .btn-primary,
@@ -495,13 +772,21 @@ body {
 
 .btn-primary:hover,
 .inputDhika input[type="submit"]:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg-dhika);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl-dhika);
 }
 
 .btn-primary:active,
 .inputDhika input[type="submit"]:active {
-    transform: translateY(0);
+    transform: translateY(-1px);
+}
+
+.btn i {
+    transition: all var(--transition-base-dhika);
+}
+
+.btn:hover i {
+    transform: scale(1.2);
 }
 
 .btn-danger {
@@ -511,8 +796,13 @@ body {
 }
 
 .btn-danger:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg-dhika);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl-dhika);
+    background: linear-gradient(135deg, #DC2626, #B91C1C);
+}
+
+.btn-danger:hover i {
+    animation: rotateDhika 0.6s ease;
 }
 
 .btn-success {
@@ -522,8 +812,9 @@ body {
 }
 
 .btn-success:hover {
-    transform: translateY(-2px);
-    box-shadow: var(--shadow-lg-dhika);
+    transform: translateY(-3px);
+    box-shadow: var(--shadow-xl-dhika);
+    background: linear-gradient(135deg, #059669, #047857);
 }
 
 .btn-secondary {
@@ -534,10 +825,12 @@ body {
 
 .btn-secondary:hover {
     background: var(--border-dhika);
+    border-color: var(--blue-primary-dhika);
+    color: var(--blue-primary-dhika);
 }
 
 /* ============================================
-   TABLES
+   TABLES - ENHANCED
 ============================================ */
 .tableDhika {
     width: 100%;
@@ -582,7 +875,7 @@ body {
 }
 
 /* ============================================
-   INFO BOXES
+   INFO BOXES & INSTRUCTIONS
 ============================================ */
 .info-box {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
@@ -745,25 +1038,20 @@ footer p {
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
-
 .mt-1 { margin-top: 1rem; }
 .mt-2 { margin-top: 2rem; }
 .mb-1 { margin-bottom: 1rem; }
 .mb-2 { margin-bottom: 2rem; }
 .my-1 { margin-top: 1rem; margin-bottom: 1rem; }
 .my-2 { margin-top: 2rem; margin-bottom: 2rem; }
-
 .p-1 { padding: 1rem; }
 .p-2 { padding: 2rem; }
-
 .flex { display: flex; }
 .flex-column { flex-direction: column; }
 .flex-center { justify-content: center; align-items: center; }
 .gap-1 { gap: 1rem; }
 .gap-2 { gap: 2rem; }
-
 .hidden { display: none; }
-
 .w-full { width: 100%; }
 .max-w-full { max-width: 100%; }
 
@@ -771,12 +1059,8 @@ footer p {
    ANIMATIONS
 ============================================ */
 @keyframes fadeInDhika {
-    from {
-        opacity: 0;
-    }
-    to {
-        opacity: 1;
-    }
+    from { opacity: 0; }
+    to { opacity: 1; }
 }
 
 @keyframes fadeInUpDhika {
@@ -824,28 +1108,72 @@ footer p {
 }
 
 @keyframes pulse {
-    0%, 100% {
-        opacity: 1;
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+/* ============================================
+   LOADING & RIPPLE EFFECTS
+============================================ */
+.loading-spinner-dhika {
+    border: 3px solid rgba(59, 130, 246, 0.1);
+    border-radius: 50%;
+    border-top: 3px solid var(--blue-primary-dhika);
+    width: 40px;
+    height: 40px;
+    animation: spin 1s linear infinite;
+    margin: 2rem auto;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.ripple-effect-dhika {
+    position: absolute;
+    border-radius: 50%;
+    background: rgba(255, 255, 255, 0.6);
+    transform: scale(0);
+    animation: ripple-animation-dhika 0.6s ease-out;
+    pointer-events: none;
+}
+
+@keyframes ripple-animation-dhika {
+    to {
+        transform: scale(4);
+        opacity: 0;
     }
-    50% {
-        opacity: 0.5;
-    }
+}
+
+.error-dhika {
+    border-color: var(--error-dhika) !important;
+    animation: shake-dhika 0.3s ease;
+}
+
+.valid-dhika {
+    border-color: var(--success-dhika) !important;
+}
+
+@keyframes shake-dhika {
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
 }
 
 /* ============================================
    RESPONSIVE DESIGN
 ============================================ */
 @media (max-width: 768px) {
-    .navDhika .container {
+    .nav-container-dhika, .navDhika .container {
         padding: 1rem 1.5rem;
-        /* Tetap horizontal di tablet */
     }
     
-    .navDhika ul {
+    .nav-menu-dhika, .navDhika ul {
         gap: 0.5rem;
     }
     
-    .navDhika a {
+    .nav-link-dhika, .navDhika a {
         padding: 0.5rem 0.75rem;
         font-size: 0.85rem;
     }
@@ -877,7 +1205,6 @@ footer p {
         flex-direction: column;
     }
     
-    /* Responsive Table */
     .tableDhika,
     .tableDhika thead,
     .tableDhika tbody,
@@ -919,14 +1246,13 @@ footer p {
 }
 
 @media (max-width: 600px) {
-    /* Nav jadi vertical di mobile kecil */
-    .navDhika .container {
+    .nav-container-dhika, .navDhika .container {
         flex-direction: column;
         gap: 1rem;
         padding: 1rem;
     }
     
-    .navDhika ul {
+    .nav-menu-dhika, .navDhika ul {
         width: 100%;
         justify-content: center;
         flex-wrap: wrap;
@@ -977,7 +1303,7 @@ footer p {
         font-size: 0.85rem;
     }
     
-    .navDhika a {
+    .nav-link-dhika, .navDhika a {
         font-size: 0.8rem;
         padding: 0.4rem 0.6rem;
     }
@@ -988,299 +1314,7 @@ footer p {
 }
 
 /* ============================================
-   DARK MODE TOGGLE (Optional)
-============================================ */
-.theme-toggle-dhika {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 50px;
-    height: 50px;
-    background: linear-gradient(135deg, var(--blue-primary-dhika), var(--blue-cyan-dhika));
-    border: none;
-    border-radius: 50%;
-    color: white;
-    font-size: 1.3rem;
-    cursor: pointer;
-    box-shadow: var(--shadow-lg-dhika);
-    transition: all var(--transition-base-dhika);
-    z-index: 999;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
-.theme-toggle-dhika:hover {
-    transform: translateY(-5px) scale(1.1);
-    box-shadow: var(--shadow-xl-dhika);
-}
-
-.theme-toggle-dhika:active {
-    transform: translateY(-3px) scale(1.05);
-}
-
-/* ============================================
-   LOADING STATES
-============================================ */
-.loading-spinner-dhika {
-    border: 3px solid rgba(59, 130, 246, 0.1);
-    border-radius: 50%;
-    border-top: 3px solid var(--blue-primary-dhika);
-    width: 40px;
-    height: 40px;
-    animation: spin 1s linear infinite;
-    margin: 2rem auto;
-}
-
-@keyframes spin {
-    0% { transform: rotate(0deg); }
-    100% { transform: rotate(360deg); }
-}
-
-.btn.loading-dhika {
-    position: relative;
-    pointer-events: none;
-    opacity: 0.7;
-}
-
-.btn.loading-dhika::after {
-    content: "";
-    position: absolute;
-    width: 16px;
-    height: 16px;
-    top: 50%;
-    left: 50%;
-    margin-left: -8px;
-    margin-top: -8px;
-    border: 2px solid transparent;
-    border-radius: 50%;
-    border-top-color: white;
-    animation: spin 0.6s linear infinite;
-}
-
-/* ============================================
-   ALERTS & NOTIFICATIONS
-============================================ */
-.alert-dhika {
-    padding: 1rem 1.5rem;
-    border-radius: var(--radius-md-dhika);
-    margin: 1rem 0;
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    font-weight: 500;
-    animation: slideInDownDhika 0.3s ease-out;
-}
-
-.alert-success-dhika {
-    background: rgba(16, 185, 129, 0.1);
-    border: 1px solid var(--success-dhika);
-    color: var(--success-dhika);
-}
-
-.alert-error-dhika {
-    background: rgba(239, 68, 68, 0.1);
-    border: 1px solid var(--error-dhika);
-    color: var(--error-dhika);
-}
-
-.alert-warning-dhika {
-    background: rgba(245, 158, 11, 0.1);
-    border: 1px solid var(--warning-dhika);
-    color: var(--warning-dhika);
-}
-
-.alert-info-dhika {
-    background: rgba(59, 130, 246, 0.1);
-    border: 1px solid var(--blue-primary-dhika);
-    color: var(--blue-primary-dhika);
-}
-
-.alert-dhika i {
-    font-size: 1.5rem;
-}
-
-/* ============================================
-   CARDS & PANELS
-============================================ */
-.card-dhika {
-    background: var(--surface-dhika);
-    border: 1px solid var(--border-dhika);
-    border-radius: var(--radius-md-dhika);
-    padding: 1.5rem;
-    margin: 1rem 0;
-    box-shadow: var(--shadow-md-dhika);
-    transition: all var(--transition-base-dhika);
-}
-
-.card-dhika:hover {
-    box-shadow: var(--shadow-lg-dhika);
-    transform: translateY(-2px);
-}
-
-.card-header-dhika {
-    font-size: 1.2rem;
-    font-weight: 600;
-    color: var(--text-primary-dhika);
-    margin-bottom: 1rem;
-    padding-bottom: 0.75rem;
-    border-bottom: 2px solid var(--border-dhika);
-}
-
-.card-body-dhika {
-    color: var(--text-secondary-dhika);
-}
-
-/* ============================================
-   BADGES
-============================================ */
-.badge-dhika {
-    display: inline-flex;
-    align-items: center;
-    padding: 0.35rem 0.75rem;
-    border-radius: 50px;
-    font-size: 0.85rem;
-    font-weight: 600;
-    gap: 0.35rem;
-}
-
-.badge-primary-dhika {
-    background: linear-gradient(135deg, var(--blue-primary-dhika), var(--blue-cyan-dhika));
-    color: white;
-}
-
-.badge-success-dhika {
-    background: var(--success-dhika);
-    color: white;
-}
-
-.badge-error-dhika {
-    background: var(--error-dhika);
-    color: white;
-}
-
-.badge-warning-dhika {
-    background: var(--warning-dhika);
-    color: white;
-}
-
-.badge-secondary-dhika {
-    background: var(--bg-secondary-dhika);
-    color: var(--text-primary-dhika);
-    border: 1px solid var(--border-dhika);
-}
-
-/* ============================================
-   PROGRESS BAR
-============================================ */
-.progress-dhika {
-    width: 100%;
-    height: 10px;
-    background: var(--bg-secondary-dhika);
-    border-radius: 10px;
-    overflow: hidden;
-    margin: 1rem 0;
-}
-
-.progress-bar-dhika {
-    height: 100%;
-    background: linear-gradient(90deg, var(--blue-primary-dhika), var(--blue-cyan-dhika));
-    border-radius: 10px;
-    transition: width 0.6s ease;
-    box-shadow: 0 0 10px rgba(59, 130, 246, 0.5);
-}
-
-/* ============================================
-   DIVIDER
-============================================ */
-.divider-dhika {
-    height: 1px;
-    background: var(--border-dhika);
-    margin: 2rem 0;
-}
-
-.divider-text-dhika {
-    position: relative;
-    text-align: center;
-    margin: 2rem 0;
-}
-
-.divider-text-dhika::before {
-    content: '';
-    position: absolute;
-    top: 50%;
-    left: 0;
-    right: 0;
-    height: 1px;
-    background: var(--border-dhika);
-}
-
-.divider-text-dhika span {
-    position: relative;
-    background: var(--bg-primary-dhika);
-    padding: 0 1rem;
-    color: var(--text-secondary-dhika);
-    font-size: 0.9rem;
-}
-
-/* ============================================
-   TOOLTIP (Optional Enhancement)
-============================================ */
-[data-tooltip] {
-    position: relative;
-    cursor: help;
-}
-
-[data-tooltip]::after {
-    content: attr(data-tooltip);
-    position: absolute;
-    bottom: 100%;
-    left: 50%;
-    transform: translateX(-50%);
-    padding: 0.5rem 0.75rem;
-    background: var(--text-primary-dhika);
-    color: var(--bg-primary-dhika);
-    border-radius: var(--radius-sm-dhika);
-    font-size: 0.85rem;
-    white-space: nowrap;
-    opacity: 0;
-    pointer-events: none;
-    transition: opacity var(--transition-base-dhika);
-    margin-bottom: 0.5rem;
-}
-
-[data-tooltip]:hover::after {
-    opacity: 1;
-}
-
-/* ============================================
-   PRINT STYLES
-============================================ */
-@media print {
-    .navDhika,
-    .theme-toggle-dhika,
-    .action-buttons,
-    .kembaliDhika,
-    footer {
-        display: none;
-    }
-    
-    body {
-        background: white;
-        color: black;
-    }
-    
-    .loginDhika,
-    .konversiDhika,
-    .hasilDhika {
-        box-shadow: none;
-        border: 1px solid #ddd;
-        max-width: 100%;
-    }
-}
-
-/* ============================================
-   ACCESSIBILITY IMPROVEMENTS
+   ACCESSIBILITY
 ============================================ */
 *:focus-visible {
     outline: 2px solid var(--blue-primary-dhika);
@@ -1299,7 +1333,6 @@ footer p {
     border-width: 0;
 }
 
-/* High contrast mode support */
 @media (prefers-contrast: high) {
     :root {
         --border-dhika: #000000;
@@ -1310,7 +1343,6 @@ footer p {
     }
 }
 
-/* Reduced motion support */
 @media (prefers-reduced-motion: reduce) {
     *,
     *::before,

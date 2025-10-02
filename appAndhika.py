@@ -356,7 +356,7 @@ def input_while2():
                 'jawaban_benar': benarDhika,
                 'hasil': keteranganDhika
             },
-            score=100 if tebakanDhika == benarDhika else 50,
+            score=100 if tebakanDhika == benarDhika else 75,
             soal_url='/while2/input'
         )
 
@@ -665,14 +665,14 @@ def input_cuaca():
                 score = 100
             else:
                 keteranganDhika = "Bawa payung"
-                score = 85
+                score = 100
         elif cuacaDhika == "Cerah":
             if suhuDhika > 30:
                 keteranganDhika = "Pakai kacamata hitam dan minum air"
                 score = 100
             else:
                 keteranganDhika = "Nikmati hari ini"
-                score = 85
+                score = 100
         else:
             keteranganDhika = "Data cuaca tidak valid"
             score = 50

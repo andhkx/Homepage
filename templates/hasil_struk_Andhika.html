@@ -8,15 +8,24 @@
     <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
 </head>
 <body>
-    <div class="navDhika">
-        <div class="logoDhika">
-            <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Struk</span></h2>
-        </div>
-        <ul>
-            <li><a href="{{ url_for('input_struk') }}">Form</a></li>
-          <li><a href="{{ url_for('home') }}">Home</a></li>
+    <nav class="navDhika">
+    <div class="nav-container-dhika">
+        <a href="{{ url_for('home') }}" class="logo-link-dhika">
+            <div class="logoDhika">
+                <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+            </div>
+        </a>
+        
+        <ul class="nav-menu-dhika">
+            <li><a href="{{ url_for('input_struk') }}" class="nav-link-dhika">
+                <i class="fas fa-edit"></i> Form
+            </a></li>
+            <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                <i class="fas fa-home"></i> Home
+            </a></li>
         </ul>
     </div>
+</nav>
 
 <div class="mainDhika">
     <div class="hasilDhika">
