@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhika - Hasil Nilai Siswa</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <nav class="navDhika">
+        <div class="nav-container-dhika">
+            <a href="{{ url_for('home') }}" class="logo-link-dhika">
+                <div class="logoDhika">
+                    <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+                </div>
+            </a>
+            
+            <ul class="nav-menu-dhika">
+                <li><a href="{{ url_for('input_nl5') }}" class="nav-link-dhika">
+                    <i class="fas fa-edit"></i> Form
+                </a></li>
+                <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                    <i class="fas fa-home"></i> Home
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mainDhika">
+        <div class="hasilDhika">
+            <h1>Daftar Nilai Siswa per Kelas</h1>
+            
+            {% for i in range(jumlahKelasDhika) %}
+            <div class="info-box">
+                <h3>Kelas {{ i+1 }}</h3>
+                {% for j in range(jumlahSiswaDhika) %}
+                <p>Siswa: {{ dataNilaiDhika[i]['nama'][j] }} — Nilai: {{ dataNilaiDhika[i]['nilai'][j] }}</p>
+                {% endfor %}
+                <p class="result-success">Rata-rata Kelas {{ i+1 }} = {{ "%.2f"|format(dataNilaiDhika[i]['rata']) }}</p>
+            </div>
+            {% endfor %}
+            
+            <div class="result-info">
+                <h3>Rata-rata Semua Kelas = {{ "%.2f"|format(rataSemuaDhika) }}</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

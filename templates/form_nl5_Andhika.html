@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhika - Form Input Kelas dan Siswa</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <nav class="navDhika">
+        <div class="nav-container-dhika">
+            <a href="{{ url_for('home') }}" class="logo-link-dhika">
+                <div class="logoDhika">
+                    <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+                </div>
+            </a>
+            
+            <ul class="nav-menu-dhika">
+                <li><a href="{{ url_for('input_nl5') }}" class="nav-link-dhika">
+                    <i class="fas fa-edit"></i> Form
+                </a></li>
+                <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                    <i class="fas fa-home"></i> Home
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mainDhika">
+        <div class="konversiDhika">
+            <center>
+                <h1>Input Jumlah Kelas dan Siswa</h1>
+            </center>
+            <div class="inputDhika">
+                <form action="{{ url_for('input_nl5') }}" method="post">
+                    <div class="form-group">
+                        <label for="jumlahKelasDhika">Jumlah Kelas</label>
+                        <input type="number" id="jumlahKelasDhika" name="jumlahKelasDhika" placeholder="Masukan Jumlah Kelas" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="jumlahSiswaDhika">Jumlah Siswa per Kelas</label>
+                        <input type="number" id="jumlahSiswaDhika" name="jumlahSiswaDhika" placeholder="Masukan Jumlah Siswa per Kelas" required>
+                    </div>
+                    <input type="submit" value="Lanjutkan" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
