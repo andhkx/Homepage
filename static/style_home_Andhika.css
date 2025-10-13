@@ -641,6 +641,10 @@
     .badge-whileloop-dhika {
       background-color: var(--error);
     }
+    
+    .badge-nestedloop-dhika {
+      background-color: #ff61f0;
+    }
 
     .project-content-dhika {
       flex: 1;
