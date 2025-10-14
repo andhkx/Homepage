@@ -575,38 +575,6 @@ def input_pesanan():
     else:
         return render_template('form_pesanan_Andhika.html')
 
-@app.route('/uts/input', methods=['GET', 'POST'])
-def input_uts():
-    if request.method == "POST":
-        harian1Dhika = int(request.form['harian1Dhika'])
-        harian2Dhika = int(request.form['harian2Dhika'])
-        harian3Dhika = int(request.form['harian3Dhika'])
-        utsDhika = int(request.form['utsDhika'])
-        uasDhika = int(request.form['uasDhika'])
-        
-        rataHarianDhika = round(harian1Dhika + harian2Dhika + harian3Dhika) / 3
-        nilaiAkhirDhika = round((rataHarianDhika * 0.4) + (utsDhika * 0.3) + (uasDhika * 0.3))
-        if nilaiAkhirDhika > 90:
-            predikatDhika = 'A'
-        elif nilaiAkhirDhika >= 80:
-            predikatDhika = 'B'
-        elif nilaiAkhirDhika >= 75:
-            predikatDhika = 'C'
-        elif nilaiAkhirDhika < 75:
-            predikatDhika = 'D'
-        
-        return render_template('hasil_uts_Andhika.html',
-            harian1Dhika=harian1Dhika,
-            harian2Dhika=harian2Dhika,
-            harian3Dhika=harian3Dhika,
-            utsDhika=utsDhika,
-            uasDhika=uasDhika,
-            rataHarianDhika=rataHarianDhika,
-            nilaiAkhirDhika=nilaiAkhirDhika,
-            predikatDhika=predikatDhika) 
-    return render_template('form_uts_Andhika.html')
-
-
 @app.route('/gaji/input', methods=['GET', 'POST'])
 def input_gaji():
     if request.method == "POST":
@@ -1111,10 +1079,10 @@ def input_nl1():
         )
         
         return render_template('hasil_nl1_Andhika.html', 
-            akhirDhika=akhirDhika,
-            bintangDhika=bintangDhika,
-            perkalianDhika=perkalianDhika,
-            genapDhika=genapDhika)
+                             akhirDhika=akhirDhika,
+                             bintangDhika=bintangDhika,
+                             perkalianDhika=perkalianDhika,
+                             genapDhika=genapDhika)
     return render_template('form_nl1_Andhika.html')
 
 @app.route('/nl2', methods=['GET', 'POST'])
@@ -1128,6 +1096,7 @@ def input_nl2():
                 hasilDhika += str(i * j) + " "
             hasilDhika += "<br>"
         
+        # Simpan history
         save_to_history(
             soal_type='Nested Looping',
             soal_name='NL 2 - Pola Perkalian',
@@ -1140,8 +1109,8 @@ def input_nl2():
         )
         
         return render_template('hasil_nl2_Andhika.html', 
-            akhirDhika=akhirDhika,
-            hasilDhika=hasilDhika)
+                             akhirDhika=akhirDhika,
+                             hasilDhika=hasilDhika)
     return render_template('form_nl2_Andhika.html')
     
 @app.route('/nl3', methods=['GET', 'POST'])
@@ -1155,6 +1124,7 @@ def input_nl3():
                 hasilDhika += str(i) + " "
             hasilDhika += "<br>"
         
+        # Simpan history
         save_to_history(
             soal_type='Nested Looping',
             soal_name='NL 3 - Pola Angka Berulang',
@@ -1167,8 +1137,8 @@ def input_nl3():
         )
         
         return render_template('hasil_nl3_Andhika.html', 
-            akhirDhika=akhirDhika,
-            hasilDhika=hasilDhika)
+                             akhirDhika=akhirDhika,
+                             hasilDhika=hasilDhika)
     return render_template('form_nl3_Andhika.html')
     
 @app.route('/nl4', methods=['GET', 'POST'])
@@ -1184,10 +1154,10 @@ def input_nl4():
             segitigaDhika.append(baris)
         
         hasilDhika = ""
-        for i, baris in enumerate(segitigaDhika):
-            spasi = " " * (akhirDhika - 1 - i) * 2
-            hasilDhika += spasi + ' '.join(str(x) for x in baris) + "<br>"
+        for baris in segitigaDhika:
+            hasilDhika += ' '.join(str(x) for x in baris) + "<br>"
         
+        # Simpan history
         save_to_history(
             soal_type='Nested Looping',
             soal_name='NL 4 - Segitiga Pascal',
@@ -1200,8 +1170,8 @@ def input_nl4():
         )
         
         return render_template('hasil_nl4_Andhika.html', 
-            akhirDhika=akhirDhika,
-            hasilDhika=hasilDhika)
+                             akhirDhika=akhirDhika,
+                             hasilDhika=hasilDhika)
     return render_template('form_nl4_Andhika.html')
     
 @app.route('/nl5', methods=['GET', 'POST'])
@@ -1211,8 +1181,8 @@ def input_nl5():
         jumlahSiswaDhika = int(request.form['jumlahSiswaDhika'])
         
         return render_template('form_nl5b_Andhika.html',
-            jumlahKelasDhika=jumlahKelasDhika,
-            jumlahSiswaDhika=jumlahSiswaDhika)
+                             jumlahKelasDhika=jumlahKelasDhika,
+                             jumlahSiswaDhika=jumlahSiswaDhika)
     return render_template('form_nl5_Andhika.html')
 
 @app.route('/nl5/proses', methods=['POST'])
@@ -1246,6 +1216,7 @@ def proses_nl5():
     
     rataSemuaDhika = totalSemuaDhika / (jumlahKelasDhika * jumlahSiswaDhika)
 
+    # Simpan history
     save_to_history(
         soal_type='Nested Looping',
         soal_name='NL 5 - Rata-rata Nilai Kelas',
@@ -1259,11 +1230,11 @@ def proses_nl5():
     )
     
     return render_template('hasil_nl5_Andhika.html',
-        dataNilaiDhika=dataNilaiDhika,
-        jumlahKelasDhika=jumlahKelasDhika,
-        jumlahSiswaDhika=jumlahSiswaDhika,
-        totalSemuaDhika=totalSemuaDhika,
-        rataSemuaDhika=rataSemuaDhika)
+                         dataNilaiDhika=dataNilaiDhika,
+                         jumlahKelasDhika=jumlahKelasDhika,
+                         jumlahSiswaDhika=jumlahSiswaDhika,
+                         totalSemuaDhika=totalSemuaDhika,
+                         rataSemuaDhika=rataSemuaDhika)
 
 if __name__ == "__main__":
     app.run(debug=True, host='0.0.0.0', port=5000)

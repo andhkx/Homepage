@@ -1,6 +1,10 @@
+/* style_Andhika.css - Modern Design sesuai Homepage Portfolio - FULL VERSION */
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap');
 @import url('https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css');
 
+/* ============================================
+   CSS VARIABLES & ROOT CONFIGURATION
+============================================ */
 :root {
     --bg-primary-dhika: #FFFFFF;
     --bg-secondary-dhika: #F8F9FA;
@@ -16,7 +20,6 @@
     --success-dhika: #10B981;
     --error-dhika: #EF4444;
     --warning-dhika: #F59E0B;
-    --mid-dhika: #fffb00;
     --shadow-sm-dhika: 0 1px 2px rgba(0, 0, 0, 0.05);
     --shadow-md-dhika: 0 4px 6px rgba(0, 0, 0, 0.07);
     --shadow-lg-dhika: 0 10px 15px rgba(0, 0, 0, 0.1);
@@ -47,6 +50,9 @@
     --shadow-xl-dhika: 0 20px 25px rgba(0, 0, 0, 0.6);
 }
 
+/* ============================================
+   RESET & BASE STYLES
+============================================ */
 *, *::before, *::after {
     margin: 0;
     padding: 0;
@@ -68,6 +74,9 @@ body {
     transition: background-color var(--transition-base-dhika), color var(--transition-base-dhika);
 }
 
+/* ============================================
+   NAVIGATION - ENHANCED
+============================================ */
 .navDhika {
     position: sticky;
     top: 0;
@@ -264,7 +273,9 @@ body {
     100% { transform: rotate(360deg); }
 }
 
-
+/* ============================================
+   MAIN CONTENT - ENHANCED
+============================================ */
 .mainDhika {
     flex: 1;
     display: flex;
@@ -410,7 +421,9 @@ body {
     animation: fadeInDhika 0.8s ease-out;
 }
 
-
+/* ============================================
+   FORM ELEMENTS - ENHANCED
+============================================ */
 .inputDhika {
     width: 100%;
 }
@@ -536,7 +549,9 @@ body {
     transform: translateY(-50%) scale(1.1);
 }
 
-
+/* ============================================
+   RADIO BUTTONS - ENHANCED
+============================================ */
 .radioDhika {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
@@ -625,7 +640,9 @@ body {
     100% { transform: scale(1); }
 }
 
-
+/* ============================================
+   CHECKBOX STYLING - ENHANCED
+============================================ */
 .checkboxDhika {
     display: flex;
     flex-direction: column;
@@ -708,7 +725,9 @@ body {
     }
 }
 
-
+/* ============================================
+   BUTTONS - ENHANCED
+============================================ */
 .btn {
     display: inline-flex;
     align-items: center;
@@ -810,7 +829,9 @@ body {
     color: var(--blue-primary-dhika);
 }
 
-
+/* ============================================
+   TABLES - ENHANCED
+============================================ */
 .tableDhika {
     width: 100%;
     border-collapse: collapse;
@@ -853,7 +874,9 @@ body {
     transform: scale(1.01);
 }
 
-
+/* ============================================
+   INFO BOXES & INSTRUCTIONS
+============================================ */
 .info-box {
     background: linear-gradient(135deg, rgba(59, 130, 246, 0.1), rgba(6, 182, 212, 0.1));
     border: 1px solid rgba(59, 130, 246, 0.2);
@@ -916,7 +939,9 @@ body {
     font-size: 1.2rem;
 }
 
-
+/* ============================================
+   ACTION CONTAINERS
+============================================ */
 .kembaliDhika {
     display: flex;
     justify-content: space-between;
@@ -935,7 +960,9 @@ body {
     flex: 1;
 }
 
-
+/* ============================================
+   RESULT SPECIFIC STYLES
+============================================ */
 .result-success {
     background: linear-gradient(135deg, var(--success-dhika), #059669);
     color: white;
@@ -951,19 +978,6 @@ body {
 
 .result-error {
     background: linear-gradient(135deg, var(--error-dhika), #DC2626);
-    color: white;
-    padding: 1.5rem;
-    border-radius: var(--radius-md-dhika);
-    text-align: center;
-    margin: 1rem 0;
-    font-weight: 500;
-    font-size: 1.1rem;
-    box-shadow: var(--shadow-md-dhika);
-    animation: scaleInDhika 0.3s ease-out;
-}
-
-.result-mid {
-    background: linear-gradient(135deg, var(--mid-dhika), #ffd900);
     color: white;
     padding: 1.5rem;
     border-radius: var(--radius-md-dhika);
@@ -1001,7 +1015,9 @@ body {
     animation: scaleInDhika 0.3s ease-out;
 }
 
-
+/* ============================================
+   FOOTER
+============================================ */
 footer {
     background: var(--surface-dhika);
     border-top: 1px solid var(--border-dhika);
@@ -1016,7 +1032,9 @@ footer p {
     font-size: 0.95rem;
 }
 
-
+/* ============================================
+   UTILITY CLASSES
+============================================ */
 .text-center { text-align: center; }
 .text-left { text-align: left; }
 .text-right { text-align: right; }
@@ -1037,7 +1055,9 @@ footer p {
 .w-full { width: 100%; }
 .max-w-full { max-width: 100%; }
 
-
+/* ============================================
+   ANIMATIONS
+============================================ */
 @keyframes fadeInDhika {
     from { opacity: 0; }
     to { opacity: 1; }
@@ -1092,7 +1112,9 @@ footer p {
     50% { opacity: 0.5; }
 }
 
-
+/* ============================================
+   LOADING & RIPPLE EFFECTS
+============================================ */
 .loading-spinner-dhika {
     border: 3px solid rgba(59, 130, 246, 0.1);
     border-radius: 50%;
@@ -1139,7 +1161,9 @@ footer p {
     75% { transform: translateX(5px); }
 }
 
-
+/* ============================================
+   RESPONSIVE DESIGN
+============================================ */
 @media (max-width: 768px) {
     .nav-container-dhika, .navDhika .container {
         padding: 1rem 1.5rem;
@@ -1289,7 +1313,9 @@ footer p {
     }
 }
 
-
+/* ============================================
+   ACCESSIBILITY
+============================================ */
 *:focus-visible {
     outline: 2px solid var(--blue-primary-dhika);
     outline-offset: 2px;
