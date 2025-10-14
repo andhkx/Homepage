@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhika - Form Input Nilai Harian dan Ujian</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <nav class="navDhika">
+        <div class="nav-container-dhika">
+            <a href="{{ url_for('home') }}" class="logo-link-dhika">
+                <div class="logoDhika">
+                    <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+                </div>
+            </a>
+            
+            <ul class="nav-menu-dhika">
+                <li><a href="{{ url_for('input_uts') }}" class="nav-link-dhika">
+                    <i class="fas fa-edit"></i> Form
+                </a></li>
+                <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                    <i class="fas fa-home"></i> Home
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mainDhika">
+        <div class="konversiDhika">
+            <center>
+                <h1>Input Nilai Harian dan Ujian</h1>
+            </center>
+            <div class="inputDhika">
+                <form action="{{ url_for('input_uts') }}" method="post">
+                    <div class="form-group">
+                        <label for="harian1Dhika">Nilai Harian 1</label>
+                        <input type="number" id="harian1Dhika" name="harian1Dhika" placeholder="Masukan nilai harian 1" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="harian2Dhika">Nilai Harian 2</label>
+                        <input type="number" id="harian2Dhika" name="harian2Dhika" placeholder="Masukan nilai harian 2" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="harian3Dhika">Nilai Harian 3</label>
+                        <input type="number" id="harian3Dhika" name="harian3Dhika" placeholder="Masukan nilai harian 3" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="utsDhika">Nilai UTS</label>
+                        <input type="number" id="utsDhika" name="utsDhika" placeholder="Masukan nilai uts" max="100" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="uasDhika">Nilai UAS</label>
+                        <input type="number" id="uasDhika" name="uasDhika" placeholder="Masukan nilai uas" max="100" required>
+                    </div>
+                    <input type="submit" value="Lanjutkan" class="btn btn-primary">
+                </form>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhika - Hasil</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>  
+    <nav class="navDhika">
+    <div class="nav-container-dhika">
+        <a href="{{ url_for('home') }}" class="logo-link-dhika">
+            <div class="logoDhika">
+                <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+            </div>
+        </a>
+        
+        <ul class="nav-menu-dhika">
+            <li><a href="{{ url_for('input_pesanan') }}" class="nav-link-dhika">
+                <i class="fas fa-edit"></i> Form
+            </a></li>
+            <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                <i class="fas fa-home"></i> Home
+            </a></li>
+        </ul>
+    </div>
+</nav>
+    <main class="mainDhika">  
+    <section class="konversiDhika">  
+        <h1>Formulir Untuk Pemesanan</h1>  
+        <form action="" method="post" class="inputDhika">  
+            <input type="text" id="namaDhika" name="namaDhika" placeholder="Masukan nama" required>  
+            <input type="number" id="satuanDhika" name="satuanDhika" placeholder="Masukan harga satuan" required>  
+            <input type="number" id="barangDhika" name="barangDhika" placeholder="Masukan jumlah barang" required>  
+
+            <label for="kategoriDhika">Kategori</label>  
+            <select id="kategoriDhika" name="kategoriDhika" required>  
+                <option value="Biasa">Biasa</option>  
+                <option value="Member">Member</option>  
+                <option value="VIP">VIP</option>  
+            </select>  
+
+            <fieldset class="radioDhika">  
+                <legend>Metode Pembayaran</legend>  
+                <input type="radio" id="cash" name="metodeDhika" value="Cash" required>  
+                <label for="cash">Cash</label>  
+
+                <input type="radio" id="transfer" name="metodeDhika" value="Transfer">  
+                <label for="transfer">Transfer</label>  
+            </fieldset>  
+
+<div class="checkboxDhika">
+    <label>
+        <input type="checkbox" name="tambahanDhika1" value="Bungkus">
+        <span>Bungkus (Rp. 2.000)</span>
+    </label>
+    <label>
+        <input type="checkbox" name="tambahanDhika2" value="Extra toping">
+        <span>Extra Toping (Rp. 5.000)</span>
+    </label>
+</div>
+
+            <input type="submit" value="Kirim">  
+        </form>  
+    </section>  
+</main>
+
+</body>  
+</html>

@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hasil Perhitungan</title>
+</head>
+<body>
+    <h1>Hasil Perhitungan</h1>
+    <p>Sisi 1: {{ nilaiADhika }}</p>
+    <p>Sisi 2: {{ nilaiBDhika }}</p>
+    <p>Luas Persegi: {{ nilaiADhika }} * {{ nilaiBDhika }} = {{ persegiDhika }}</p>
+    <p>Luas Segitiga: 1/2 * {{ nilaiADhika }} * {{ nilaiBDhika }} = {{ segitigaDhika }}</p>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    const answers = {
+        'Nama': '{{ namaDhika }}',
+        'Rata-rata': '{{ rataDhika }}',
+        'Kategori': '{{ kategoriDhika }}'
+    };
+    
+    HistoryManager.saveEntry('If Else', 'Kategori Nilai', answers, {{ rataDhika }}, '/nilai/input');
+});
+</script>
+</body>
+</html>

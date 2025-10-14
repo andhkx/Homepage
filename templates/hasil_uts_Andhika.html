@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhika - Hasil Nilai Siswa</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <nav class="navDhika">
+        <div class="nav-container-dhika">
+            <a href="{{ url_for('home') }}" class="logo-link-dhika">
+                <div class="logoDhika">
+                    <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+                </div>
+            </a>
+            
+            <ul class="nav-menu-dhika">
+                <li><a href="{{ url_for('input_uts') }}" class="nav-link-dhika">
+                    <i class="fas fa-edit"></i> Form
+                </a></li>
+                <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                    <i class="fas fa-home"></i> Home
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mainDhika">
+        <div class="hasilDhika">
+            <h1>Hasil Penilaian Nilai</h1>
+            <div class="info-box">
+                <p>Nilai Harian 1 : {{ harian1Dhika }}</p>
+                <p>Nilai Harian 2 : {{ harian2Dhika }}</p>
+                <p>Nilai Harian 3 : {{ harian3Dhika }}</p>
+                <p>Nilai UTS : {{ utsDhika }}</p>
+                <p>Nilai UAS : {{ uasDhika }}</p>
+                {% if nilaiAkhirDhika > 90 %}
+                    <p class="result-success">Nilai Akhir: {{nilaiAkhirDhika}}</p>
+                {% elif nilaiAkhirDhika >= 80 %}
+                    <p class="result-mid">Nilai Akhir: {{nilaiAkhirDhika}}</p>
+                {% elif nilaiAkhirDhika >= 70 %}
+                    <p class="result-warning">Nilai Akhir: {{nilaiAkhirDhika}}</p>
+                {% elif nilaiAkhirDhika < 70 %}
+                    <p class="result-error">Nilai Akhir: {{nilaiAkhirDhika}}</p>
+                {% endif %}
+            </div>
+            
+            <div class="result-info">
+                <h3>Predikat: {{predikatDhika}}</h3>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

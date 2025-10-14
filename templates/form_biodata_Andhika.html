@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Andhika - Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <nav class="navDhika">
+    <div class="nav-container-dhika">
+        <a href="{{ url_for('home') }}" class="logo-link-dhika">
+            <div class="logoDhika">
+                <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+            </div>
+        </a>
+        
+        <ul class="nav-menu-dhika">
+            <li><a href="{{ url_for('input_biodata') }}" class="nav-link-dhika">
+                <i class="fas fa-edit"></i> Form
+            </a></li>
+            <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                <i class="fas fa-home"></i> Home
+            </a></li>
+        </ul>
+    </div>
+</nav>
+
+    <!-- Main Content -->
+    <main class="mainDhika">
+        <section class="konversiDhika">
+            <h1 style="text-align: center;">Biodata Siswa Kelas XI RPL-A</h1>
+
+            <form action="" method="post" class="inputDhika">
+                <!-- NIS -->
+                <label for="nisDhika">NIS:</label>
+                <input type="text" name="nisDhika" placeholder="Masukan NIS Kamu" required />
+
+                <!-- Nama -->
+                <label for="namaDhika">Nama Lengkap:</label>
+                <input type="text" name="namaDhika" placeholder="Masukan Nama Kamu" required />
+
+                <!-- Asal SMP -->
+                <label for="smpDhika">Asal SMP:</label>
+                <input type="text" name="smpDhika" placeholder="Masukan Asal SMP Kamu" required />
+
+                <!-- Lama Studi -->
+                <label for="tahunDhika">Lama Study:</label>
+                <input type="number" name="tahunDhika" placeholder="Berapa Tahun" required />
+                <input type="number" name="bulanDhika" placeholder="Berapa Bulan" required />
+
+                <!-- Jurusan -->
+                <label for="jurusanDhika">Jurusan:</label>
+                <select name="jurusanDhika" required>
+                    <option value="Rekayasa Perangkat Lunak">Rekayasa Perangkat Lunak</option>
+                    <option value="Elektro">Elektro</option>
+                    <option value="Kimia Industri">Kimia Industri</option>
+                </select>
+
+                <!-- Tempat & Tanggal Lahir -->
+                <label for="tempatDhika">Tempat dan Tanggal Lahir:</label>
+                <input type="text" name="tempatDhika" placeholder="Masukan Tempat Lahir Kamu" required />
+                <input type="date" name="tanggalDhika" required />
+
+                <!-- Jenis Kelamin -->
+                <label for="genderDhika">Jenis Kelamin:</label>
+                <div class="radioDhika">
+                    <label>
+                        <input type="radio" name="genderDhika" value="Laki Laki" required /> Laki Laki
+                    </label>
+                    <label>
+                        <input type="radio" name="genderDhika" value="Perempuan" /> Perempuan
+                    </label>
+                </div>
+
+                <!-- Alamat -->
+                <label for="alamatDhika">Alamat Lengkap:</label>
+                <input type="text" name="alamatDhika" id="alamatDhika" placeholder="Masukan Alamat Kamu" required />
+
+                <!-- Hobi -->
+                <label for="hobiDhika">Hobi:</label>
+                <div class="radioDhika">
+                    <label>
+                        <input type="radio" name="hobiDhika" value="Ngoding" required /> Ngoding
+                    </label>
+                    <label>
+                        <input type="radio" name="hobiDhika" value="Olahraga" /> Olahraga
+                    </label>
+                    <label>
+                        <input type="radio" name="hobiDhika" value="Main Game" /> Main Game
+                    </label>
+                </div>
+
+                <!-- Submit -->
+                <input type="submit" value="Kirim" />
+            </form>
+        </section>
+    </main>
+</body>
+</html>

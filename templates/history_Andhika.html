@@ -1,0 +1,1039 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>History - Andhika - Software Engineer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      /* Light Mode Colors */
+      --bg-light: #FAFBFC;
+      --surface-light: #FFFFFF;
+      --text-primary-light: #1F2937;
+      --text-secondary-light: #6B7280;
+      --border-light: #E5E7EB;
+      --accent-blue: #3B82F6;
+      --accent-light-blue: #60A5FA;
+      --accent-dark-blue: #2563EB;
+      --accent-cyan: #06B6D4;
+      --accent-electric: #0EA5E9;
+      --success: #10B981;
+      --error: #EF4444;
+      --warning: #F59E0B;
+
+      /* Dark Mode Colors */
+      --bg-dark: #0F172A;
+      --surface-dark: #1E293B;
+      --text-primary-dark: #F9FAFB;
+      --text-secondary-dark: #D1D5DB;
+      --border-dark: #374151;
+
+      /* Default to Light Mode */
+      --bg: var(--bg-light);
+      --surface: var(--surface-light);
+      --text-primary: var(--text-primary-light);
+      --text-secondary: var(--text-secondary-light);
+      --border: var(--border-light);
+
+      /* Typography */
+      --font-family: 'Inter', sans-serif;
+      --font-size-xs: 0.75rem;
+      --font-size-sm: 0.875rem;
+      --font-size-base: 1rem;
+      --font-size-lg: 1.125rem;
+      --font-size-xl: 1.25rem;
+      --font-size-2xl: 1.5rem;
+      --font-size-3xl: 1.875rem;
+      --font-size-4xl: 2.25rem;
+      --font-size-5xl: 3rem;
+
+      /* Spacing */
+      --spacing-xs: 0.5rem;
+      --spacing-sm: 1rem;
+      --spacing-md: 1.5rem;
+      --spacing-lg: 2rem;
+      --spacing-xl: 3rem;
+      --spacing-2xl: 4rem;
+
+      /* Border Radius */
+      --radius-sm: 0.375rem;
+      --radius-md: 0.5rem;
+      --radius-lg: 0.75rem;
+      --radius-xl: 1rem;
+
+      /* Shadows */
+      --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.05);
+      --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+      --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05);
+      --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+      /* Transitions */
+      --transition-base: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      --transition-smooth: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+
+    .dark-mode {
+      --bg: var(--bg-dark);
+      --surface: var(--surface-dark);
+      --text-primary: var(--text-primary-dark);
+      --text-secondary: var(--text-secondary-dark);
+      --border: var(--border-dark);
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: var(--font-family);
+      font-size: var(--font-size-base);
+      line-height: 1.6;
+      color: var(--text-primary);
+      background-color: var(--bg);
+      transition: var(--transition-base);
+    }
+
+    .container-dhika {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 var(--spacing-md);
+    }
+
+    .section-dhika {
+      padding: var(--spacing-2xl) 0;
+    }
+
+    .section-title-dhika {
+      font-size: var(--font-size-4xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-lg);
+      text-align: center;
+      position: relative;
+    }
+
+    .section-title-dhika::after {
+      content: '';
+      position: absolute;
+      bottom: -8px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80px;
+      height: 4px;
+      background: linear-gradient(to right, var(--accent-blue), var(--accent-cyan));
+      border-radius: 2px;
+    }
+
+    .section-subtitle-dhika {
+      font-size: var(--font-size-lg);
+      color: var(--text-secondary);
+      text-align: center;
+      max-width: 600px;
+      margin: 0 auto var(--spacing-xl);
+    }
+
+    /* Header & Navigation */
+    .header-dhika {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background-color: var(--surface);
+      box-shadow: var(--shadow-sm);
+      z-index: 1000;
+      transition: var(--transition-base);
+    }
+
+    .nav-dhika {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: var(--spacing-sm) 0;
+    }
+
+    .logo-dhika {
+      font-size: var(--font-size-xl);
+      font-weight: 700;
+      color: var(--text-primary);
+      text-decoration: none;
+    }
+
+    .logo-dhika span {
+      color: var(--accent-blue);
+    }
+
+    .nav-menu-dhika {
+      display: flex;
+      list-style: none;
+      gap: var(--spacing-lg);
+    }
+
+    .nav-link-dhika {
+      font-weight: 500;
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: var(--transition-base);
+      position: relative;
+    }
+
+    .nav-link-dhika:hover {
+      color: var(--accent-blue);
+    }
+
+    .nav-link-dhika::after {
+      content: '';
+      position: absolute;
+      bottom: -5px;
+      left: 0;
+      width: 0;
+      height: 2px;
+      background-color: var(--accent-blue);
+      transition: var(--transition-base);
+    }
+
+    .nav-link-dhika:hover::after {
+      width: 100%;
+    }
+
+    .nav-link-dhika.active-dhika {
+      color: var(--accent-blue);
+    }
+
+    .nav-link-dhika.active-dhika::after {
+      width: 100%;
+    }
+
+    .theme-toggle-dhika {
+      background: none;
+      border: none;
+      cursor: pointer;
+      width: 48px;
+      height: 48px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: var(--transition-base);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .theme-toggle-dhika:hover {
+      background-color: rgba(0, 0, 0, 0.05);
+    }
+
+    .dark-mode .theme-toggle-dhika:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .theme-icon-dhika {
+      font-size: var(--font-size-lg);
+      transition: var(--transition-smooth);
+    }
+
+    .theme-toggle-dhika .fa-sun {
+      color: #F59E0B;
+    }
+
+    .theme-toggle-dhika .fa-moon {
+      color: #000000;
+    }
+
+    .hamburger-dhika {
+      display: none;
+      flex-direction: column;
+      justify-content: space-between;
+      width: 24px;
+      height: 18px;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+    }
+
+    .hamburger-dhika span {
+      display: block;
+      height: 2px;
+      width: 100%;
+      background-color: var(--text-primary);
+      transition: var(--transition-base);
+    }
+
+    /* Stats Cards */
+    .stats-grid-dhika {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: var(--spacing-lg);
+      margin-bottom: var(--spacing-xl);
+    }
+
+    .stat-card-dhika {
+      background-color: var(--surface);
+      padding: var(--spacing-lg);
+      border-radius: var(--radius-lg);
+      text-align: center;
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+      border: 1px solid var(--border);
+    }
+
+    .stat-card-dhika:hover {
+      transform: translateY(-5px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .stat-number-dhika {
+      font-size: var(--font-size-3xl);
+      font-weight: 700;
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .stat-number-dhika.total {
+      color: var(--accent-blue);
+    }
+
+    .stat-number-dhika.average {
+      color: var(--success);
+    }
+
+    .stat-number-dhika.types {
+      color: var(--accent-cyan);
+    }
+
+    .stat-label-dhika {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+    }
+
+    /* History Cards */
+    .history-card-dhika {
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      padding: var(--spacing-lg);
+      box-shadow: var(--shadow-sm);
+      transition: var(--transition-base);
+      border: 1px solid var(--border);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .history-card-dhika:hover {
+      transform: translateY(-3px);
+      box-shadow: var(--shadow-md);
+      border-color: var(--accent-blue);
+    }
+
+    .history-header-dhika {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      margin-bottom: var(--spacing-md);
+    }
+
+    .history-title-dhika {
+      font-size: var(--font-size-xl);
+      font-weight: 600;
+      margin-bottom: var(--spacing-xs);
+      color: var(--text-primary);
+    }
+
+    .history-meta-dhika {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--spacing-sm);
+      margin-bottom: var(--spacing-sm);
+    }
+
+    .history-badge-dhika {
+      padding: 4px 12px;
+      border-radius: 20px;
+      font-size: var(--font-size-xs);
+      font-weight: 600;
+    }
+
+    .badge-runtutan-dhika {
+      background-color: rgba(59, 130, 246, 0.1);
+      color: var(--accent-blue);
+    }
+
+    .badge-ifelse-dhika {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+    }
+
+    .badge-nestedif-dhika {
+      background-color: rgba(139, 92, 246, 0.1);
+      color: #8B5CF6;
+    }
+
+    .badge-forloop-dhika {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+    }
+
+    .badge-whileloop-dhika {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--error);
+    }
+
+    .history-time-dhika {
+      font-size: var(--font-size-sm);
+      color: var(--text-secondary);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    .history-score-dhika {
+      padding: 6px 16px;
+      border-radius: 20px;
+      font-size: var(--font-size-sm);
+      font-weight: 600;
+    }
+
+    .score-high-dhika {
+      background-color: rgba(16, 185, 129, 0.1);
+      color: var(--success);
+    }
+
+    .score-medium-dhika {
+      background-color: rgba(245, 158, 11, 0.1);
+      color: var(--warning);
+    }
+
+    .score-low-dhika {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--error);
+    }
+
+    .history-content-dhika {
+      background-color: var(--bg);
+      border-radius: var(--radius-md);
+      padding: var(--spacing-md);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .history-details-title-dhika {
+      font-size: var(--font-size-lg);
+      font-weight: 600;
+      margin-bottom: var(--spacing-sm);
+      color: var(--text-primary);
+      display: flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+    }
+
+    .history-details-grid-dhika {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: var(--spacing-sm);
+    }
+
+    .history-detail-item-dhika {
+      display: flex;
+      justify-content: space-between;
+      padding: var(--spacing-xs) 0;
+      border-bottom: 1px solid var(--border);
+    }
+
+    .detail-label-dhika {
+      color: var(--text-secondary);
+      font-size: var(--font-size-sm);
+    }
+
+    .detail-value-dhika {
+      color: var(--text-primary);
+      font-weight: 500;
+      font-size: var(--font-size-sm);
+    }
+
+    .history-footer-dhika {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding-top: var(--spacing-sm);
+      border-top: 1px solid var(--border);
+    }
+
+    .history-id-dhika {
+      font-size: var(--font-size-xs);
+      color: var(--text-secondary);
+    }
+
+    .history-actions-dhika {
+      display: flex;
+      gap: var(--spacing-sm);
+    }
+
+    .btn-dhika {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--spacing-xs);
+      padding: 8px 16px;
+      border-radius: var(--radius-md);
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition-base);
+      cursor: pointer;
+      border: none;
+      font-size: var(--font-size-sm);
+    }
+
+    .btn-primary-dhika {
+      background-color: var(--accent-blue);
+      color: white;
+      box-shadow: var(--shadow-sm);
+    }
+
+    .btn-primary-dhika:hover {
+      background-color: var(--accent-dark-blue);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+
+    .btn-danger-dhika {
+      background-color: rgba(239, 68, 68, 0.1);
+      color: var(--error);
+      border: 1px solid rgba(239, 68, 68, 0.2);
+    }
+
+    .btn-danger-dhika:hover {
+      background-color: var(--error);
+      color: white;
+      transform: translateY(-2px);
+    }
+
+    .empty-state-dhika {
+      text-align: center;
+      padding: var(--spacing-2xl);
+      background-color: var(--surface);
+      border-radius: var(--radius-lg);
+      border: 2px dashed var(--border);
+    }
+
+    .empty-icon-dhika {
+      font-size: 4rem;
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-md);
+    }
+
+    .empty-title-dhika {
+      font-size: var(--font-size-xl);
+      color: var(--text-primary);
+      margin-bottom: var(--spacing-xs);
+    }
+
+    .empty-description-dhika {
+      color: var(--text-secondary);
+      margin-bottom: var(--spacing-lg);
+    }
+
+    /* Footer */
+    .footer-dhika {
+      background-color: var(--surface);
+      padding: var(--spacing-xl) 0;
+      border-top: 1px solid var(--border);
+      margin-top: var(--spacing-2xl);
+    }
+
+    .footer-content-dhika {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-text-dhika {
+      color: var(--text-secondary);
+    }
+
+    .footer-social-dhika {
+      display: flex;
+      gap: var(--spacing-md);
+    }
+
+    .social-link-dhika {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--bg);
+      color: var(--text-primary);
+      text-decoration: none;
+      transition: var(--transition-base);
+      box-shadow: var(--shadow-sm);
+    }
+
+    .social-link-dhika:hover {
+      transform: translateY(-3px) scale(1.1);
+      box-shadow: var(--shadow-lg);
+      color: var(--accent-blue);
+    }
+
+    .back-to-top-dhika {
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      background-color: var(--accent-blue);
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: var(--transition-base);
+    }
+
+    .back-to-top-dhika:hover {
+      background-color: var(--accent-dark-blue);
+      transform: translateY(-3px);
+    }
+
+    /* Animation Classes */
+    .fade-in-dhika {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: opacity 0.6s ease, transform 0.6s ease;
+    }
+
+    .fade-in-dhika.visible-dhika {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    /* Responsive Styles */
+    @media (max-width: 768px) {
+      .hamburger-dhika {
+        display: flex;
+      }
+
+      .nav-menu-dhika {
+        position: fixed;
+        top: 70px;
+        right: -100%;
+        width: 80%;
+        height: calc(100vh - 70px);
+        background-color: var(--surface);
+        flex-direction: column;
+        align-items: center;
+        justify-content: flex-start;
+        padding-top: var(--spacing-xl);
+        transition: var(--transition-base);
+        box-shadow: var(--shadow-lg);
+      }
+
+      .nav-menu-dhika.active-dhika {
+        right: 0;
+      }
+
+      .stats-grid-dhika {
+        grid-template-columns: 1fr;
+      }
+
+      .history-header-dhika {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+      }
+
+      .history-footer-dhika {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        align-items: flex-start;
+      }
+
+      .history-actions-dhika {
+        width: 100%;
+        justify-content: space-between;
+      }
+
+      .footer-content-dhika {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .history-details-grid-dhika {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Header & Navigation -->
+  <header class="header-dhika">
+    <div class="container-dhika">
+      <nav class="nav-dhika">
+        <a href="{{ url_for('home') }}" class="logo-dhika">Andhika <span>App</span></a>
+
+        <ul class="nav-menu-dhika">
+          <li><a href="{{ url_for('home') }}#home" class="nav-link-dhika">Home</a></li>
+          <li><a href="{{ url_for('home') }}#about" class="nav-link-dhika">About</a></li>
+          <li><a href="{{ url_for('home') }}#skills" class="nav-link-dhika">Skills</a></li>
+          <li><a href="{{ url_for('home') }}#projects" class="nav-link-dhika">Projects</a></li>
+          <li><a href="{{ url_for('home') }}#certificates" class="nav-link-dhika">Certificates</a></li>
+          <li><a href="{{ url_for('home') }}#contact" class="nav-link-dhika">Contact</a></li>
+          <li><a href="{{ url_for('history_page') }}" class="nav-link-dhika active-dhika">History</a></li>
+        </ul>
+
+        <button class="theme-toggle-dhika" id="themeToggleDhika">
+          <i class="fas fa-sun theme-icon-dhika"></i>
+        </button>
+
+        <button class="hamburger-dhika" id="hamburgerDhika">
+          <span></span>
+          <span></span>
+          <span></span>
+        </button>
+      </nav>
+    </div>
+  </header>
+
+  <!-- History Section -->
+  <section class="section-dhika" style="padding-top: 120px;">
+    <div class="container-dhika">
+      <h2 class="section-title-dhika">Riwayat Pengerjaan</h2>
+      <p class="section-subtitle-dhika">
+        Track progress dan hasil pengerjaan soal-soal yang telah Anda selesaikan
+      </p>
+
+      <!-- Statistics -->
+      <div class="stats-grid-dhika">
+        <div class="stat-card-dhika fade-in-dhika">
+          <div class="stat-number-dhika total" id="totalAttempts">0</div>
+          <div class="stat-label-dhika">Total Percobaan</div>
+        </div>
+        <div class="stat-card-dhika fade-in-dhika">
+          <div class="stat-number-dhika average" id="averageScore">0%</div>
+          <div class="stat-label-dhika">Rata-rata Score</div>
+        </div>
+        <div class="stat-card-dhika fade-in-dhika">
+          <div class="stat-number-dhika types" id="totalTypes">0</div>
+          <div class="stat-label-dhika">Jenis Soal</div>
+        </div>
+      </div>
+
+      <!-- Controls -->
+      <div class="flex justify-between items-center mb-6" style="display: flex; justify-content: space-between; align-items: center; margin-bottom: var(--spacing-lg);">
+        <h3 style="font-size: var(--font-size-2xl); font-weight: 600;">Riwayat Terbaru</h3>
+        <button onclick="clearAllHistory()" class="btn-dhika btn-danger-dhika">
+          <i class="fas fa-trash mr-2"></i>Hapus Semua Riwayat
+        </button>
+      </div>
+
+      <!-- History List -->
+      <div id="historyList">
+        <!-- History items will be loaded here -->
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer-dhika">
+    <div class="container-dhika">
+      <div class="footer-content-dhika">
+        <p class="footer-text-dhika">
+          &copy; 2025 Andhika Andriana Putra. All rights reserved.
+        </p>
+
+        <div class="footer-social-dhika">
+          <a href="https://github.com/andhkx" class="social-link-dhika">
+            <i class="fab fa-github"></i>
+          </a>
+          <a href="https://www.linkedin.com/in/andhika-putra-1aa031388?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" class="social-link-dhika">
+            <i class="fab fa-linkedin"></i>
+          </a>
+          <a href="https://www.instagram.com/andhkx_?igsh=MWIxMTE2ZnNlaWwzZA==" class="social-link-dhika">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://wa.me/qr/PXV6OI6A2J4LG1" class="social-link-dhika">
+            <i class="fa-brands fa-whatsapp"></i>
+          </a>
+        </div>
+
+        <a href="#" class="back-to-top-dhika">
+          <i class="fas fa-arrow-up"></i>
+        </a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // DOM Elements
+    const themeToggleDhika = document.getElementById('themeToggleDhika');
+    const hamburgerDhika = document.getElementById('hamburgerDhika');
+    const navMenuDhika = document.querySelector('.nav-menu-dhika');
+    const historyList = document.getElementById('historyList');
+    const backToTopDhika = document.querySelector('.back-to-top-dhika');
+    const fadeElementsDhika = document.querySelectorAll('.fade-in-dhika');
+
+    // Theme Toggle Function
+    function toggleThemeDhika() {
+      document.body.classList.toggle('dark-mode');
+      const isDarkMode = document.body.classList.contains('dark-mode');
+      localStorage.setItem('themeDhika', isDarkMode ? 'dark': 'light');
+
+      // Update theme icon
+      const themeIcon = themeToggleDhika.querySelector('.theme-icon-dhika');
+      if (isDarkMode) {
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      } else {
+        themeIcon.classList.remove('fa-moon');
+        themeIcon.classList.add('fa-sun');
+      }
+    }
+
+    // Load saved theme from localStorage
+    function loadThemeDhika() {
+      const savedTheme = localStorage.getItem('themeDhika');
+      if (savedTheme === 'dark') {
+        document.body.classList.add('dark-mode');
+        const themeIcon = themeToggleDhika.querySelector('.theme-icon-dhika');
+        themeIcon.classList.remove('fa-sun');
+        themeIcon.classList.add('fa-moon');
+      }
+    }
+
+    // Mobile Menu Toggle
+    function toggleMenuDhika() {
+      hamburgerDhika.classList.toggle('active-dhika');
+      navMenuDhika.classList.toggle('active-dhika');
+    }
+
+    // Close mobile menu when clicking on a link
+    function closeMenuDhika() {
+      hamburgerDhika.classList.remove('active-dhika');
+      navMenuDhika.classList.remove('active-dhika');
+    }
+
+    // Load history saat halaman dimuat
+    document.addEventListener('DOMContentLoaded', function() {
+      loadThemeDhika();
+      loadHistory();
+      handleScrollDhika();
+    });
+
+    async function loadHistory() {
+      try {
+        const response = await fetch('/get_history');
+        const history = await response.json();
+        
+        updateStatistics(history);
+        renderHistoryList(history);
+      } catch (error) {
+        console.error('Error loading history:', error);
+      }
+    }
+
+    function updateStatistics(history) {
+      const totalAttempts = history.length;
+      const averageScore = totalAttempts > 0 
+        ? Math.round(history.reduce((sum, entry) => sum + (entry.score || 0), 0) / totalAttempts)
+        : 0;
+      const totalTypes = new Set(history.map(entry => entry.soal_type)).size;
+
+      document.getElementById('totalAttempts').textContent = totalAttempts;
+      document.getElementById('averageScore').textContent = averageScore + '%';
+      document.getElementById('totalTypes').textContent = totalTypes;
+    }
+
+    function renderHistoryList(history) {
+      if (history.length === 0) {
+        historyList.innerHTML = `
+          <div class="empty-state-dhika fade-in-dhika visible-dhika">
+            <i class="fas fa-history empty-icon-dhika"></i>
+            <h3 class="empty-title-dhika">Belum ada riwayat pengerjaan</h3>
+            <p class="empty-description-dhika">Ayo mulai kerjakan soal-soal yang tersedia di halaman Projects!</p>
+            <a href="{{ url_for('home') }}#projects" class="btn-dhika btn-primary-dhika">
+              <i class="fas fa-rocket mr-2"></i>Lihat Projects
+            </a>
+          </div>
+        `;
+        return;
+      }
+
+      // Urutkan dari yang terbaru
+      const sortedHistory = history.sort((a, b) => new Date(b.timestamp) - new Date(a.timestamp));
+      
+      historyList.innerHTML = sortedHistory.map((entry, index) => {
+        const badgeClass = getBadgeClass(entry.soal_type);
+        const scoreClass = getScoreClass(entry.score);
+        
+        return `
+          <div class="history-card-dhika fade-in-dhika" style="animation-delay: ${index * 0.1}s">
+            <div class="history-header-dhika">
+              <div class="flex-1">
+                <h3 class="history-title-dhika">${entry.soal_name}</h3>
+                <div class="history-meta-dhika">
+                  <span class="history-badge-dhika ${badgeClass}">${entry.soal_type}</span>
+                  <span class="history-time-dhika">
+                    <i class="far fa-clock"></i>${entry.timestamp}
+                  </span>
+                </div>
+              </div>
+              <div class="history-score-dhika ${scoreClass}">
+                <i class="fas fa-chart-line mr-1"></i>Score: ${entry.score}%
+              </div>
+            </div>
+            
+            <div class="history-content-dhika">
+              <h4 class="history-details-title-dhika">
+                <i class="fas fa-list-check"></i>Detail Jawaban
+              </h4>
+              <div class="history-details-grid-dhika">
+                ${Object.entries(entry.user_answers || {}).map(([key, value]) => `
+                  <div class="history-detail-item-dhika">
+                    <span class="detail-label-dhika">${formatLabel(key)}:</span>
+                    <span class="detail-value-dhika">${value}</span>
+                  </div>
+                `).join('')}
+              </div>
+            </div>
+            
+            <div class="history-footer-dhika">
+              <span class="history-id-dhika">
+                <i class="fas fa-fingerprint mr-1"></i>ID: ${entry.id}
+              </span>
+              <div class="history-actions-dhika">
+                <a href="${entry.soal_url}" class="btn-dhika btn-primary-dhika">
+                  <i class="fas fa-redo mr-2"></i> Coba Lagi
+                </a>
+              </div>
+            </div>
+          </div>
+        `;
+      }).join('');
+
+      // Trigger animations
+      setTimeout(() => {
+        document.querySelectorAll('.fade-in-dhika').forEach(el => {
+          el.classList.add('visible-dhika');
+        });
+      }, 100);
+    }
+
+    function getBadgeClass(soalType) {
+      const typeMap = {
+        'Runtutan': 'badge-runtutan-dhika',
+        'If Else': 'badge-ifelse-dhika',
+        'Nested If': 'badge-nestedif-dhika',
+        'Perulangan': 'badge-forloop-dhika',
+        'Perulangan While': 'badge-whileloop-dhika'
+      };
+      return typeMap[soalType] || 'badge-runtutan-dhika';
+    }
+
+    function getScoreClass(score) {
+      if (score >= 80) return 'score-high-dhika';
+      if (score >= 60) return 'score-medium-dhika';
+      return 'score-low-dhika';
+    }
+
+    function formatLabel(label) {
+      return label.split('_').map(word => 
+        word.charAt(0).toUpperCase() + word.slice(1)
+      ).join(' ');
+    }
+
+    async function clearAllHistory() {
+      if (confirm('Apakah Anda yakin ingin menghapus semua riwayat?')) {
+        try {
+          const response = await fetch('/clear_history', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            }
+          });
+          
+          const result = await response.json();
+          if (result.status === 'success') {
+            loadHistory(); // Reload history
+          }
+        } catch (error) {
+          console.error('Error clearing history:', error);
+          alert('Terjadi error saat menghapus riwayat');
+        }
+      }
+    }
+
+    // Scroll Animation
+    function handleScrollDhika() {
+      // Back to top button visibility
+      if (window.scrollY > 500) {
+        backToTopDhika.style.opacity = '1';
+        backToTopDhika.style.visibility = 'visible';
+      } else {
+        backToTopDhika.style.opacity = '0';
+        backToTopDhika.style.visibility = 'hidden';
+      }
+
+      // Fade in elements on scroll
+      fadeElementsDhika.forEach(element => {
+        const elementTop = element.getBoundingClientRect().top;
+        const elementVisible = 150;
+
+        if (elementTop < window.innerHeight - elementVisible) {
+          element.classList.add('visible-dhika');
+        }
+      });
+    }
+
+    // Smooth Scroll
+    function smoothScrollDhika(target) {
+      const element = document.querySelector(target);
+      if (element) {
+        window.scrollTo({
+          top: element.offsetTop - 80,
+          behavior: 'smooth'
+        });
+      }
+    }
+
+    // Event Listeners
+    themeToggleDhika.addEventListener('click', toggleThemeDhika);
+    hamburgerDhika.addEventListener('click', toggleMenuDhika);
+
+    // Close mobile menu when clicking on a link
+    document.querySelectorAll('.nav-link-dhika').forEach(link => {
+      link.addEventListener('click', () => {
+        closeMenuDhika();
+        if (link.getAttribute('href').startsWith('#')) {
+          smoothScrollDhika(link.getAttribute('href'));
+        }
+      });
+    });
+
+    // Back to top
+    backToTopDhika.addEventListener('click', (e) => {
+      e.preventDefault();
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+
+    // Scroll events
+    window.addEventListener('scroll', handleScrollDhika);
+
+    // Add smooth scroll to all internal links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        const target = this.getAttribute('href');
+        if (target !== '#') {
+          smoothScrollDhika(target);
+        }
+      });
+    });
+  </script>
+</body>
+</html>

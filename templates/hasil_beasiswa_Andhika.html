@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhika - Hasil</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <nav class="navDhika">
+    <div class="nav-container-dhika">
+        <a href="{{ url_for('home') }}" class="logo-link-dhika">
+            <div class="logoDhika">
+                <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+            </div>
+        </a>
+        
+        <ul class="nav-menu-dhika">
+            <li><a href="{{ url_for('input_beasiswa') }}" class="nav-link-dhika">
+                <i class="fas fa-edit"></i> Form
+            </a></li>
+            <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                <i class="fas fa-home"></i> Home
+            </a></li>
+        </ul>
+    </div>
+</nav>
+
+<div class="mainDhika">
+    <div class="hasilDhika">
+        <h1>Formulir Hasil Seleksi</h1>
+        <table class="tableDhika">
+            <tr>
+                <th>Nama Siswa</th>
+                <td>{{namaDhika}}</td>
+            </tr>
+            <tr>
+                <th>Nilai Rata Rata</th>
+                <td>{{rataDhika}}</td>
+            </tr>
+            <tr>
+                <th>Penghasilan Orang Tua</th>
+                <td>Rp. {{"{:,.0f}".format(penghasilanDhika)}}</td>
+            </tr>
+            <tr>
+                <th>Jumlah Saudara</th>
+                <td>{{saudaraDhika}}</td>
+            </tr>
+            <tr>
+                <th>Status Tempat Tinggal</th>
+                <td>{{statusDhika}}</td>
+            </tr>
+            <tr>
+                <th>Nilai Akhir</th>
+                <td>{{poinDhika}}</td>
+            </tr>
+            <tr>
+                <th>Status</th>
+                <td>{{beasiswaDhika}}</td>
+            </tr>
+        </table>
+    </div>
+</div>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const answers = {
+        'Nama': '{{ namaDhika }}',
+        'Rata-rata': '{{ rataDhika }}',
+        'Kategori': '{{ kategoriDhika }}'
+    };
+    
+    HistoryManager.saveEntry('If Else', 'Kategori Nilai', answers, {{ rataDhika }}, '/nilai/input');
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhika - Form</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="{{ url_for('static',filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <nav class="navDhika">
+    <div class="nav-container-dhika">
+        <a href="{{ url_for('home') }}" class="logo-link-dhika">
+            <div class="logoDhika">
+                <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+            </div>
+        </a>
+        
+        <ul class="nav-menu-dhika">
+            <li><a href="{{ url_for('input_diskon') }}" class="nav-link-dhika">
+                <i class="fas fa-edit"></i> Form
+            </a></li>
+            <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                <i class="fas fa-home"></i> Home
+            </a></li>
+        </ul>
+    </div>
+</nav>
+    <div class="mainDhika">
+        <div class="konversiDhika">
+            <center><h1>Aplikasi Hitung Total dan Diskon</h1></center><br>
+            <div class="inputDhika">
+                <div class="inputDhika">
+                <form action="" method="post">
+                <input type="text" name="namaDhika" placeholder=" Masukan nama kamu" required>
+                <input type="text" name="barangDhika" placeholder=" Masukan nama barang" required>
+                <input type="number" name="satuanDhika" placeholder=" Masukan harga satuan" required>
+                <input type="number" name="jumlahDhika" placeholder=" Masukan jumlah barang" required>
+                <br><input type="submit" value="Kirim"><br>
+            </form>
+                </div>
+            </div>
+            
+        </div>
+    </div>
+            
+        </div>
+    </div>
+</body>
+</html>

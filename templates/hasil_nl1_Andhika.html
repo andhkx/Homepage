@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Andhika - Hasil</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="{{ url_for('static', filename='style_Andhika.css') }}" />
+</head>
+<body>
+    <nav class="navDhika">
+        <div class="nav-container-dhika">
+            <a href="{{ url_for('home') }}" class="logo-link-dhika">
+                <div class="logoDhika">
+                    <h2><span class="whiteDhika">Dhika</span> <span class="yellowDhika">Projects</span></h2>
+                </div>
+            </a>
+            
+            <ul class="nav-menu-dhika">
+                <li><a href="{{ url_for('input_nl1') }}" class="nav-link-dhika">
+                    <i class="fas fa-edit"></i> Form
+                </a></li>
+                <li><a href="{{ url_for('home') }}" class="nav-link-dhika">
+                    <i class="fas fa-home"></i> Home
+                </a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="mainDhika">
+        <div class="hasilDhika">
+            <h1>Hasil Looping</h1>
+            <table class="tableDhika">
+                <tr>
+                    <th>Perulangan Bintang {{awalDhika}} - {{akhirDhika}}</th>
+                    <td>{{bintangDhika | safe}}</td>
+                </tr>
+                <tr>
+                    <th>Perulangan Perkalian {{awalDhika}} - {{akhirDhika}}</th>
+                    <td>{{perkalianDhika | safe}}</td>
+                </tr>
+                <tr>
+                    <th>Perulangan Angka Genap {{awalDhika}} - {{akhirDhika}}</th>
+                    <td>{{genapDhika | safe}}</td>
+                </tr>
+            </table>
+            <div class="kembaliDhika">
+                <a href="{{ url_for('input_nl1') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i> Kembali
+                </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

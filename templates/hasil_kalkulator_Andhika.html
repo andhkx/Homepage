@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Hasil Kalkulator</title>
+</head>
+<body>
+    <h1>Hasil Kalkulator</h1>
+    <p>Nilai A: {{ nilaiADhika }}</p>
+    <p>Nilai B: {{ nilaiBDhika }}</p>
+    <p>Pertambahan: {{ tambahDhika }}</p>
+    <p>Pengurangan: {{ kurangDhika }}</p>
+    <p>Perkalian: {{ kaliDhika }}</p>
+<script>
+document.addEventListener('DOMContentLoaded', function() {
+    const answers = {
+        'Nama': '{{ namaDhika }}',
+        'Rata-rata': '{{ rataDhika }}',
+        'Kategori': '{{ kategoriDhika }}'
+    };
+    
+    HistoryManager.saveEntry('If Else', 'Kategori Nilai', answers, {{ rataDhika }}, '/nilai/input');
+});
+</script>    <p>Pembagian: {{ bagiDhika }}</p>
+    
+</body>
+</html>
