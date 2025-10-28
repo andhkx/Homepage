@@ -1,0 +1,9 @@
+9.        Tampilkan nama pelanggan, total seluruh jumlah barang yang pernah dibeli, dan rata-rata total bayar mereka.
+
+10.  Tampilkan barang dengan harga paling mahal dan paling murah.
+
+11.  Tampilkan nama barang, harga satuan, dan berapa kali barang itu pernah dibeli oleh semua pelanggan.
+
+12.  Tampilkan transaksi terbesar dan terkecil untuk setiap pelanggan.
+
+13.  Tampilkan nama pelanggan, jumlah transaksi, dan total uang yang sudah mereka keluarkan. Hanya tampilkan yang jumlah transaksinya ≥ 2.
